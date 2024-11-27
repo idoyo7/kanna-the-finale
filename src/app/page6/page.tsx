@@ -19,6 +19,11 @@ export default function Page6() {
             "/img/raw02/raw02_1.jpg",
             "/img/raw02/raw02_2.jpg",
             "/img/raw02/raw02_3.jpg",
+            "/img/raw02/raw02_4.jpg",
+            "/img/raw02/raw02_5.jpg",
+            "/img/raw02/raw02_6.jpg",
+            "/img/raw02/raw02_7.jpg",
+            "/img/raw02/raw02_8.jpg",
         ],
         raw03: [
             "/img/raw03/raw03_1.jpg",

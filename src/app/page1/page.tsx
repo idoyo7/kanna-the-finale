@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import Lenis from "@studio-freight/lenis";
 
-import Banner from "@/modules/banner";
 import styles from "./styles.module.css";
 
 // 하드코딩된 목표 날짜 (2024-12-02 19:00:00 KST)
@@ -89,7 +88,8 @@ export default function Page1() {
         playsInline
         autoPlay
       />
-      <div className={`${styles.info__wrap}`}>
+
+      <div className={styles.info__wrap}>
         <p className={styles.count__down__day}>
           D-{timer.days > 0 ? timer.days : 0}
         </p>
@@ -101,7 +101,6 @@ export default function Page1() {
         <p className={styles.title}>COMING SOON</p>
         <p className={styles.sub}>마지막 별의 노래가 다가오는 날</p>
       </div>
-      <Banner />
     </div>
   );
 }

@@ -7,7 +7,7 @@ import ReactPlayer from "react-player/lazy";
 
 import styles from "./styles.module.css";
 
-function Page1_2() {
+export default function Page4() {
   const [hasWindow, setHasWindow] = useState(false);
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -29,5 +29,3 @@ function Page1_2() {
     </div>
   );
 }
-
-export default Page1_2;

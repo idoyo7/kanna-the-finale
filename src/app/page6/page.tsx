@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
 import { useSwipeable } from "react-swipeable";
+import Image from 'next/image';
 
 import styles from "./styles.module.css";
 
 export default function Page6() {
-    // 각 raw별로 별도의 인덱스 상태 관리
     const [indices, setIndices] = useState({
         raw01: 0,
         raw02: 0,
@@ -59,9 +59,17 @@ export default function Page6() {
         }));
     };
 
-    const createHandlers = (raw: 'raw01' | 'raw02' | 'raw03') => useSwipeable({
-        onSwipedLeft: () => nextImage(raw),
-        onSwipedRight: () => prevImage(raw),
+    // Hook을 컴포넌트 레벨에서 직접 사용
+    const handlers01 = useSwipeable({
+        onSwipedLeft: () => nextImage('raw01'),
+        onSwipedRight: () => prevImage('raw01'),
+        preventScrollOnSwipe: true,
+        trackMouse: true
+    });
+
+    const handlers02 = useSwipeable({
+        onSwipedLeft: () => nextImage('raw02'),
+        onSwipedRight: () => prevImage('raw02'),
         preventScrollOnSwipe: true,
         trackMouse: true
     });
@@ -76,39 +84,70 @@ export default function Page6() {
                 <span className={styles.subdescription}>다양한 상황들의 그림을 보며 우리의 추억들을 회상해보아요</span>
             </div>
             <div className={styles.imagesGrid}>
-                {(['raw01', 'raw02'] as const).map((raw) => (
-                    <div key={raw} className={styles.rowContainer}>
-                        <button 
-                            className={styles.navButton} 
-                            onClick={() => prevImage(raw)}
-                            aria-label="Previous image"
-                        >
-                            &#10094;
-                        </button>
-                        <div {...createHandlers(raw)} className={styles.imageContainer}>
-                            <img 
-                                src={ImgDir[raw][indices[raw]]} 
-                                alt={`${raw} image ${indices[raw] + 1}`}
-                                className={styles.image}
-                            />
-                        </div>
-                        <button 
-                            className={styles.navButton} 
-                            onClick={() => nextImage(raw)}
-                            aria-label="Next image"
-                        >
-                            &#10095;
-                        </button>
+                <div className={styles.rowContainer}>
+                    <button 
+                        className={styles.navButton} 
+                        onClick={() => prevImage('raw01')}
+                        aria-label="Previous image"
+                    >
+                        &#10094;
+                    </button>
+                    <div {...handlers01} className={styles.imageContainer}>
+                        <Image 
+                            src={ImgDir.raw01[indices.raw01]} 
+                            alt={`raw01 image ${indices.raw01 + 1}`}
+                            className={styles.image}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 800px"
+                            priority
+                        />
                     </div>
-                ))}
+                    <button 
+                        className={styles.navButton} 
+                        onClick={() => nextImage('raw01')}
+                        aria-label="Next image"
+                    >
+                        &#10095;
+                    </button>
+                </div>
+
+                <div className={styles.rowContainer}>
+                    <button 
+                        className={styles.navButton} 
+                        onClick={() => prevImage('raw02')}
+                        aria-label="Previous image"
+                    >
+                        &#10094;
+                    </button>
+                    <div {...handlers02} className={styles.imageContainer}>
+                        <Image 
+                            src={ImgDir.raw02[indices.raw02]} 
+                            alt={`raw02 image ${indices.raw02 + 1}`}
+                            className={styles.image}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 800px"
+                            priority
+                        />
+                    </div>
+                    <button 
+                        className={styles.navButton} 
+                        onClick={() => nextImage('raw02')}
+                        aria-label="Next image"
+                    >
+                        &#10095;
+                    </button>
+                </div>
                 
                 <div className={styles.galleryContainer}>
                     {ImgDir.raw03.map((imgSrc, index) => (
                         <div key={index} className={styles.galleryItem}>
-                            <img 
+                            <Image 
                                 src={imgSrc} 
                                 alt={`raw03 image ${index + 1}`}
                                 className={styles.galleryImage}
+                                width={300}
+                                height={300}
+                                priority
                             />
                         </div>
                     ))}

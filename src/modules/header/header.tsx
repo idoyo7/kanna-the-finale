@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 import styles from "./styles.module.css";
 
 function Header() {
   const headerRef = useRef<HTMLDivElement>(null);
+  const [activeSection, setActiveSection] = useState("hero");
 
   const scrollEvent = () => {
     if (window.scrollY >= 10) {
@@ -15,6 +16,20 @@ function Header() {
       headerRef.current?.classList.remove(styles.withBg);
     }
   };
+
+  // URL의 해시를 감지하여 active 상태 업데이트
+  useEffect(() => {
+    const handleHashChange = () => {
+      setActiveSection(window.location.hash.replace("#", ""));
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+    handleHashChange(); // 초기화
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, []);
 
   useEffect(() => {
     scrollEvent();
@@ -40,16 +55,36 @@ function Header() {
       <nav>
         <ul className={styles.nav}>
           <li>
-            <a href="#main">메인</a>
+            <a
+              href="#main"
+              className={activeSection === "main" ? styles.active : ""}
+            >
+              메인
+            </a>
           </li>
           <li>
-            <a href="#pv">PV</a>
+            <a
+              href="#pv"
+              className={activeSection === "pv" ? styles.active : ""}
+            >
+              PV
+            </a>
           </li>
           <li>
-            <a href="#history">보석함</a>
+            <a
+              href="#history"
+              className={activeSection === "history" ? styles.active : ""}
+            >
+              보석함
+            </a>
           </li>
           <li>
-            <a href="#goods">칸나의 선물</a>
+            <a
+              href="#goods"
+              className={activeSection === "goods" ? styles.active : ""}
+            >
+              칸나의 선물
+            </a>
           </li>
         </ul>
       </nav>

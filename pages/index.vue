@@ -22,6 +22,9 @@
         <p class="left-content">The last song</p>
         <p class="right-content">of Stellar</p>
     </section>
+    <section class="concert-pv-section">
+        <iframe width="1280" height="717.657" src="https://www.youtube.com/embed/eNbB4MWbZAI?si=4UikFCQa9Bw4ehbl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </section>
 </template>
 
 <style scoped>
@@ -194,6 +197,20 @@
 
     .wallpaper-with-logo-section > p.right-content {
         right: 11.19%;
+    }
+
+    /* 네 번째 섹션 - 콘서트 PV */
+    .concert-pv-section {
+        width: 100%;
+        height: 1080px;
+        background-color: black;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        padding: 154px 0 208.343px 0;
+        box-sizing: border-box;
     }
 </style>
 

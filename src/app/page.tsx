@@ -9,18 +9,19 @@ import Page6 from "./page6/page";
 
 export default function HomePage() {
   const sections = [
-    { id: 1, component: <Page1 />, fullpage: true },
-    { id: 2, component: <Page2 />, fullpage: false },
-    { id: 3, component: <Page3 />, fullpage: true },
-    { id: 4, component: <Page4 />, fullpage: true },
-    { id: 5, component: <Page5 />, fullpage: false },
-    { id: 6, component: <Page6 />, fullpage: true },
+    { id: "hero", component: <Page1 />, fullpage: true },
+    { id: "banner", component: <Page2 />, fullpage: false },
+    { id: "main", component: <Page3 />, fullpage: true },
+    { id: "pv", component: <Page4 />, fullpage: true },
+    { id: "story", component: <Page5 />, fullpage: false },
+    { id: "history", component: <Page6 />, fullpage: true },
   ];
 
   return (
     <div>
       {sections.map((section) => (
         <section
+          id={section.id}
           key={section.id}
           className={`${styles.container} ${
             !section.fullpage ? styles.noFullpage : ""

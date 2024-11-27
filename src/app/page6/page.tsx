@@ -76,7 +76,7 @@ export default function Page6() {
                 <span className={styles.subdescription}>다양한 상황들의 그림을 보며 우리의 추억들을 회상해보아요</span>
             </div>
             <div className={styles.imagesGrid}>
-                {(['raw01', 'raw02', 'raw03'] as const).map((raw) => (
+                {(['raw01', 'raw02'] as const).map((raw) => (
                     <div key={raw} className={styles.rowContainer}>
                         <button 
                             className={styles.navButton} 
@@ -101,6 +101,18 @@ export default function Page6() {
                         </button>
                     </div>
                 ))}
+                
+                <div className={styles.galleryContainer}>
+                    {ImgDir.raw03.map((imgSrc, index) => (
+                        <div key={index} className={styles.galleryItem}>
+                            <img 
+                                src={imgSrc} 
+                                alt={`raw03 image ${index + 1}`}
+                                className={styles.galleryImage}
+                            />
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );

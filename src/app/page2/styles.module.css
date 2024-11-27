@@ -1,0 +1,34 @@
+.container {
+  width: 100%;
+  padding: 32px 0;
+  background-color: black;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 66px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 6.5px;
+}
+
+.description {
+  color: #cac9d9;
+  font-size: 26px;
+  font-weight: 700;
+
+  margin-top: 25px;
+}

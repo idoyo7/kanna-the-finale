@@ -8,8 +8,7 @@ export default function LenisWrapper({
 }) {
   useEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.1, // 부드러운 스크롤 속도 설정
-      smoothWheel: true, // 부드러운 스크롤 활성화
+      smoothWheel: true,
     });
 
     const animate = (time: number) => {

@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-import Lenis from "@studio-freight/lenis";
+import Lenis from "lenis";
 
 import Header from "@/modules/header/header";
 import { notoSansKr } from "@/styles/fonts";

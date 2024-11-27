@@ -1,6 +1,6 @@
 <template>
     <header>
-        <img class="header-logo" src="" alt="logo"/>
+        <img class="header-logo" src="/assets/image/The_finale_logo4.png" alt="logo"/>
         <ul class="header-menu">
             <li><a href="#">메인화면</a></li>
             <li><a href="#">PV</a></li>
@@ -28,7 +28,6 @@
     .header-logo {
         width: 83px;
         height: 43px;
-        background-color: red;
     }
 
     .header-menu {

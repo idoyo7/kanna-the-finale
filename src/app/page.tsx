@@ -5,6 +5,7 @@ import Page2 from "./page2/page";
 import Page3 from "./page3/page";
 import Page4 from "./page4/page";
 import Page5 from "./page5/page";
+import Page6 from "./page6/page";
 
 export default function HomePage() {
   const sections = [
@@ -12,7 +13,8 @@ export default function HomePage() {
     { id: 2, component: <Page2 />, fullpage: false },
     { id: 3, component: <Page3 />, fullpage: true },
     { id: 4, component: <Page4 />, fullpage: true },
-    { id: 5, component: <Page5 />, fullpage: true },
+    { id: 5, component: <Page5 />, fullpage: false },
+    { id: 6, component: <Page6 />, fullpage: true },
   ];
 
   return (

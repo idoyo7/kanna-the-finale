@@ -3,6 +3,13 @@
 import { useEffect, useRef } from 'react';
 import Lenis from '@studio-freight/lenis';
 import styles from './styles.module.css';
+import localFont from 'next/font/local';
+
+const wantedSansVariable = localFont({
+    src: '../fonts/wantedSansVariable.woff2',
+    variable: '--font-wanted-sans-variable',
+    weight: '100 900',
+});
 
 export default function Page1() {
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -43,8 +50,13 @@ export default function Page1() {
                 loop
                 playsInline
                 autoPlay
-                controls
             />
+            <div className={`${styles.info__wrap} ${wantedSansVariable.variable}`}>
+                <p className={styles.count__down__day}>D-05</p>
+                <p className={styles.count__down__time}>17:56:59</p>
+                <p className={styles.title}>COMING SOON</p>
+                <p className={styles.sub}>마지막 별의 노래가 다가오는 날</p>
+            </div>
         </div>
     );
 }

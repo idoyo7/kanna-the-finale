@@ -2,19 +2,14 @@
 
 import { useEffect } from 'react';
 import Lenis from '@studio-freight/lenis';
-import localFont from 'next/font/local';
+import { Noto_Sans_KR } from 'next/font/google';
 import './globals.css';
 import Header from '@/modules/header/header';
 
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-});
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
+const notoSansKr = Noto_Sans_KR({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  variable: '--font-noto-sans-kr',
 });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -38,7 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${notoSansKr.variable} antialiased`}>
         <Header/>
         {children}
       </body>

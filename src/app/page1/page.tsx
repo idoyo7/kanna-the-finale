@@ -5,12 +5,6 @@ import Lenis from '@studio-freight/lenis';
 import styles from './styles.module.css';
 import localFont from 'next/font/local';
 
-const wantedSansVariable = localFont({
-    src: '../fonts/wantedSansVariable.woff2',
-    variable: '--font-wanted-sans-variable',
-    weight: '100 900',
-});
-
 // 하드코딩된 목표 날짜 (2024-12-02 00:00:00 KST)
 const TARGET_DATE = new Date('2024-12-02T00:00:00+09:00');
 
@@ -89,7 +83,7 @@ export default function Page1() {
                 playsInline
                 autoPlay
             />
-            <div className={`${styles.info__wrap} ${wantedSansVariable.variable}`}>
+            <div className={`${styles.info__wrap}`}>
                 <p className={styles.count__down__day}>
                     D-{timer.days > 0 ? timer.days : 0}
                 </p>

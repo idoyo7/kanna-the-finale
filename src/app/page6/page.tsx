@@ -4,6 +4,28 @@ import { useSwipeable } from "react-swipeable";
 import styles from "./styles.module.css";
 
 export default function Page6() {
+    const ImgDir = {
+        raw01: [
+            "/img/raw01/raw01_1.jpg",
+            "/img/raw01/raw01_2.jpg",
+            "/img/raw01/raw01_3.jpg",
+            "/img/raw01/raw01_4.jpg",
+            "/img/raw01/raw01_5.jpg",
+            "/img/raw01/raw01_6.jpg",
+            "/img/raw01/raw01_7.jpg",
+            "/img/raw01/raw01_8.jpg",
+        ],
+        raw02: [
+            "/img/raw02/raw02_1.jpg",
+            "/img/raw02/raw02_2.jpg",
+            "/img/raw02/raw02_3.jpg",
+        ],
+        raw03: [
+            "/img/raw03/raw03_1.jpg",
+            "/img/raw03/raw03_2.jpg",
+            "/img/raw03/raw03_3.jpg",
+        ],
+    };
     const handlers = useSwipeable({
         onSwipedLeft: () => console.log("Swiped Left!"),
         onSwipedRight: () => console.log("Swiped Right!"),

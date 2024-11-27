@@ -13,6 +13,19 @@ const nextConfig: NextConfig = {
             },
         },
     });
+
+    // Allow external video URLs from AWS S3
+    config.module.rules.push({
+      test: /\.(mp4|webm)$/,
+      use: {
+        loader: 'url-loader',
+        options: {
+          limit: false,
+          publicPath: 'https://airikannalastconcert.s3.ap-northeast-1.amazonaws.com/',
+        }
+      }
+    });
+    
     return config;
   },
 };

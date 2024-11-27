@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Lenis from '@studio-freight/lenis';
 import styles from './styles.module.css';
-import localFont from 'next/font/local';
+import Banner from '@/modules/banner';
 
 // 하드코딩된 목표 날짜 (2024-12-02 00:00:00 KST)
 const TARGET_DATE = new Date('2024-12-02T00:00:00+09:00');
@@ -95,6 +95,7 @@ export default function Page1() {
                 <p className={styles.title}>COMING SOON</p>
                 <p className={styles.sub}>마지막 별의 노래가 다가오는 날</p>
             </div>
+            <Banner />
         </div>
     );
 }

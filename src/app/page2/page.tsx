@@ -1,16 +1,10 @@
 'use client';
 import styles from './styles.module.css';
-import localFont from 'next/font/local';
-
-const notoSerif = localFont({
-    src: '../fonts/NotoSerifKR-VariableFont_wght.ttf',
-    weight: '100 900',
-});
 
 export default function Page2() {
     return (
         <div className={`min-h-screen flex items-center justify-center ${styles.letter}`}>
-            <section className={`max-w-2xl mx-auto text-center ${notoSerif.className} ${styles.letter__basic}`}>
+            <section className={`max-w-2xl mx-auto text-center ${styles.letter__basic}`}>
                 <p className="mb-8">누군가에게 꿈이 되고 싶었던, 항상 높은 곳에서 빝나길 바랐던 소녀는 말해왔습니다.</p>
                 <p className={`mb-8 ${styles.letter__highlight}`}>"그야 나는 별이니까"</p>
                 <p className="mb-8">

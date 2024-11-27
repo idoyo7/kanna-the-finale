@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { useSwipeable } from "react-swipeable";
-import Image from 'next/image';
 
 import styles from "./styles.module.css";
 
@@ -59,7 +58,6 @@ export default function Page6() {
         }));
     };
 
-    // Hook을 컴포넌트 레벨에서 직접 사용
     const handlers01 = useSwipeable({
         onSwipedLeft: () => nextImage('raw01'),
         onSwipedRight: () => prevImage('raw01'),
@@ -93,13 +91,10 @@ export default function Page6() {
                         &#10094;
                     </button>
                     <div {...handlers01} className={styles.imageContainer}>
-                        <Image 
+                        <img 
                             src={ImgDir.raw01[indices.raw01]} 
                             alt={`raw01 image ${indices.raw01 + 1}`}
                             className={styles.image}
-                            fill
-                            sizes="(max-width: 768px) 100vw, 800px"
-                            priority
                         />
                     </div>
                     <button 
@@ -120,13 +115,10 @@ export default function Page6() {
                         &#10094;
                     </button>
                     <div {...handlers02} className={styles.imageContainer}>
-                        <Image 
+                        <img 
                             src={ImgDir.raw02[indices.raw02]} 
                             alt={`raw02 image ${indices.raw02 + 1}`}
                             className={styles.image}
-                            fill
-                            sizes="(max-width: 768px) 100vw, 800px"
-                            priority
                         />
                     </div>
                     <button 
@@ -141,13 +133,10 @@ export default function Page6() {
                 <div className={styles.galleryContainer}>
                     {ImgDir.raw03.map((imgSrc, index) => (
                         <div key={index} className={styles.galleryItem}>
-                            <Image 
+                            <img 
                                 src={imgSrc} 
                                 alt={`raw03 image ${index + 1}`}
                                 className={styles.galleryImage}
-                                width={300}
-                                height={300}
-                                priority
                             />
                         </div>
                     ))}

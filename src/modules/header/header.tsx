@@ -2,14 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-
 import styles from "./styles.module.css";
 
 function Header() {
   const headerRef = useRef<HTMLDivElement>(null);
-  const [activeSection, setActiveSection] = useState("hero");
+  const [activeSection, setActiveSection] = useState<string>("hero");
 
-  const scrollEvent = () => {
+  // 스크롤 이벤트 핸들러
+  const handleScroll = () => {
     if (window.scrollY >= 10) {
       headerRef.current?.classList.add(styles.withBg);
     } else {
@@ -18,27 +18,45 @@ function Header() {
   };
 
   // URL의 해시를 감지하여 active 상태 업데이트
+  const updateActiveSection = () => {
+    const hash = window.location.hash.replace("#", "") || "hero";
+    setActiveSection(hash);
+  };
+
+  // 해시 변경 이벤트 등록
   useEffect(() => {
     const handleHashChange = () => {
-      setActiveSection(window.location.hash.replace("#", ""));
+      const hash = window.location.hash.replace("#", "");
+      if (hash !== activeSection) {
+        setActiveSection(hash);
+      }
     };
 
     window.addEventListener("hashchange", handleHashChange);
-    handleHashChange(); // 초기화
+    handleHashChange(); // 초기 실행
 
     return () => {
       window.removeEventListener("hashchange", handleHashChange);
     };
-  }, []);
+  }, []); // 의존성 배열을 빈 배열로 설정
 
+  // 스크롤 이벤트 등록
   useEffect(() => {
-    scrollEvent();
-    document.addEventListener("scroll", scrollEvent);
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // 초기 실행
 
     return () => {
-      document.removeEventListener("scroll", scrollEvent);
+      window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, []); // 빈 배열로 설정하여 한 번만 실행
+
+  // 메뉴 항목 데이터
+  const navItems = [
+    { id: "main", label: "메인" },
+    { id: "pv", label: "PV" },
+    { id: "history", label: "보석함" },
+    { id: "goods", label: "칸나의 선물" },
+  ];
 
   return (
     <header ref={headerRef} className={styles.container}>
@@ -54,38 +72,16 @@ function Header() {
 
       <nav>
         <ul className={styles.nav}>
-          <li>
-            <a
-              href="#main"
-              className={activeSection === "main" ? styles.active : ""}
-            >
-              메인
-            </a>
-          </li>
-          <li>
-            <a
-              href="#pv"
-              className={activeSection === "pv" ? styles.active : ""}
-            >
-              PV
-            </a>
-          </li>
-          <li>
-            <a
-              href="#history"
-              className={activeSection === "history" ? styles.active : ""}
-            >
-              보석함
-            </a>
-          </li>
-          <li>
-            <a
-              href="#goods"
-              className={activeSection === "goods" ? styles.active : ""}
-            >
-              칸나의 선물
-            </a>
-          </li>
+          {navItems.map((item) => (
+            <li key={item.id}>
+              <a
+                href={`#${item.id}`}
+                className={activeSection === item.id ? styles.active : ""}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
         </ul>
       </nav>
     </header>

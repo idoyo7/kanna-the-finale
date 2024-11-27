@@ -1,8 +1,10 @@
+// layout.tsx
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
 import Header from "@/modules/header/header";
+import LenisWrapper from "@/modules/Lenis/LenisWrapper"; // Lenis 초기화 컴포넌트
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,7 +33,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
-        {children}
+        <LenisWrapper>{children}</LenisWrapper>
       </body>
     </html>
   );

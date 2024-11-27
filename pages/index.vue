@@ -13,6 +13,15 @@
         <p class="title-sub">The last song of Stellar</p>
         <p class="info">아이리 칸나의 마지막 콘서트</p>
     </section>
+    <section class="wallpaper-with-logo-section">
+        <video class="wallpaper-video" src="/assets/video/Airi_kanna_Last_Concert_wallpaper.mp4" alt="칸나 동영상" autoplay muted loop playinline></video>
+        <img class="logo" src="/assets/image/The_finale_logo3.png"/>
+        <div class="left-bar"></div>
+        <div class="right-bar"></div>
+        <div class="bottom-bar"></div>
+        <p class="left-content">The last song</p>
+        <p class="right-content">of Stellar</p>
+    </section>
 </template>
 
 <style scoped>
@@ -32,7 +41,7 @@
         align-items: center;
     }
 
-    .wallpaper-video {
+    .wallpaper-with-time-section > .wallpaper-video {
         position: absolute;
         left: 0;
         top: 0;
@@ -117,13 +126,83 @@
         font-size: min(1.35vw, 26px);
         font-weight: 700;
     }
+
+    /* 세 번째 섹션 - 로고와 함께 있는 배너 */
+    .wallpaper-with-logo-section {
+        position: relative;
+        width: 100%;
+        height: 850px;
+    }
+
+    .wallpaper-with-logo-section > .wallpaper-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        object-fit: cover;
+    }
+
+    .wallpaper-with-logo-section > .logo {
+        position: absolute;
+        top: 172px;
+        left: calc(50% - 221.5px);
+        width: 443px;
+        height: 401px;
+    }
+
+    .wallpaper-with-logo-section > .left-bar,
+    .wallpaper-with-logo-section > .right-bar {
+        position: absolute;
+        top: 375px;
+        width: 53px;
+        height: 2px;
+        background-color: white;
+    }
+    
+    .wallpaper-with-logo-section > .left-bar {
+        left: 6.25%;
+    }
+
+    .wallpaper-with-logo-section > .right-bar {
+        right: 6.25%;
+    }
+
+    .wallpaper-with-logo-section > .bottom-bar {
+        position: absolute;
+        left: calc(50% - 1px);
+        bottom: 4.9%;
+        width: 2px;
+        height: 106px;
+        background-color: white;
+    }
+
+    .wallpaper-with-logo-section > p {
+        position: absolute;
+        top: 367px;
+        color: white;
+        font-family: Raleway;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 4.81px;
+    }
+
+    .wallpaper-with-logo-section > p.left-content {
+        left: 11.19%;
+    }
+
+    .wallpaper-with-logo-section > p.right-content {
+        right: 11.19%;
+    }
 </style>
 
 <style>
     @import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css");
     @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
-    @import url('https://cdn.jsdelivr.net/npm/pretendard/dist/pretendard.css');
+    @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
     body,
     p {

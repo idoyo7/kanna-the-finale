@@ -25,6 +25,19 @@
     <section class="concert-pv-section">
         <iframe width="1280" height="717.657" src="https://www.youtube.com/embed/eNbB4MWbZAI?si=4UikFCQa9Bw4ehbl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </section>
+    <section class="letter-content-section">
+        <p>누군가에게 꿈이 되고 싶었던, 항상 높은 곳에서 빝나길 바랐던 소녀는 말해왔습니다.</p>
+        <p class="highlight">“그야 나는 별이니까”</p>
+        <p>가장 빛나는 별이 되기 위해 매번 죽을 힘을 다해 노래하던 소녀는 행복했습니다.<br>
+        소녀는 항상 빛날 수 있는 것만 같았습니다.<br>
+        하지만, 그녀의 빛이 커질수록 그림자도 커져만 갔습니다.<br>
+        언제나 위를 보고 달리던 그녀는 수차례 넘어졌고, 때로는 포기하고 싶기도 했습니다.</p>
+        <p>그렇게 그림자 속에서 처음으로 위가 아닌 주변을 둘러보았을 때, 그녀는 깨달았습니다.<br>
+        이미 주변에는 수많은 별들이 함께 빛나고 있다는 것을.<br>
+        별은 서로 속에서, 서로를 비추어 줄 때 가장 아름답게 빛난다는 것을요.</p>
+        <p>이제 마지막 무대를 앞둔, 가장 아름답게 빝나는 별이 우리에게 말합니다.</p>
+        <p class="highlight">“우린 모두 별이니까”</p>
+    </section>
 </template>
 
 <style scoped>
@@ -212,14 +225,39 @@
         padding: 154px 0 208.343px 0;
         box-sizing: border-box;
     }
+    
+    /* 다섯 번째 섹션 - 편지 */
+    .letter-content-section {
+        width: 100%;
+        height: 557px;
+        background-color: #5E41B7;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 28px;
+        
+        color: white;
+        font-family: Noto Serif KR;
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 26px;
+        letter-spacing: -1.02px;
+        text-align: center;
+    }
+
+    .letter-content-section > .highlight {
+        font-size: 19px;
+        font-weight: 900;
+        letter-spacing: -1.14px;
+    }
 </style>
 
 <style>
     @import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css");
-    @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
     @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Noto+Serif+KR:wght@200..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
     body,
     p {

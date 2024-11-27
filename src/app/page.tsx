@@ -1,4 +1,5 @@
 import styles from "@/styles/root.module.css";
+import Section from "@/modules/section/section";
 
 import Page1 from "./page1/page";
 import Page2 from "./page2/page";
@@ -20,7 +21,7 @@ export default function HomePage() {
   return (
     <div>
       {sections.map((section) => (
-        <section
+        <Section
           id={section.id}
           key={section.id}
           className={`${styles.container} ${
@@ -28,7 +29,7 @@ export default function HomePage() {
           }`}
         >
           {section.component}
-        </section>
+        </Section>
       ))}
     </div>
   );

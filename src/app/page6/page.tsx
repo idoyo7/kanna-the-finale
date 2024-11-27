@@ -41,7 +41,7 @@ export default function Page6() {
             "/img/raw03/raw03_5.jpg",
             "/img/raw03/raw03_6.jpg",
             "/img/raw03/raw03_7.jpg",
-            "/img/raw03/raw03_8.jpg",
+            "/img/raw03/raw03_8.webp",
         ],
     };
 

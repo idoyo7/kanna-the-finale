@@ -83,7 +83,7 @@ export default function Page1() {
       <video
         ref={videoRef}
         className={styles.video}
-        src="/videos/airi_kanna_last_concert_wallpaper.mp4"
+        src="https://www.mdoo.info/airi_kanna/wallpaper.mp4"
         muted
         loop
         playsInline

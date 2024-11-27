@@ -1,5 +1,5 @@
 .container {
-  height: 100dvh;
+  min-height: 100dvh;
 
   display: flex;
   align-items: center;
@@ -7,6 +7,6 @@
 }
 
 .noFullpage {
-  height: initial;
+  min-height: initial;
   align-items: initial;
 }

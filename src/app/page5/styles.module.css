@@ -1,0 +1,32 @@
+.letter {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #5e41b7;
+}
+
+.letter__basic {
+  max-width: 64vw;
+  margin: 0 auto;
+  text-align: center;
+
+  color: white;
+}
+
+.letter__text {
+  margin: 28px auto;
+
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 26px;
+  letter-spacing: -1px;
+}
+
+.letter__highlight {
+  font-size: 19px;
+  font-weight: 800;
+}

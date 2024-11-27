@@ -1,32 +1,31 @@
 .letter {
   width: 100%;
-  min-height: 100vh;
-
+  height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-
+  justify-content: flex-start;
+  align-items: flex-start;
   background-color: #5e41b7;
 }
 
 .letter__basic {
+  width: 100%;
   max-width: 64vw;
-  margin: 0 auto;
+  position: relative;
+  margin: 10vh auto 0;
   text-align: center;
-
   color: white;
+  padding: 0 2.5vw;
 }
 
 .letter__text {
-  margin: 28px auto;
-
-  font-size: 17px;
+  margin: 4vh auto;
+  font-size: 1.8vh;
   font-weight: 300;
-  line-height: 26px;
-  letter-spacing: -1px;
+  line-height: 160%;
+  letter-spacing: -0.1vh;
 }
 
 .letter__highlight {
-  font-size: 19px;
+  font-size: 2vh;
   font-weight: 800;
 }

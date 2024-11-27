@@ -24,7 +24,7 @@
 .nav {
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 2.08vw;
 
     padding-inline-start: 0;
     margin-block-start: 0;
@@ -36,11 +36,11 @@
 .nav > li > a {
     color: rgba(255, 255, 255, 0.48);
     font-family: "Wanted Sans";
-    font-size: 15px;
+    font-size: 0.78vw;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    letter-spacing: -0.6px;
+    letter-spacing: -0.03vw;
 
     text-decoration: none;
     transition: color 0.2s;

@@ -1,4 +1,4 @@
-'use client';
+import styles from "@/styles/root.module.css";
 
 import Page1 from "./page1/page";
 import Page1_1 from "./page1_1/page";
@@ -17,15 +17,7 @@ export default function HomePage() {
   return (
     <div>
       {sections.map((section) => (
-        <section
-          key={section.id}
-          style={{
-            height: '100vh',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
+        <section key={section.id} className={styles.container}>
           {section.component}
         </section>
       ))}

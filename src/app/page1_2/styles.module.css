@@ -1,0 +1,4 @@
+.video {
+  width: 55dvw;
+  height: calc(55dvw * 9 / 16); /* 16:9 비율 유지 (55 * 9/16) */
+}

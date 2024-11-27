@@ -6,6 +6,8 @@ import Page3 from "./page3/page";
 import Page4 from "./page4/page";
 import Page5 from "./page5/page";
 import Page6 from "./page6/page";
+import Page7 from "./page7/page";
+import Page8 from "./page8/page";
 
 export default function HomePage() {
   const sections = [
@@ -15,6 +17,8 @@ export default function HomePage() {
     { id: "pv", component: <Page4 />, fullpage: true },
     { id: "story", component: <Page5 />, fullpage: false },
     { id: "history", component: <Page6 />, fullpage: true },
+    { id: "gift", component: <Page7 />, fullpage: false },
+    { id: "post", component: <Page8 />, fullpage: true },
   ];
 
   return (

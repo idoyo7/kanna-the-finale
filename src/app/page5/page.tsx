@@ -2,12 +2,8 @@ import styles from "./styles.module.css";
 
 export default function Page5() {
   return (
-    <div
-      className={`min-h-screen flex items-center justify-center ${styles.letter}`}
-    >
-      <section
-        className={`max-w-2xl mx-auto text-center ${styles.letter__basic}`}
-      >
+    <div className={`${styles.letter}`}>
+      <section className={`${styles.letter__basic}`}>
         <p className="mb-8">
           누군가에게 꿈이 되고 싶었던, 항상 높은 곳에서 빝나길 바랐던 소녀는
           말해왔습니다.

@@ -1,18 +1,14 @@
 "use client";
 
 import { useEffect } from "react";
-import { Noto_Sans_KR } from "next/font/google";
+
 import Lenis from "@studio-freight/lenis";
 
 import Header from "@/modules/header/header";
+import { notoSansKr } from "@/styles/fonts";
 
-import "./globals.css";
-
-const notoSansKr = Noto_Sans_KR({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-noto-sans-kr",
-});
+import "@unocss/reset/tailwind.css";
+import "@/styles/global.css";
 
 export default function RootLayout({
   children,
@@ -39,7 +35,7 @@ export default function RootLayout({
 
   return (
     <html lang="ko">
-      <body className={`${notoSansKr.variable} antialiased`}>
+      <body className={`${notoSansKr.className}`}>
         <Header />
         {children}
       </body>

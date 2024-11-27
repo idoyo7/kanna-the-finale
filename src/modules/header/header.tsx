@@ -5,8 +5,8 @@ function Header() {
   return (
     <header className={styles.container}>
       <Image
-        width={384}
-        height={197}
+        width={76}
+        height={39}
         className={styles.logo}
         src="/logo02.png"
         alt="The Finale"

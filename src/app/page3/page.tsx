@@ -1,4 +1,8 @@
 "use client";
+
+import Image from "next/image";
+
+import { raleway } from "@/styles/fonts";
 import styles from "./styles.module.css";
 
 export default function Page3() {
@@ -15,18 +19,25 @@ export default function Page3() {
 
       <div className={styles.left}>
         <div className={styles.left__bar}></div>
-        <p className={`${styles.left__content} ${styles.raleway__medium}`}>
+        <p className={`${styles.left__content} ${raleway.className}`}>
           The last song
         </p>
       </div>
 
       <div className={styles.center}>
-        <img className={styles.logo} src="/The_finale_logo3.png" />
+        <Image
+          className={styles.logo}
+          src="/The_finale_logo3.png"
+          width={326}
+          height={294}
+          alt="The Finale"
+        />
+
         <div className={styles.bottom__bar}></div>
       </div>
 
       <div className={styles.right}>
-        <p className={`${styles.right__content} ${styles.raleway__medium}`}>
+        <p className={`${styles.right__content} ${raleway.className}`}>
           of Stellar
         </p>
         <div className={styles.right__bar}></div>

@@ -66,7 +66,7 @@
     .count-down-day {
         align-self: flex-start;
 
-        font-size: min(3.12vw, 60px);
+        font-size: 60px;
         letter-spacing: -3px;
         line-height: 100%;
     }
@@ -74,19 +74,19 @@
     .count-down-time {
         margin-bottom: 40px;
 
-        font-size: min(12.5vw, 240px);
+        font-size: 240px;
         letter-spacing: -12px;
         line-height: 80%;
     }
 
     .wallpaper-title {
-        font-size: min(1.51vw, 29px);
+        font-size: 29px;
         letter-spacing: 8.41px;
         font-weight: 600;
     }
 
     .wallpaper-sub {
-        font-size: min(0.93vw, 18px);
+        font-size: 18px;
         letter-spacing: -0.54px;
         font-weigth: 600;
     }
@@ -105,7 +105,7 @@
     .concert-title-section > .title {
         color: white;
         font-family: Playfair Display;
-        font-size: min(3.43vw, 66px);
+        font-size: 66px;
         font-weight: 700;
         letter-spacing: 0.33px;
         margin-bottom: 5px;
@@ -114,7 +114,7 @@
     .concert-title-section > .title-sub {
         color: #777;
         font-family: Georgia;
-        font-size: min(0.83vw, 16px);
+        font-size: 16px;
         font-weight: 400;
         letter-spacing: 6.72px;
         margin-bottom: 25px;
@@ -123,7 +123,7 @@
     .concert-title-section > .info {
         color: #CAC9D9;
         font-family: Nanum Myeongjo;
-        font-size: min(1.35vw, 26px);
+        font-size: 26px;
         font-weight: 700;
     }
 

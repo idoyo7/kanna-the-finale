@@ -17,6 +17,7 @@ function Header() {
   };
 
   useEffect(() => {
+    scrollEvent();
     document.addEventListener("scroll", scrollEvent);
 
     return () => {

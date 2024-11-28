@@ -2,7 +2,12 @@
     display: flex;
     padding: 12.5vh;
 }
-
+.title {
+    font-size: 2.5rem;
+}
+.giftboxContainer {
+    margin-left: 12.5vw;
+}
 .giftbox {
     display: flex;
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Lenis from "@studio-freight/lenis";
+import Lenis from "lenis";
 
 import styles from "./styles.module.css";
 
@@ -65,16 +65,22 @@ export default function Page1() {
     };
   }, []);
 
-  // 비디오 재생
+  // 비디오 재생 로직 수정
   useEffect(() => {
-    if (videoRef.current) {
-      const played = videoRef.current?.play();
-      if (played) {
-        played.catch((err) => {
+    const playVideo = async () => {
+      if (videoRef.current) {
+        try {
+          // 볼륨을 0으로 설정
+          videoRef.current.volume = 0;
+          // 비디오 재생
+          await videoRef.current.play();
+        } catch (err) {
           console.error("Video playback failed:", err);
-        });
+        }
       }
-    }
+    };
+
+    playVideo();
   }, []);
 
   return (
@@ -87,6 +93,7 @@ export default function Page1() {
         loop
         playsInline
         autoPlay
+        preload="auto"
       />
 
       <div className={styles.info__wrap}>

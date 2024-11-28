@@ -51,7 +51,8 @@
   transition: color 0.2s;
 }
 
-.nav > li > a:hover {
-  color: #fff;
-  font-weight: 600;
+.nav > li > a:hover,
+.active {
+  color: #fff !important;
+  font-weight: 600 !important;
 }

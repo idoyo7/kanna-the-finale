@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 // Generic throttle function with explicit type annotations
-function throttle<T extends (...args: any[]) => any>(
+function throttle<T extends (...args: unknown[]) => unknown>(
   func: T,
   delay: number
 ): (...args: Parameters<T>) => ReturnType<T> | void {
@@ -18,7 +17,7 @@ function throttle<T extends (...args: any[]) => any>(
     }
 
     lastCall = now;
-    return func(...args);
+    return func(...args) as ReturnType<T>;
   };
 }
 
@@ -28,36 +27,32 @@ export default function Section(
     HTMLElement
   > & { id: string; children: React.ReactNode }
 ) {
-  const router = useRouter();
-
   // Use useRef to persist the throttled function across renders
-  const handleScrollRef = useRef(
-    throttle(() => {
-      const section = document.getElementById(props.id);
+  const handleScroll = throttle(() => {
+    const section = document.getElementById(props.id);
 
-      if (section) {
-        const rect = section.getBoundingClientRect();
-        const offsetTop = rect.top; // 섹션의 상단 위치
+    if (section) {
+      const rect = section.getBoundingClientRect();
+      const offsetTop = rect.top; // 섹션의 상단 위치
 
-        // 섹션이 화면의 상단에 가까워지면 URL 업데이트
-        if (offsetTop >= 0 && offsetTop <= window.innerHeight / 2) {
-          const newHash = `#${props.id}`;
-          if (newHash !== window.location.hash) {
-            router.replace(newHash, { scroll: false });
-          }
+      // 섹션이 화면의 상단에 가까워지면 URL 업데이트
+      if (offsetTop >= 0 && offsetTop <= window.innerHeight / 2) {
+        const newHash = `#${props.id}`;
+        if (newHash !== window.location.hash) {
+          window.location.hash = newHash;
         }
       }
-    }, 200) // 200ms 간격으로 제한
-  ).current;
+    }
+  }, 200); // 200ms 간격으로 제한
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScrollRef);
-    handleScrollRef(); // 초기 실행
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // 초기 실행
 
     return () => {
-      window.removeEventListener("scroll", handleScrollRef);
+      window.removeEventListener("scroll", handleScroll);
     };
-  }, [handleScrollRef]);
+  }, [handleScroll]);
 
   return <section {...props}>{props.children}</section>;
 }

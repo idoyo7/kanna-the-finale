@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+
 import styles from "./styles.module.css";
 
 function Header() {
@@ -9,36 +10,37 @@ function Header() {
   const [activeSection, setActiveSection] = useState<string>("hero");
 
   // 스크롤 이벤트 핸들러
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     if (window.scrollY >= 10) {
       headerRef.current?.classList.add(styles.withBg);
     } else {
       headerRef.current?.classList.remove(styles.withBg);
     }
-  };
+  }, []);
 
-  // URL의 해시를 감지하여 active 상태 업데이트
-  const updateActiveSection = () => {
-    const hash = window.location.hash.replace("#", "") || "hero";
-    setActiveSection(hash);
-  };
+  // 해시 변경 이벤트 핸들러
+  const handleHashChange = useCallback(
+    (event?: HashChangeEvent) => {
+      event?.preventDefault();
 
-  // 해시 변경 이벤트 등록
-  useEffect(() => {
-    const handleHashChange = () => {
       const hash = window.location.hash.replace("#", "");
+
       if (hash !== activeSection) {
         setActiveSection(hash);
       }
-    };
+    },
+    [activeSection]
+  );
 
+  // 해시 변경 이벤트 등록
+  useEffect(() => {
     window.addEventListener("hashchange", handleHashChange);
     handleHashChange(); // 초기 실행
 
     return () => {
       window.removeEventListener("hashchange", handleHashChange);
     };
-  }, []); // 의존성 배열을 빈 배열로 설정
+  }, [activeSection, handleHashChange]);
 
   // 스크롤 이벤트 등록
   useEffect(() => {
@@ -48,14 +50,14 @@ function Header() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []); // 빈 배열로 설정하여 한 번만 실행
+  }, [handleScroll]);
 
   // 메뉴 항목 데이터
   const navItems = [
-    { id: "main", label: "메인" },
-    { id: "pv", label: "PV" },
+    { id: "main", alternatives: ["hero", "banner", "main"], label: "메인" },
+    { id: "pv", alternatives: ["pv", "story"], label: "PV" },
     { id: "history", label: "보석함" },
-    { id: "goods", label: "칸나의 선물" },
+    { id: "gift", alternatives: ["gift", "post"], label: "칸나의 선물" },
   ];
 
   return (
@@ -76,7 +78,15 @@ function Header() {
             <li key={item.id}>
               <a
                 href={`#${item.id}`}
-                className={activeSection === item.id ? styles.active : ""}
+                className={
+                  (
+                    item.alternatives
+                      ? item.alternatives.includes(activeSection)
+                      : item.id === activeSection
+                  )
+                    ? styles.active
+                    : ""
+                }
               >
                 {item.label}
               </a>

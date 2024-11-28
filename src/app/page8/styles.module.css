@@ -1,0 +1,7 @@
+.container {
+    padding-top: 18.5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18.5vh;
+}

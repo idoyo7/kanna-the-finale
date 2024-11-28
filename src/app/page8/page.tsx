@@ -1,6 +1,8 @@
+import styles from './styles.module.css';
+
 export default function Page8() {
     return (
-        <div>
+        <div className={styles.container}>
             <img 
                 src="/post.jpg" 
                 alt="post" 

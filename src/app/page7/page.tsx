@@ -84,6 +84,9 @@ export default function Page7() {
                       url={`https://youtu.be/${Object.values(item)[0]}`}
                       width="100%"
                       height="100%"
+                      light={`https://i.ytimg.com/vi/${
+                        Object.values(item)[0]
+                      }/sddefault.jpg`}
                     />
                   )}
                 </div>

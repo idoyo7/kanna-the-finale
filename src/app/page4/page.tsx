@@ -20,9 +20,10 @@ export default function Page4() {
       <div className={styles.video}>
         {hasWindow && (
           <ReactPlayer
-            url="https://youtu.be/eNbB4MWbZAI-U"
+            url="https://youtu.be/eNbB4MWbZAI"
             width="100%"
             height="100%"
+            light="https://i.ytimg.com/vi/eNbB4MWbZAI/maxresdefault.jpg"
           />
         )}
       </div>

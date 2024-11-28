@@ -56,16 +56,20 @@ function Header() {
   const navItems = [
     { id: "main", alternatives: ["hero", "banner", "main"], label: "메인" },
     { id: "pv", alternatives: ["pv", "story"], label: "PV" },
-    { id: "history", label: "보석함" },
-    { id: "gift", alternatives: ["gift", "post"], label: "칸나의 선물" },
+    { id: "history", alternatives: ["history", "history2"], label: "보석함" },
+    {
+      id: "post",
+      alternatives: ["post", "giftbox", "share"],
+      label: "칸나의 선물",
+    },
   ];
 
   return (
     <header ref={headerRef} className={styles.container}>
       <a href="#hero">
         <Image
-          width={76}
-          height={39}
+          width={86}
+          height={44}
           className={styles.logo}
           src="/logo02.png"
           alt="The Finale"

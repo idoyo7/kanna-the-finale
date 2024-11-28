@@ -29,6 +29,9 @@ importers:
       react-swipeable:
         specifier: ^7.0.2
         version: 7.0.2(react@19.0.0-rc-66855b96-20241106)
+      smooth-zoom:
+        specifier: ^1.5.0
+        version: 1.5.0
     devDependencies:
       '@types/node':
         specifier: ^20
@@ -1492,6 +1495,9 @@ packages:
 
   simple-swizzle@0.2.2:
     resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
+
+  smooth-zoom@1.5.0:
+    resolution: {integrity: sha512-rwV6r1voupnF1AeluydKggzrlqtfv8fD5NcbBOybHlIZz8GqzqR0/vMQkxwKeZ9iL60u7aCpNzZb/mQaVvF4dQ==}
 
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
@@ -3288,6 +3294,8 @@ snapshots:
     dependencies:
       is-arrayish: 0.3.2
     optional: true
+
+  smooth-zoom@1.5.0: {}
 
   source-map-js@1.2.1: {}
 

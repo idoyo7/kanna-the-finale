@@ -1,82 +1,97 @@
 .container {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  min-width: 100%;
+  background-color: black;
 }
 
 .header {
-    text-align: center;
-    margin-bottom: 3rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .title {
-    font-size: 2.5rem;
-    font-weight: bold;
+  display: block;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 0.5rem;
 }
 
 .subtitle {
-    font-size: 1.8rem;
-    color: #666;
+  display: block;
+  font-size: 1.5rem;
+  color: #999;
+  margin-bottom: 1rem;
+}
+
+.divider {
+  width: 50px;
+  height: 2px;
+  background-color: #777;
+  margin: 1rem auto;
+  text-indent: -9999px;
 }
 
 .description {
-    font-size: 1.2rem;
-    color: #444;
+  display: block;
+  font-size: 1.2rem;
+  color: #777;
+  margin-bottom: 0.5rem;
 }
 
 .subdescription {
-    font-size: 1rem;
-    color: #666;
+  display: block;
+  font-size: 1rem;
+  color: #777;
 }
 
 .content {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .musicRow {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
 
 .musicItem {
-    flex: 0 1 360px;
-    text-align: center;
+  flex: 0 1 360px;
+  text-align: center;
 }
 
 .musicItem h3 {
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-    color: #444;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #444;
+}
+
+.video {
+  width: 24dvw;
+  height: calc(24dvw * 9 / 16); /* 16:9 비율 유지 (24 * 9/16) */
 }
 
 /* 반응형 디자인 */
-@media (max-width: 1200px) {
-    .musicItem iframe {
-        width: 300px;
-        height: 169px;
-    }
-}
-
 @media (max-width: 768px) {
-    .musicRow {
-        flex-direction: column;
-        align-items: center;
-    }
+  .musicRow {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .musicItem {
-        width: 100%;
-        max-width: 560px;
-    }
+  .musicItem {
+    width: 100%;
+    max-width: 560px;
+  }
 
-    .musicItem iframe {
-        width: 100%;
-        height: 215px;
-    }
+  .video,
+  .video iframe {
+    width: 100%;
+    height: 215px;
+  }
 }

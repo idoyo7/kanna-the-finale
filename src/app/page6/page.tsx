@@ -2,8 +2,8 @@
 import { useState } from "react";
 import { useSwipeable } from "react-swipeable";
 
+import ZoomableImage from "@/modules/zoom/zoomableImage";
 import styles from "./styles.module.css";
-import Image from "next/image";
 
 export default function Page6() {
   const [indices, setIndices] = useState({
@@ -76,7 +76,7 @@ export default function Page6() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <span className={styles.title}>우리의_추억들#1</span>
+        <span className={styles.title}>우리의_추억들 #1</span>
         <span className={styles.subtitle}>아이라 칸나의 사진관</span>
         <p className={styles.divider}>line</p>
         <span className={styles.description}>
@@ -96,7 +96,7 @@ export default function Page6() {
             &#10094;
           </button>
           <div {...handlers01} className={styles.imageContainer}>
-            <Image
+            <ZoomableImage
               width={664}
               height={500}
               src={ImgDir.raw01[indices.raw01]}
@@ -122,7 +122,7 @@ export default function Page6() {
             &#10094;
           </button>
           <div {...handlers02} className={styles.imageContainer}>
-            <Image
+            <ZoomableImage
               width={664}
               height={500}
               src={ImgDir.raw02[indices.raw02]}
@@ -142,7 +142,7 @@ export default function Page6() {
         <div className={styles.galleryContainer}>
           {ImgDir.raw03.map((imgSrc, index) => (
             <div key={index} className={styles.galleryItem}>
-              <Image
+              <ZoomableImage
                 width={664}
                 height={500}
                 src={imgSrc}

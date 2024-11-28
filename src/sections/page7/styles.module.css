@@ -9,12 +9,12 @@
 
 .header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 3.14rem;
 }
 
 .title {
   display: block;
-  font-size: 2.5rem;
+  font-size: 1.25rem;
   font-weight: bold;
   color: white;
   margin-bottom: 0.5rem;
@@ -22,7 +22,7 @@
 
 .subtitle {
   display: block;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #999;
   margin-bottom: 1rem;
 }
@@ -31,7 +31,7 @@
   width: 50px;
   height: 2px;
   background-color: #777;
-  margin: 1rem auto;
+  margin: 2rem auto;
   text-indent: -9999px;
 }
 
@@ -79,6 +79,15 @@
 
 /* 반응형 디자인 */
 @media (max-width: 768px) {
+  .container {
+    padding: 3.5rem 0;
+  }
+
+  .content {
+    width: 100%;
+    max-width: 340px;
+  }
+
   .musicRow {
     flex-direction: column;
     align-items: center;

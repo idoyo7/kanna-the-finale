@@ -1,6 +1,14 @@
+.header {
+  top: 0;
+  position: fixed;
+
+  z-index: 50;
+  width: 100%;
+}
+
 .container {
   width: 100%;
-  height: 62px;
+  height: 80px;
   box-sizing: border-box;
 
   display: flex;
@@ -8,10 +16,6 @@
   align-items: center;
 
   padding: 0 80px;
-
-  position: fixed;
-  top: 0;
-  z-index: 100;
 
   transition-property: background-color;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -27,6 +31,35 @@
 .logo {
   width: 86px;
   height: auto;
+}
+
+.hamburger,
+.mobileNav {
+  display: none;
+}
+
+.pcNav {
+  display: block;
+}
+
+.mobileNav {
+  height: 0px;
+  overflow: hidden;
+
+  transition-property: height;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 400ms;
+}
+
+.mobileNav > div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 2rem;
+}
+
+.mobileNav.show {
+  height: 176px;
 }
 
 .nav {
@@ -55,4 +88,54 @@
 .active {
   color: #fff !important;
   font-weight: 600 !important;
+}
+
+.dim {
+  display: none;
+
+  position: fixed;
+  z-index: 40;
+
+  width: 100dvw;
+  height: 100dvh;
+
+  background-color: transparent;
+  pointer-events: none;
+
+  transition-property: background-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 400ms;
+}
+
+.dim.show {
+  background-color: rgb(0, 0, 0, 0.4);
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .pcNav {
+    display: none;
+  }
+
+  .mobileNav {
+    display: block;
+  }
+
+  .hamburger {
+    display: block;
+
+    border-radius: 0.5rem;
+    background-color: #242424 !important;
+
+    padding: 0.5rem 0.75rem;
+    font-weight: 700;
+  }
+
+  .dim {
+    display: block;
+  }
 }

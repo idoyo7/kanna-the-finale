@@ -9,16 +9,41 @@ import styles from "./styles.module.css";
 
 function Header() {
   const headerRef = useRef<HTMLDivElement>(null);
+
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("hero");
+
+  // 모바일 여부 상태
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    function handleResize() {
+      setIsMobile(
+        typeof window !== "undefined" &&
+          window.matchMedia("(max-width: 768px)").matches
+      );
+    }
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+  }, []);
+
+  // 모바일 햄버거가 열려있을 땐 스크롤 방지
+  useEffect(() => {
+    if (isMobileNavOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [isMobileNavOpen]);
 
   // 스크롤 이벤트 핸들러
   const handleScroll = useCallback(() => {
-    if (window.scrollY >= 10) {
+    if (isMobile || window.scrollY >= 10) {
       headerRef.current?.classList.add(styles.withBg);
     } else {
       headerRef.current?.classList.remove(styles.withBg);
     }
-  }, []);
+  }, [isMobile]);
 
   // 해시 변경 이벤트 핸들러
   const handleHashChange = useCallback(
@@ -67,22 +92,81 @@ function Header() {
   ];
 
   return (
-    <header ref={headerRef} className={styles.container}>
-      <a href="#hero">
-        <Image
-          width={86}
-          height={44}
-          className={styles.logo}
-          src={formatUrl("/images/logos/horizontal.png")}
-          alt="The Finale"
-        />
-      </a>
+    <>
+      <div
+        className={`${styles.dim} ${isMobileNavOpen ? styles.show : ""}`}
+        onClick={() => setIsMobileNavOpen(false)}
+      />
 
-      <nav>
-        <ul className={styles.nav}>
-          {navItems.map((item) => (
-            <li key={item.id}>
+      <header className={styles.header}>
+        <div
+          ref={headerRef}
+          className={`${styles.container} ${isMobile ? styles.withBg : ""}`}
+        >
+          <a href="#hero">
+            <Image
+              width={86}
+              height={44}
+              className={styles.logo}
+              src={formatUrl("/images/logos/horizontal.png")}
+              alt="The Finale"
+            />
+          </a>
+
+          <nav className={styles.pcNav}>
+            <ul className={styles.nav}>
+              {navItems.map((item) => (
+                <li key={item.id}>
+                  <a
+                    href={`#${item.id}`}
+                    className={
+                      (
+                        item.alternatives
+                          ? item.alternatives.includes(activeSection)
+                          : item.id === activeSection
+                      )
+                        ? styles.active
+                        : ""
+                    }
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <button
+            type="button"
+            className={styles.hamburger}
+            onClick={() => {
+              setIsMobileNavOpen(!isMobileNavOpen);
+            }}
+            aria-label="Navigation Button"
+          >
+            <svg
+              stroke="currentColor"
+              fill="currentColor"
+              strokeWidth="0"
+              viewBox="0 0 512 512"
+              height="24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M64 384h384v-42.666H64V384zm0-106.666h384v-42.667H64v42.667zM64 128v42.665h384V128H64z"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div
+          className={`${styles.mobileNav} ${styles.withBg} ${
+            isMobileNavOpen ? styles.show : ""
+          }`}
+        >
+          <div>
+            {navItems.map((item) => (
               <a
+                key={item.id}
                 href={`#${item.id}`}
                 className={
                   (
@@ -96,11 +180,11 @@ function Header() {
               >
                 {item.label}
               </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </header>
+            ))}
+          </div>
+        </div>
+      </header>
+    </>
   );
 }
 

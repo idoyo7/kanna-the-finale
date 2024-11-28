@@ -1,6 +1,6 @@
 .container {
-  padding-top: 18.5vh;
-  padding-bottom: 18.5vh;
+  padding-top: 15.8vh;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,4 +10,15 @@
 .image {
   width: 65vw;
   height: auto;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 5vh 0;
+    gap: 5vh;
+  }
+
+  .image {
+    width: 85vw;
+  }
 }

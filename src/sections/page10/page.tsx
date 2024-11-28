@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Modal from "react-modal";
 import Image from "next/image";
 
@@ -10,6 +10,19 @@ import styles from "./styles.module.css";
 
 export default function Page10() {
   const appElementRef = useRef<HTMLDivElement>(null);
+
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    function handleResize() {
+      setIsMobile(
+        typeof window !== "undefined" &&
+          window.matchMedia("(max-width: 768px)").matches
+      );
+    }
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+  }, []);
 
   const [firstModalOpen, setFirstModalOpen] = useState(false);
   const [secondModalOpen, setSecondModalOpen] = useState(false);
@@ -65,8 +78,14 @@ export default function Page10() {
             backgroundColor: "rgba(0, 0, 0, 0.5)",
           },
           content: {
-            width: "70vw",
-            height: "85vh",
+            top: !isMobile ? "40px" : "80px",
+            left: !isMobile ? "40px" : "0",
+            right: !isMobile ? "40px" : "0",
+            bottom: !isMobile ? "40px" : "0",
+
+            width: !isMobile ? "70dvw" : "100dvw",
+            height: !isMobile ? "85dvh" : "calc(100dvh - 80px)",
+
             margin: "auto",
             display: "flex",
             flexDirection: "column",
@@ -118,7 +137,7 @@ export default function Page10() {
               className={`${styles.downloadBtn} ${styles.marginBottom1}`}
               target="_blank"
             >
-              &#x1F4CE; Airi_kanna_Last_Concert_wallpaper.mp4 (357.09 MB)
+              &#x1F4CE; 다운로드 (357.09 MB)
             </a>
           </div>
 
@@ -131,7 +150,7 @@ export default function Page10() {
               className={`${styles.downloadBtn} ${styles.marginBottom1}`}
               target="_blank"
             >
-              &#x1F4CE; Airi_kanna_Last_Concert_wallpaper.mp4 (357.09 MB)
+              &#x1F4CE; 다운로드 (357.09 MB)
             </a>
           </div>
 
@@ -144,7 +163,7 @@ export default function Page10() {
               className={`${styles.downloadBtn}`}
               target="_blank"
             >
-              &#x1F4CE; Airi_kanna_Last_Concert_wallpaper.mp4 (357.09 MB)
+              &#x1F4CE; 다운로드 (357.09 MB)
             </a>
           </div>
         </div>
@@ -158,8 +177,14 @@ export default function Page10() {
             backgroundColor: "rgba(0, 0, 0, 0.5)",
           },
           content: {
-            width: "70vw",
-            height: "85vh",
+            top: !isMobile ? "40px" : "80px",
+            left: !isMobile ? "40px" : "0",
+            right: !isMobile ? "40px" : "0",
+            bottom: !isMobile ? "40px" : "0",
+
+            width: !isMobile ? "70dvw" : "100dvw",
+            height: !isMobile ? "85dvh" : "calc(100dvh - 80px)",
+
             margin: "auto",
             display: "flex",
             flexDirection: "column",
@@ -209,18 +234,10 @@ export default function Page10() {
               download="칸나와_여름을_함께_안드.png"
               target="_blank"
             >
-              &#x1F4CE; 칸나와_여름을_함께_안드.png (7.75MB)
+              &#x1F4CE; 안드로이드용 다운로드 (7.75MB)
             </a>
           </div>
-          <div className={styles.paddingBottom2}>
-            <a
-              href="https://drive.google.com/file/d/1jIsyvxu5B9CO5ahH5JpYKVXh37qo8j3e/view?usp=sharing"
-              className={`${styles.downloadBtn} ${styles.marginBottom1}`}
-              target="_blank"
-            >
-              &#x1F4CE; (Google Drive) 칸나와_여름을_함께_안드.png (7.75MB)
-            </a>
-          </div>
+
           <p className={`${styles.contents} ${styles.marginBottom05}`}>
             [아이폰]
           </p>
@@ -231,18 +248,10 @@ export default function Page10() {
               download="칸나와_여름을_함께_아이폰.png"
               target="_blank"
             >
-              &#x1F4CE; 칸나와_여름을_함께_아이폰.png (3.82MB)
+              &#x1F4CE; 아이폰용 다운로드 (3.82MB)
             </a>
           </div>
-          <div className={styles.paddingBottom2}>
-            <a
-              href="https://drive.google.com/file/d/1UkBPu8-OCWM0qWLSJDxmvzuTclLTJBCS/view?usp=sharing"
-              className={`${styles.downloadBtn}`}
-              target="_blank"
-            >
-              &#x1F4CE; (Google Drive) 칸나와_여름을_함께_아이폰.png (3.82MB)
-            </a>
-          </div>
+
           <p className={`${styles.contents} ${styles.marginBottom05}`}>[PC]</p>
           <div className={styles.paddingBottom2}>
             <a
@@ -251,16 +260,50 @@ export default function Page10() {
               download="칸나와_여름을_함께.png"
               target="_blank"
             >
-              &#x1F4CE; 칸나와_여름을_함께.png (4.97MB)
+              &#x1F4CE; PC용 다운로드 (4.97MB)
             </a>
           </div>
+
+          <p className={`${styles.contents} ${styles.marginBottom05}`}>
+            &nbsp;
+          </p>
+
+          <p className={`${styles.contents} ${styles.marginBottom05}`}>
+            [Google Drive_안드로이드]
+          </p>
+          <div className={styles.paddingBottom2}>
+            <a
+              href="https://drive.google.com/file/d/1jIsyvxu5B9CO5ahH5JpYKVXh37qo8j3e/view?usp=sharing"
+              className={`${styles.downloadBtn} ${styles.marginBottom1}`}
+              target="_blank"
+            >
+              &#x1F4CE; 안드로이드용 다운로드 (7.75MB)
+            </a>
+          </div>
+
+          <p className={`${styles.contents} ${styles.marginBottom05}`}>
+            [Google Drive_아이폰]
+          </p>
+          <div className={styles.paddingBottom2}>
+            <a
+              href="https://drive.google.com/file/d/1UkBPu8-OCWM0qWLSJDxmvzuTclLTJBCS/view?usp=sharing"
+              className={`${styles.downloadBtn}`}
+              target="_blank"
+            >
+              &#x1F4CE; 아이폰용 다운로드 (3.82MB)
+            </a>
+          </div>
+
+          <p className={`${styles.contents} ${styles.marginBottom05}`}>
+            [Google Drive_PC]
+          </p>
           <div className={styles.paddingBottom2}>
             <a
               href="https://drive.google.com/file/d/1SLgZ7hIfvnzva0nZ9AdTAtUw6kSZ2DQw/view?usp=sharing"
               className={`${styles.downloadBtn}`}
               target="_blank"
             >
-              &#x1F4CE; (Google Drive) 칸나와_여름을_함께.png (4.97MB)
+              &#x1F4CE; PC용 다운로드 (4.97MB)
             </a>
           </div>
         </div>

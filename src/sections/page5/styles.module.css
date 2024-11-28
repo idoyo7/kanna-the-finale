@@ -1,6 +1,6 @@
 .letter {
   width: 100%;
-  min-height: calc(100dvh - 62px);
+  min-height: calc(100dvh - 80px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,9 +24,25 @@
   font-weight: 300;
   line-height: 160%;
   letter-spacing: -0.1vh;
+
+  word-wrap: break-word;
 }
 
 .letter__highlight {
   font-size: 2vh;
   font-weight: 800;
+}
+
+@media (max-width: 768px) {
+  .letter__basic {
+    max-width: 92vw;
+  }
+
+  .letter__text {
+    font-size: 3.5vw;
+  }
+
+  .letter__highlight {
+    font-size: 4vw;
+  }
 }

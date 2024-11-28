@@ -2,3 +2,12 @@
   width: 55dvw;
   height: calc(55dvw * 9 / 16); /* 16:9 비율 유지 (55 * 9/16) */
 }
+
+@media (max-width: 768px) {
+  .video {
+    width: 90dvw;
+    height: calc(90dvw * 9 / 16); /* 16:9 비율 유지 (90 * 9/16) */
+
+    margin: 45px 0;
+  }
+}

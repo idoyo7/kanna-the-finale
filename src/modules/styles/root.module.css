@@ -10,3 +10,9 @@
   min-height: initial;
   align-items: initial;
 }
+
+@media (max-width: 768px) {
+  .container {
+    min-height: initial;
+  }
+}

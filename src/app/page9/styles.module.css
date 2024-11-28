@@ -1,0 +1,8 @@
+.container {
+    display: flex;
+    padding: 12.5vh;
+}
+
+.giftbox {
+    display: flex;
+}

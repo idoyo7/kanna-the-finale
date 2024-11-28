@@ -9,6 +9,7 @@ import Page5 from "./page5/page";
 import Page6 from "./page6/page";
 import Page7 from "./page7/page";
 import Page8 from "./page8/page";
+import Page9 from "./page9/page";
 
 export default function HomePage() {
   const sections = [
@@ -20,6 +21,7 @@ export default function HomePage() {
     { id: "history", component: <Page6 />, fullpage: true },
     { id: "gift", component: <Page7 />, fullpage: false },
     { id: "post", component: <Page8 />, fullpage: true },
+    { id: "giftbox", component: <Page9 />, fullpage: true },
   ];
 
   return (
@@ -33,7 +35,7 @@ export default function HomePage() {
           }`}
         >
           {section.component}
-        </Section>
+        </Section> 
       ))}
     </div>
   );

@@ -1,4 +1,4 @@
-import styles from "@/styles/root.module.css";
+import styles from "@/modules/styles/root.module.css";
 import Section from "@/modules/section/section";
 
 import Page1 from "./page1/page";

@@ -15,6 +15,14 @@
   display: flex;
   cursor: pointer;
 }
+
+.giftboxImage {
+  width: 22.5vh;
+  height: 22.5vh;
+
+  margin: 2.5%;
+}
+
 .giftboxTitle {
   margin: 2.5%;
   font-size: 1.5rem;
@@ -30,16 +38,26 @@
   padding: 2vh 0 4vh 0;
   box-sizing: border-box;
 }
+
 .contentTitle {
   font-size: 2vw;
   font-weight: 600;
 }
-.cotentSubTitle {
+
+.contentSubTitle {
   font-size: 1vw;
 }
+
+.contentImage {
+  width: 40vw;
+  height: auto;
+  align-self: center;
+}
+
 .contents {
   font-size: 1vw;
 }
+
 .downloadBtn {
   box-sizing: border-box;
   width: fit-content;

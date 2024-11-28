@@ -1,4 +1,4 @@
-import { nanumMyeongjo, playfairDisplay } from "@/styles/fonts";
+import { nanumMyeongjo, playfairDisplay } from "@/modules/styles/fonts";
 import styles from "./styles.module.css";
 
 export default function Page2() {

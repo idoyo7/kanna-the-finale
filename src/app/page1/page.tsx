@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Lenis from "lenis";
 
 import styles from "./styles.module.css";
 
@@ -44,25 +43,6 @@ export default function Page1() {
     const interval = setInterval(calculateTimeLeft, 1000); // 1초마다 업데이트
 
     return () => clearInterval(interval); // 컴포넌트 언마운트 시 클린업
-  }, []);
-
-  // Lenis 초기화
-  useEffect(() => {
-    const lenis = new Lenis({
-      lerp: 0.1,
-      smoothWheel: true,
-    });
-
-    const animate = (time: number) => {
-      lenis.raf(time);
-      requestAnimationFrame(animate);
-    };
-
-    requestAnimationFrame(animate);
-
-    return () => {
-      lenis.destroy();
-    };
   }, []);
 
   // 비디오 재생 로직 수정

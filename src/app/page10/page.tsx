@@ -1,12 +1,16 @@
 "use client";
 
-import Image from "next/image";
-import styles from "./styles.module.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Modal from "react-modal";
+import Image from "next/image";
+
 import formatUrl from "@/modules/cdn/formatUrl";
 
+import styles from "./styles.module.css";
+
 export default function Page10() {
+  const appElementRef = useRef<HTMLDivElement>(null);
+
   const [firstModalOpen, setFirstModalOpen] = useState(false);
   const [secondModalOpen, setSecondModalOpen] = useState(false);
 
@@ -16,26 +20,14 @@ export default function Page10() {
   const openSecondModal = () => setSecondModalOpen(true);
   const closeSecondModal = () => setSecondModalOpen(false);
 
-  // Modal.setAppElement("#share");
+  if (appElementRef.current) {
+    Modal.setAppElement(appElementRef.current);
+  }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={appElementRef}>
       <div className={styles.title}>선물함</div>
       <div className={styles.giftboxContainer}>
-        <div className={styles.giftbox} onClick={openFirstModal}>
-          <Image
-            src={formatUrl("/images/gifts/thumbnails/gift2.jpg")}
-            alt="[기간한정] 아이리칸나 모바일, 탭용 배경화면 공유"
-            className={styles.giftboxImage}
-            width={206}
-            height={206}
-          />
-
-          <div className={styles.giftboxTitle}>
-            [기간한정] 아이리칸나 모바일, 탭용 배경화면 공유
-          </div>
-        </div>
-
         <div className={styles.giftbox} onClick={openSecondModal}>
           <Image
             src={formatUrl("/images/gifts/thumbnails/gift1.jpg")}
@@ -47,6 +39,20 @@ export default function Page10() {
 
           <div className={styles.giftboxTitle}>
             [기간한정] 아이리칸나 The Finale 월페이퍼 공유
+          </div>
+        </div>
+
+        <div className={styles.giftbox} onClick={openFirstModal}>
+          <Image
+            src={formatUrl("/images/gifts/thumbnails/gift2.jpg")}
+            alt="[기간한정] 아이리칸나 모바일, 탭용 배경화면 공유"
+            className={styles.giftboxImage}
+            width={206}
+            height={206}
+          />
+
+          <div className={styles.giftboxTitle}>
+            [기간한정] 아이리칸나 모바일, 탭용 배경화면 공유
           </div>
         </div>
       </div>

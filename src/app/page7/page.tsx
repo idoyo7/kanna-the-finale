@@ -7,9 +7,39 @@ const musicList = {
         {"3rd single 푸른 보석과 어린 용": "https://www.youtube.com/embed/gq3gzxPBOK0"},
     ],
     "section2": [
-        {"공주열차": "https://www.youtube.com/embed/6A04OifrfR0"},
-        {"Love wins all (IU)": "https://www.youtube.com/embed/Nr3AhMP1lVg"},
+        {"나는 최강": "https://www.youtube.com/embed/MhtScZvcsiQ"},
+        {"좋아하니까": "https://www.youtube.com/embed/futqIdI0rOY"},
+        {"신시대": "https://www.youtube.com/embed/_nYgmgYMdW0"},
+    ],
+    "section3": [
+        {"삼문소설": "https://www.youtube.com/embed/3PxbqWrDCz4"},
+        {"스즈메": "https://www.youtube.com/embed/v8MjiqzLKTs"},
+        {"에러": "https://www.youtube.com/embed/eNlXPUp9WBw"},
+    ],
+    "section4": [
+        {"아이돌": "https://www.youtube.com/embed/4_Aknw7fm_8"},
+        {"색채": "https://www.youtube.com/embed/AsoPg-h-644"},
+        {"잠이 드는 거리": "https://www.youtube.com/embed/nYgMMdYDGak"},
+    ],
+    "section5": [
+        {"LADY": "https://www.youtube.com/embed/GdH0TsPznUs"},
+        {"KICK BACK": "https://www.youtube.com/embed/Ei1WobzwsVI"},
+        {"지구본": "https://www.youtube.com/embed/8VdlQZQ46D4"},
+    ],
+    "section6": [
+        {"사랑해줘 사랑해줘 사랑해줘": "https://www.youtube.com/embed/OgwD6f_tdIY"},
+        {"감 그레이": "https://www.youtube.com/embed/eLJENPbBe8A"},
+        {"괴수의 꽃노래": "https://www.youtube.com/embed/of5l0st1kA8"},
+    ],
+    "section7": [
+        {"최종화 (Acoustic Ver.)": "https://www.youtube.com/embed/iCCqSFvz9kM"},
+        {"애타는 한 가슴을 달랠 수 있다면": "https://www.youtube.com/embed/IRvrDhVYXHQ"},
         {"역광": "https://www.youtube.com/embed/q-QjjmJjU_8"},
+    ],
+    "section8": [
+        {"Frozen Eclipse": "https://www.youtube.com/embed/RbQv87f4mvg"},
+        {"Love wins all (IU)": "https://www.youtube.com/embed/Nr3AhMP1lVg"},
+        {"공주열차": "https://www.youtube.com/embed/6A04OifrfR0"},
     ]
 }
 

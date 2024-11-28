@@ -53,7 +53,7 @@ export default function Page10() {
                     }
                 }}
             >
-                <div className={styles.contentWrapper}>
+                <div className={styles.contentWrapper} data-lenis-prevent="true">
                     <p className={`${styles.contentTitle} ${styles.marginBottom2}`}>
                         [기간한정] 아이리칸나 모바일, 탭 배경화면 공유
                     </p>
@@ -128,7 +128,7 @@ export default function Page10() {
                     }
                 }}
             >
-                <div className={styles.contentWrapper}>
+                <div className={styles.contentWrapper} data-lenis-prevent="true">
                     <p className={`${styles.contentTitle} ${styles.marginBottom2}`}>
                         [기간한정] 아이리칸나 월페이퍼 공유
                     </p>

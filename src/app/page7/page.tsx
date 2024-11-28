@@ -14,9 +14,39 @@ const musicList = {
     { "3rd single 푸른 보석과 어린 용": "gq3gzxPBOK0" },
   ],
   section2: [
-    { 공주열차: "6A04OifrfR0" },
-    { "Love wins all (IU)": "Nr3AhMP1lVg" },
+    { "나는 최강": "MhtScZvcsiQ" },
+    { 좋아하니까: "futqIdI0rOY" },
+    { 신시대: "_nYgmgYMdW0" },
+  ],
+  section3: [
+    { 삼문소설: "3PxbqWrDCz4" },
+    { 스즈메: "v8MjiqzLKTs" },
+    { 에러: "eNlXPUp9WBw" },
+  ],
+  section4: [
+    { 아이돌: "4_Aknw7fm_8" },
+    { 색채: "AsoPg-h-644" },
+    { "잠이 드는 거리": "nYgMMdYDGak" },
+  ],
+  section5: [
+    { LADY: "GdH0TsPznUs" },
+    { "KICK BACK": "Ei1WobzwsVI" },
+    { 지구본: "8VdlQZQ46D4" },
+  ],
+  section6: [
+    { "사랑해줘 사랑해줘 사랑해줘": "OgwD6f_tdIY" },
+    { "감 그레이": "eLJENPbBe8A" },
+    { "괴수의 꽃노래": "of5l0st1kA8" },
+  ],
+  section7: [
+    { "최종화 (Acoustic Ver.)": "iCCqSFvz9kM" },
+    { "애타는 한 가슴을 달랠 수 있다면": "IRvrDhVYXHQ" },
     { 역광: "q-QjjmJjU_8" },
+  ],
+  section8: [
+    { "Frozen Eclipse": "RbQv87f4mvg" },
+    { "Love wins all (IU)": "Nr3AhMP1lVg" },
+    { 공주열차: "6A04OifrfR0" },
   ],
 };
 

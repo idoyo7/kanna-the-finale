@@ -21,7 +21,7 @@ export default function HomePage() {
     { id: "story", component: <Page5 />, fullpage: false },
     { id: "history", component: <Page6 />, fullpage: true },
     { id: "history2", component: <Page7 />, fullpage: false },
-    { id: "post", component: <Page8 />, fullpage: true },
+    { id: "post", component: <Page8 />, fullpage: false },
     { id: "giftbox", component: <Page9 />, fullpage: true },
     { id: "share", component: <Page10 />, fullpage: true },
   ];

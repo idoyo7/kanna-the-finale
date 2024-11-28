@@ -1,5 +1,7 @@
 .container {
     width: 100%;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
     padding: 12.5vh;
     background-color: #5e41b7;
   

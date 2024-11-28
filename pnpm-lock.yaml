@@ -11,9 +11,6 @@ importers:
       '@unocss/reset':
         specifier: ^0.64.1
         version: 0.64.1
-      lenis:
-        specifier: ^1.1.17
-        version: 1.1.17(react@19.0.0-rc-66855b96-20241106)
       next:
         specifier: 15.0.3
         version: 15.0.3(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
@@ -1127,17 +1124,6 @@ packages:
   language-tags@1.0.9:
     resolution: {integrity: sha512-MbjN408fEndfiQXbFQ1vnd+1NoLDsnQW41410oQBXiyXDMYH5z505juWa4KUE1LqxRC7DgOgZDbKLxHIwm27hA==}
     engines: {node: '>=0.10'}
-
-  lenis@1.1.17:
-    resolution: {integrity: sha512-22XhWvjoJynQdfguMp1V+5ZbGUdGkJ4rtQy8x+w52NKxYb+OIZhGXC9Fo2PQTWzKDbYNDUb/O1CIbeEQHkZbag==}
-    peerDependencies:
-      react: '>=17.0.0'
-      vue: '>=3.0.0'
-    peerDependenciesMeta:
-      react:
-        optional: true
-      vue:
-        optional: true
 
   levn@0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
@@ -2934,10 +2920,6 @@ snapshots:
   language-tags@1.0.9:
     dependencies:
       language-subtag-registry: 0.3.23
-
-  lenis@1.1.17(react@19.0.0-rc-66855b96-20241106):
-    optionalDependencies:
-      react: 19.0.0-rc-66855b96-20241106
 
   levn@0.4.1:
     dependencies:

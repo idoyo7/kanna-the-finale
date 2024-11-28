@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 // Generic throttle function with explicit type annotations
 function throttle<T extends (...args: unknown[]) => unknown>(
@@ -27,6 +27,7 @@ export default function Section(
     HTMLElement
   > & { id: string; children: React.ReactNode }
 ) {
+  const router = useRouter();
 
   const updateHash = throttle(() => {
     const section = document.getElementById(props.id);
@@ -40,6 +41,7 @@ export default function Section(
         const newHash = `#${props.id}`;
         if (newHash !== window.location.hash) {
           window.location.hash = newHash;
+          router.replace(newHash);
         }
       }
     }

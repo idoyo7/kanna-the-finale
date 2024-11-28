@@ -27,6 +27,14 @@ export default function Section(
     HTMLElement
   > & { id: string; children: React.ReactNode }
 ) {
+  const [isTouchable, setIsTouchable] = useState(false);
+  useEffect(() => {
+    setIsTouchable(
+      typeof window !== "undefined" &&
+        window.matchMedia("(pointer: coarse)").matches
+    );
+  }, []);
+
   const [scrollTop, setScrollTop] = useState(0);
 
   const handleScroll = () => {
@@ -52,17 +60,19 @@ export default function Section(
   }, 200); // 200ms 간격으로 제한
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("scroll", updateHash);
+    if (!isTouchable) {
+      window.addEventListener("scroll", handleScroll);
+      window.addEventListener("scroll", updateHash);
 
-    handleScroll();
-    updateHash(); // 초기 실행
+      handleScroll();
+      updateHash(); // 초기 실행
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("scroll", updateHash);
-    };
-  }, [updateHash]);
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+        window.removeEventListener("scroll", updateHash);
+      };
+    }
+  }, [isTouchable, updateHash]);
 
   return <section {...props}>{props.children}</section>;
 }

@@ -28,7 +28,7 @@ export default function Page10() {
     <div className={styles.container} ref={appElementRef}>
       <div className={styles.title}>선물함</div>
       <div className={styles.giftboxContainer}>
-        <div className={styles.giftbox} onClick={openSecondModal}>
+        <div className={styles.giftbox} onClick={openFirstModal}>
           <Image
             src={formatUrl("/images/gifts/thumbnails/gift1.jpg")}
             alt="[기간한정] 아이리칸나 The Finale 월페이퍼 공유"
@@ -42,7 +42,7 @@ export default function Page10() {
           </div>
         </div>
 
-        <div className={styles.giftbox} onClick={openFirstModal}>
+        <div className={styles.giftbox} onClick={openSecondModal}>
           <Image
             src={formatUrl("/images/gifts/thumbnails/gift2.jpg")}
             alt="[기간한정] 아이리칸나 모바일, 탭용 배경화면 공유"
@@ -80,59 +80,71 @@ export default function Page10() {
             className={styles.xMark}
           />
           <p className={`${styles.contentTitle} ${styles.marginBottom2}`}>
-            [기간한정] 아이리칸나 모바일, 탭용 배경화면 공유
+            [기간한정] 아이리칸나 The Finale 월페이퍼 공유
           </p>
-          <p className={`${styles.contentSubTitle} ${styles.marginBottom1}`}>
-            칸나와 뜨거웠던 여름을 배경화면으로 간직하세요!
+          <p className={`${styles.contentSubTitle} ${styles.marginBottom2}`}>
+            아이리칸나 월페이퍼를 배포합니다!
+            <br />
+            여러분이 있어 가장 빛났던 칸나의 모습을 간직하세요
           </p>
 
-          <img
-            src="/gift2.jpg"
-            alt="gift2"
+          <Image
+            width={768}
+            height={768}
+            src={formatUrl("/images/gifts/thumbnails/gift1.jpg")}
+            alt="[기간한정] 아이리칸나 The Finale 월페이퍼 공유"
             className={`${styles.contentImage} ${styles.marginBottom3}`}
           />
 
           <p className={`${styles.contents} ${styles.marginBottom2}`}>
-            #칸나와의_여름을_함께
+            #여러분의 가장 가까운 곳에서 영원히 빛날 수 있도록
+            <br />
+            #칸나와의_마지막_순간을 함께
           </p>
           <p className={`${styles.contents} ${styles.marginBottom1}`}>
-            아래 링크에서 파일을 다운 받으실 수 있습니다. (종류에 따라 사이즈가
-            다릅니다.)
+            아래 링크에서 파일을 다운 받으실 수 있습니다.
+            <br /> 서버 문제로 다운로드가 되지 않는 경우, Google Drive 링크로
+            다운로드 받으시기 바랍니다. (모두 같은 파일입니다.)
           </p>
+
           <p className={`${styles.contents} ${styles.marginBottom05}`}>
-            [안드로이드]
+            [다운로드]
           </p>
           <div className={styles.paddingBottom2}>
             <a
-              href="https://drive.google.com/file/d/1jIsyvxu5B9CO5ahH5JpYKVXh37qo8j3e/view?usp=sharing"
+              href={formatUrl(
+                "/gifts/gift1/Airi_kanna_Last_Concert_wallpaper.mp4"
+              )}
               className={`${styles.downloadBtn} ${styles.marginBottom1}`}
               target="_blank"
             >
-              &#x1F4CE;칸나와_여름을_함께_안드.png (7.75MB)
+              &#x1F4CE; Airi_kanna_Last_Concert_wallpaper.mp4 (357.09 MB)
             </a>
           </div>
+
           <p className={`${styles.contents} ${styles.marginBottom05}`}>
-            [아이폰]
+            [Google Drive 다운로드 1]
           </p>
           <div className={styles.paddingBottom2}>
             <a
-              href="https://drive.google.com/file/d/1UkBPu8-OCWM0qWLSJDxmvzuTclLTJBCS/view?usp=sharing"
-              className={`${styles.downloadBtn}`}
+              href="https://drive.google.com/file/d/1xL29q3G0NzwWow--xQ0OWPd9VCErhGLV/view?usp=sharing"
+              className={`${styles.downloadBtn} ${styles.marginBottom1}`}
               target="_blank"
             >
-              &#x1F4CE;칸나와_여름을_함께_아이폰.png (3.82MB)
+              &#x1F4CE; Airi_kanna_Last_Concert_wallpaper.mp4 (357.09 MB)
             </a>
           </div>
+
           <p className={`${styles.contents} ${styles.marginBottom05}`}>
-            [아이폰]
+            [Google Drive 다운로드 2]
           </p>
           <div className={styles.paddingBottom2}>
             <a
-              href="https://drive.google.com/file/d/1SLgZ7hIfvnzva0nZ9AdTAtUw6kSZ2DQw/view?usp=sharing"
+              href="https://drive.google.com/file/d/1GlfxncjS1zu09YpGr4Fp9vkCu_F7R1WO/view?usp=sharing"
               className={`${styles.downloadBtn}`}
               target="_blank"
             >
-              &#x1F4CE;칸나와_여름을_함께.png (4.97MB)
+              &#x1F4CE; Airi_kanna_Last_Concert_wallpaper.mp4 (357.09 MB)
             </a>
           </div>
         </div>
@@ -161,51 +173,94 @@ export default function Page10() {
             className={styles.xMark}
           />
           <p className={`${styles.contentTitle} ${styles.marginBottom2}`}>
-            [기간한정] 아이리칸나 The Finale 월페이퍼 공유
+            [기간한정] 아이리칸나 모바일, 탭용 배경화면 공유
           </p>
-          <p className={`${styles.contentSubTitle} ${styles.marginBottom2}`}>
-            아이라 칸나 월페이퍼를 배포합니다!
-            <br />
-            여러분이 있어 가장 빛났던 칸나의 모습을 간직하세요
+          <p className={`${styles.contentSubTitle} ${styles.marginBottom1}`}>
+            칸나와 뜨거웠던 여름을 배경화면으로 간직하세요!
           </p>
 
-          <img
-            src="/gift1.jpg"
-            alt="gift1"
+          <Image
+            width={768}
+            height={432}
+            src={formatUrl("/gifts/gift2/칸나와 여름을 함께.png")}
+            alt="[기간한정] 아이리칸나 모바일, 탭용 배경화면 공유"
             className={`${styles.contentImage} ${styles.marginBottom3}`}
           />
 
           <p className={`${styles.contents} ${styles.marginBottom2}`}>
-            #여러분의 가장 가까운 곳에서 영원히 빛날 수 있도록
-            <br />
-            #칸나와의_마지막_순간을 함께
+            #칸나와의_여름을_함께
           </p>
           <p className={`${styles.contents} ${styles.marginBottom1}`}>
-            아래 드라이브에서 다운 받으실 수 있습니다. (아래 링크 모두 동일한
-            파일입니다.)
+            아래 링크에서 파일을 다운 받으실 수 있습니다. (종류에 따라 사이즈가
+            다릅니다.)
+            <br /> 서버 문제로 다운로드가 되지 않는 경우, Google Drive 링크로
+            다운로드 받으시기 바랍니다.
           </p>
+
+          <br />
+
           <p className={`${styles.contents} ${styles.marginBottom05}`}>
-            [다운로드1]
+            [안드로이드]
           </p>
           <div className={styles.paddingBottom2}>
             <a
-              href="https://drive.google.com/file/d/1xL29q3G0NzwWow--xQ0OWPd9VCErhGLV/view?usp=sharing"
+              href={formatUrl("/gifts/gift2/칸나와 여름을 함께_안드.png")}
+              className={`${styles.downloadBtn} ${styles.marginBottom1}`}
+              download="칸나와_여름을_함께_안드.png"
+              target="_blank"
+            >
+              &#x1F4CE; 칸나와_여름을_함께_안드.png (7.75MB)
+            </a>
+          </div>
+          <div className={styles.paddingBottom2}>
+            <a
+              href="https://drive.google.com/file/d/1jIsyvxu5B9CO5ahH5JpYKVXh37qo8j3e/view?usp=sharing"
               className={`${styles.downloadBtn} ${styles.marginBottom1}`}
               target="_blank"
             >
-              &#x1F4CE; 칸나 월페이퍼 드라이브 링크 1
+              &#x1F4CE; (Google Drive) 칸나와_여름을_함께_안드.png (7.75MB)
             </a>
           </div>
           <p className={`${styles.contents} ${styles.marginBottom05}`}>
-            [다운로드2]
+            [아이폰]
           </p>
           <div className={styles.paddingBottom2}>
             <a
-              href="https://drive.google.com/file/d/1GlfxncjS1zu09YpGr4Fp9vkCu_F7R1WO/view?usp=sharing"
+              href={formatUrl("/gifts/gift2/칸나와 여름을 함께_아이폰.png")}
+              className={`${styles.downloadBtn} ${styles.marginBottom1}`}
+              download="칸나와_여름을_함께_아이폰.png"
+              target="_blank"
+            >
+              &#x1F4CE; 칸나와_여름을_함께_아이폰.png (3.82MB)
+            </a>
+          </div>
+          <div className={styles.paddingBottom2}>
+            <a
+              href="https://drive.google.com/file/d/1UkBPu8-OCWM0qWLSJDxmvzuTclLTJBCS/view?usp=sharing"
               className={`${styles.downloadBtn}`}
               target="_blank"
             >
-              &#x1F4CE; 칸나 월페이퍼 드라이브 링크 2
+              &#x1F4CE; (Google Drive) 칸나와_여름을_함께_아이폰.png (3.82MB)
+            </a>
+          </div>
+          <p className={`${styles.contents} ${styles.marginBottom05}`}>[PC]</p>
+          <div className={styles.paddingBottom2}>
+            <a
+              href={formatUrl("/gifts/gift2/칸나와 여름을 함께.png")}
+              className={`${styles.downloadBtn} ${styles.marginBottom1}`}
+              download="칸나와_여름을_함께.png"
+              target="_blank"
+            >
+              &#x1F4CE; 칸나와_여름을_함께.png (4.97MB)
+            </a>
+          </div>
+          <div className={styles.paddingBottom2}>
+            <a
+              href="https://drive.google.com/file/d/1SLgZ7hIfvnzva0nZ9AdTAtUw6kSZ2DQw/view?usp=sharing"
+              className={`${styles.downloadBtn}`}
+              target="_blank"
+            >
+              &#x1F4CE; (Google Drive) 칸나와_여름을_함께.png (4.97MB)
             </a>
           </div>
         </div>

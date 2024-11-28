@@ -1,4 +1,4 @@
-import { nanumMyeongjo } from "@/styles/fonts";
+import { nanumMyeongjo } from "@/modules/styles/fonts";
 
 import styles from "./styles.module.css";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // Generic throttle function with explicit type annotations
 function throttle<T extends (...args: unknown[]) => unknown>(
@@ -27,8 +27,13 @@ export default function Section(
     HTMLElement
   > & { id: string; children: React.ReactNode }
 ) {
-  // Use useRef to persist the throttled function across renders
-  const handleScroll = throttle(() => {
+  const [scrollTop, setScrollTop] = useState(0);
+
+  const handleScroll = () => {
+    setScrollTop(window.scrollY);
+  };
+
+  const updateHash = throttle(() => {
     const section = document.getElementById(props.id);
 
     if (section) {
@@ -40,6 +45,7 @@ export default function Section(
         const newHash = `#${props.id}`;
         if (newHash !== window.location.hash) {
           window.location.hash = newHash;
+          window.scroll(0, scrollTop);
         }
       }
     }
@@ -47,12 +53,16 @@ export default function Section(
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // 초기 실행
+    window.addEventListener("scroll", updateHash);
+
+    handleScroll();
+    updateHash(); // 초기 실행
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", updateHash);
     };
-  }, [handleScroll]);
+  }, [updateHash]);
 
   return <section {...props}>{props.children}</section>;
 }

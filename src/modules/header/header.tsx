@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
+import formatUrl from "../cdn/formatUrl";
+
 import styles from "./styles.module.css";
 
 function Header() {
@@ -71,7 +73,7 @@ function Header() {
           width={86}
           height={44}
           className={styles.logo}
-          src="/logo02.png"
+          src={formatUrl("/images/logos/horizontal.png")}
           alt="The Finale"
         />
       </a>

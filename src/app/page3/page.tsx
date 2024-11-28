@@ -2,7 +2,9 @@
 
 import Image from "next/image";
 
-import { raleway } from "@/styles/fonts";
+import { raleway } from "@/modules/styles/fonts";
+import formatUrl from "@/modules/cdn/formatUrl";
+
 import styles from "./styles.module.css";
 
 export default function Page3() {
@@ -27,7 +29,7 @@ export default function Page3() {
       <div className={styles.center}>
         <Image
           className={styles.logo}
-          src="/The_finale_logo3.png"
+          src={formatUrl("/images/logos/vertical.png")}
           width={326}
           height={294}
           alt="The Finale"

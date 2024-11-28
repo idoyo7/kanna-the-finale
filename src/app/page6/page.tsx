@@ -3,72 +3,74 @@ import { useState } from "react";
 import { useSwipeable } from "react-swipeable";
 
 import ZoomableImage from "@/modules/zoom/zoomableImage";
+import formatUrl from "@/modules/cdn/formatUrl";
+
 import styles from "./styles.module.css";
 
 export default function Page6() {
   const [indices, setIndices] = useState({
-    raw01: 0,
-    raw02: 0,
-    raw03: 0,
+    row01: 0,
+    row02: 0,
+    row03: 0,
   });
 
   const ImgDir = {
-    raw01: [
-      "/img/raw01/raw01_1.jpg",
-      "/img/raw01/raw01_2.jpg",
-      "/img/raw01/raw01_3.jpg",
-      "/img/raw01/raw01_4.jpg",
-      "/img/raw01/raw01_5.jpg",
-      "/img/raw01/raw01_6.jpg",
-      "/img/raw01/raw01_7.jpg",
-      "/img/raw01/raw01_8.jpg",
+    row01: [
+      "/images/fan-arts/row01/1.jpg",
+      "/images/fan-arts/row01/2.jpg",
+      "/images/fan-arts/row01/3.jpg",
+      "/images/fan-arts/row01/4.jpg",
+      "/images/fan-arts/row01/5.jpg",
+      "/images/fan-arts/row01/6.jpg",
+      "/images/fan-arts/row01/7.jpg",
+      "/images/fan-arts/row01/8.jpg",
     ],
-    raw02: [
-      "/img/raw02/raw02_1.png",
-      "/img/raw02/raw02_2.png",
-      "/img/raw02/raw02_3.png",
-      "/img/raw02/raw02_4.jpg",
-      "/img/raw02/raw02_5.jpg",
-      "/img/raw02/raw02_6.jpg",
-      "/img/raw02/raw02_7.jpg",
-      "/img/raw02/raw02_8.jpg",
+    row02: [
+      "/images/fan-arts/row02/1.png",
+      "/images/fan-arts/row02/2.png",
+      "/images/fan-arts/row02/3.png",
+      "/images/fan-arts/row02/4.jpg",
+      "/images/fan-arts/row02/5.jpg",
+      "/images/fan-arts/row02/6.jpg",
+      "/images/fan-arts/row02/7.jpg",
+      "/images/fan-arts/row02/8.jpg",
     ],
-    raw03: [
-      "/img/raw03/raw03_1.jpg",
-      "/img/raw03/raw03_2.jpg",
-      "/img/raw03/raw03_3.jpg",
-      "/img/raw03/raw03_4.jpg",
-      "/img/raw03/raw03_5.jpg",
-      "/img/raw03/raw03_6.jpg",
-      "/img/raw03/raw03_7.jpg",
-      "/img/raw03/raw03_8.webp",
+    row03: [
+      "/images/fan-arts/row03/1.jpg",
+      "/images/fan-arts/row03/2.jpg",
+      "/images/fan-arts/row03/3.jpg",
+      "/images/fan-arts/row03/4.jpg",
+      "/images/fan-arts/row03/5.jpg",
+      "/images/fan-arts/row03/6.jpg",
+      "/images/fan-arts/row03/7.jpg",
+      "/images/fan-arts/row03/8.webp",
     ],
   };
 
-  const nextImage = (raw: "raw01" | "raw02" | "raw03") => {
+  const nextImage = (row: "row01" | "row02" | "row03") => {
     setIndices((prev) => ({
       ...prev,
-      [raw]: prev[raw] === ImgDir[raw].length - 1 ? 0 : prev[raw] + 1,
+      [row]: prev[row] === ImgDir[row].length - 1 ? 0 : prev[row] + 1,
     }));
   };
 
-  const prevImage = (raw: "raw01" | "raw02" | "raw03") => {
+  const prevImage = (row: "row01" | "row02" | "row03") => {
     setIndices((prev) => ({
       ...prev,
-      [raw]: prev[raw] === 0 ? ImgDir[raw].length - 1 : prev[raw] - 1,
+      [row]: prev[row] === 0 ? ImgDir[row].length - 1 : prev[row] - 1,
     }));
   };
 
   const handlers01 = useSwipeable({
-    onSwipedLeft: () => nextImage("raw01"),
-    onSwipedRight: () => prevImage("raw01"),
+    onSwipedLeft: () => nextImage("row01"),
+    onSwipedRight: () => prevImage("row01"),
     preventScrollOnSwipe: true,
     trackMouse: true,
   });
 
   const handlers02 = useSwipeable({
-    onSwipedLeft: () => nextImage("raw02"),
-    onSwipedRight: () => prevImage("raw02"),
+    onSwipedLeft: () => nextImage("row02"),
+    onSwipedRight: () => prevImage("row02"),
     preventScrollOnSwipe: true,
     trackMouse: true,
   });
@@ -90,7 +92,7 @@ export default function Page6() {
         <div className={styles.rowContainer}>
           <button
             className={styles.navButton}
-            onClick={() => prevImage("raw01")}
+            onClick={() => prevImage("row01")}
             aria-label="Previous image"
           >
             &#10094;
@@ -99,14 +101,14 @@ export default function Page6() {
             <ZoomableImage
               width={664}
               height={500}
-              src={ImgDir.raw01[indices.raw01]}
-              alt={`raw01 image ${indices.raw01 + 1}`}
+              src={formatUrl(ImgDir.row01[indices.row01])}
+              alt={`row01 image ${indices.row01 + 1}`}
               className={styles.image}
             />
           </div>
           <button
             className={styles.navButton}
-            onClick={() => nextImage("raw01")}
+            onClick={() => nextImage("row01")}
             aria-label="Next image"
           >
             &#10095;
@@ -116,7 +118,7 @@ export default function Page6() {
         <div className={styles.rowContainer}>
           <button
             className={styles.navButton}
-            onClick={() => prevImage("raw02")}
+            onClick={() => prevImage("row02")}
             aria-label="Previous image"
           >
             &#10094;
@@ -125,14 +127,14 @@ export default function Page6() {
             <ZoomableImage
               width={664}
               height={500}
-              src={ImgDir.raw02[indices.raw02]}
-              alt={`raw02 image ${indices.raw02 + 1}`}
+              src={formatUrl(ImgDir.row02[indices.row02])}
+              alt={`row02 image ${indices.row02 + 1}`}
               className={styles.image}
             />
           </div>
           <button
             className={styles.navButton}
-            onClick={() => nextImage("raw02")}
+            onClick={() => nextImage("row02")}
             aria-label="Next image"
           >
             &#10095;
@@ -140,13 +142,13 @@ export default function Page6() {
         </div>
 
         <div className={styles.galleryContainer}>
-          {ImgDir.raw03.map((imgSrc, index) => (
+          {ImgDir.row03.map((imgSrc, index) => (
             <div key={index} className={styles.galleryItem}>
               <ZoomableImage
                 width={664}
                 height={500}
-                src={imgSrc}
-                alt={`raw03 image ${index + 1}`}
+                src={formatUrl(imgSrc)}
+                alt={`row03 image ${index + 1}`}
                 className={styles.galleryImage}
               />
             </div>

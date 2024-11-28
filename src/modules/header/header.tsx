@@ -28,6 +28,14 @@
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
       }, []);
+
+      useEffect(() => {
+        if (isMobileNavOpen) {
+          document.body.style.overflow = "hidden";
+        } else {
+          document.body.style.overflow = "";
+        }
+      }, [isMobileNavOpen]);
     
       // URL 해시 체크 인터벌
       const hashCheckIntervalRef = useRef<number | null>(null);

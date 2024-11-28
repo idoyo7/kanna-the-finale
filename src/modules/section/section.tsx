@@ -28,12 +28,6 @@ export default function Section(
   > & { id: string; children: React.ReactNode }
 ) {
 
-  const [scrollTop, setScrollTop] = useState(0);
-
-  const handleScroll = () => {
-    setScrollTop(window.scrollY);
-  };
-
   const updateHash = throttle(() => {
     const section = document.getElementById(props.id);
 
@@ -46,7 +40,6 @@ export default function Section(
         const newHash = `#${props.id}`;
         if (newHash !== window.location.hash) {
           window.location.hash = newHash;
-          window.scroll(0, scrollTop);
         }
       }
     }

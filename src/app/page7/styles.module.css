@@ -1,0 +1,82 @@
+.container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.subtitle {
+    font-size: 1.8rem;
+    color: #666;
+}
+
+.description {
+    font-size: 1.2rem;
+    color: #444;
+}
+
+.subdescription {
+    font-size: 1rem;
+    color: #666;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.musicRow {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.musicItem {
+    flex: 0 1 360px;
+    text-align: center;
+}
+
+.musicItem h3 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    color: #444;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1200px) {
+    .musicItem iframe {
+        width: 300px;
+        height: 169px;
+    }
+}
+
+@media (max-width: 768px) {
+    .musicRow {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .musicItem {
+        width: 100%;
+        max-width: 560px;
+    }
+
+    .musicItem iframe {
+        width: 100%;
+        height: 215px;
+    }
+}

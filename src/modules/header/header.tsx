@@ -9,6 +9,7 @@ import styles from "./styles.module.css";
 
 function Header() {
   const headerRef = useRef<HTMLDivElement>(null);
+  const hashCheckIntervalRef = useRef<NodeJS.Timeout>();
 
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("hero");
@@ -27,57 +28,21 @@ function Header() {
     window.addEventListener("resize", handleResize);
   }, []);
 
-  // 모바일 햄버거가 열려있을 땐 스크롤 방지
+  // URL 해시 체크 인터벌
   useEffect(() => {
-    if (isMobileNavOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-  }, [isMobileNavOpen]);
-
-  // 스크롤 이벤트 핸들러
-  const handleScroll = useCallback(() => {
-    if (isMobile || window.scrollY >= 10) {
-      headerRef.current?.classList.add(styles.withBg);
-    } else {
-      headerRef.current?.classList.remove(styles.withBg);
-    }
-  }, [isMobile]);
-
-  // 해시 변경 이벤트 핸들러
-  const handleHashChange = useCallback(
-    (event?: HashChangeEvent) => {
-      event?.preventDefault();
-
-      const hash = window.location.hash.replace("#", "");
-
-      if (hash !== activeSection) {
+    hashCheckIntervalRef.current = setInterval(() => {
+      const hash = window.location.hash.slice(1); // Remove the # symbol
+      if (hash && hash !== activeSection) {
         setActiveSection(hash);
       }
-    },
-    [activeSection]
-  );
-
-  // 해시 변경 이벤트 등록
-  useEffect(() => {
-    window.addEventListener("hashchange", handleHashChange);
-    handleHashChange(); // 초기 실행
+    }, 50);
 
     return () => {
-      window.removeEventListener("hashchange", handleHashChange);
+      if (hashCheckIntervalRef.current) {
+        clearInterval(hashCheckIntervalRef.current);
+      }
     };
-  }, [activeSection, handleHashChange]);
-
-  // 스크롤 이벤트 등록
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // 초기 실행
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [handleScroll]);
+  }, [activeSection]);
 
   // 메뉴 항목 데이터
   const navItems = [

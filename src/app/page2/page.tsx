@@ -4,14 +4,14 @@ import styles from "./styles.module.css";
 export default function Page2() {
   return (
     <div className={styles.container}>
-      <div className={`${styles.title} ${playfairDisplay.className}`}>
+      <h1 className={`${styles.title} ${playfairDisplay.className}`}>
         The Finale
-      </div>
+      </h1>
 
-      <div className={styles.subtitle}>The Last Song of Stellar</div>
-      <div className={`${styles.description} ${nanumMyeongjo.className}`}>
+      <h2 className={styles.subtitle}>The Last Song of Stellar</h2>
+      <h3 className={`${styles.description} ${nanumMyeongjo.className}`}>
         아이리 칸나의 마지막 콘서트
-      </div>
+      </h3>
     </div>
   );
 }

@@ -1,20 +1,20 @@
 .container {
-    display: flex;
-    justify-content: center;
-    width: 100vw;
-    padding: 12.5vh;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 12.5vh;
 }
 .title {
-    font-size: 2.5rem;
+  font-size: 2.5rem;
 }
 .giftboxContainer {
-    width: 45vw;
-    margin-left: 12.5vw;
+  width: 45vw;
+  margin-left: 12.5vw;
 }
 .giftbox {
-    display: flex;
+  display: flex;
 }
 .giftboxTitle {
-    margin: 2.5%;
-    font-size: 1.5rem;
+  margin: 2.5%;
+  font-size: 1.5rem;
 }

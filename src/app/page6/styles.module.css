@@ -103,7 +103,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
-  width: 90%;
+  /* width: 90%; */
   max-width: 880px;
   margin-top: 2rem;
   justify-content: center;
@@ -136,7 +136,7 @@
 /* 반응형 디자인 */
 @media (max-width: 768px) {
   .container {
-    padding: 1rem;
+    padding: 3.5rem 1rem;
   }
 
   .title {
@@ -148,7 +148,7 @@
   }
 
   .imageContainer {
-    height: 300px;
+    height: auto;
   }
 
   .navButton {
@@ -157,7 +157,12 @@
     font-size: 1rem;
   }
 
+  .galleryContainer {
+    padding: 0;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
   .galleryItem {
-    width: 45vw;
+    width: 70vw;
   }
 }

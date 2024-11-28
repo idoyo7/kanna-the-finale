@@ -33,7 +33,7 @@
   color: white;
 }
 
-.count__down__day {
+.countdown__day {
   align-self: flex-start;
 
   font-size: 60px;
@@ -41,7 +41,7 @@
   line-height: 100%;
 }
 
-.count__down__time {
+.countdown__time {
   margin-bottom: 25px;
 
   font-size: 240px;
@@ -59,4 +59,15 @@
   font-size: 18px;
   letter-spacing: -0.5px;
   font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .countdown__day {
+    font-size: 40px;
+    letter-spacing: -3px;
+  }
+  .countdown__time {
+    font-size: 80px;
+    letter-spacing: 0;
+  }
 }

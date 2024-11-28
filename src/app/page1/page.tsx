@@ -97,10 +97,10 @@ export default function Page1() {
       />
 
       <div className={styles.info__wrap}>
-        <p className={styles.count__down__day}>
+        <p className={styles.countdown__day}>
           D-{timer.days > 0 ? timer.days : 0}
         </p>
-        <p className={styles.count__down__time}>
+        <p className={styles.countdown__time}>
           {`${timer.hours.toString().padStart(2, "0")}:${timer.minutes
             .toString()
             .padStart(2, "0")}:${timer.seconds.toString().padStart(2, "0")}`}

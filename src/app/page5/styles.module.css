@@ -1,6 +1,6 @@
 .letter {
   width: 100%;
-  height: calc(100dvh - 62px);
+  min-height: calc(100dvh - 62px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,9 +10,11 @@
 .letter__basic {
   width: 100%;
   max-width: 64vw;
+
   position: relative;
   text-align: center;
   color: white;
+
   padding: 0 2.5vw;
 }
 

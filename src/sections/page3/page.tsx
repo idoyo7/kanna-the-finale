@@ -12,7 +12,7 @@ export default function Page3() {
     <div className={styles.container}>
       <video
         className={styles.video}
-        src="https://www.mdoo.info/airi_kanna/wallpaper.mp4"
+        src={formatUrl("/videos/background.mp4")}
         muted
         loop
         playsInline

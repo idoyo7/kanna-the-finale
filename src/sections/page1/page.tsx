@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import formatUrl from "@/modules/cdn/formatUrl";
 import styles from "./styles.module.css";
 
 // 하드코딩된 목표 날짜 (2024-12-02 19:00:00 KST)
@@ -68,7 +69,7 @@ export default function Page1() {
       <video
         ref={videoRef}
         className={styles.video}
-        src="https://www.mdoo.info/airi_kanna/wallpaper.mp4"
+        src={formatUrl("/videos/background.mp4")}
         muted
         loop
         playsInline

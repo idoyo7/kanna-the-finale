@@ -51,7 +51,7 @@
 .imageContainer {
   flex: 1;
   max-width: 800px;
-  height: 500px;
+  height: 375px; /* Adjusted for 1920:1080 ratio (800 * (1080/1920) = 450) */
   margin: 0;
   overflow: hidden;
   border-radius: 10px;

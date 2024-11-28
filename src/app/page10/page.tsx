@@ -69,6 +69,10 @@ export default function Page10() {
         }}
       >
         <div className={styles.contentWrapper} data-lenis-prevent="true">
+          <button
+            onClick={() => setFirstModalOpen(false)}
+            className={styles.xMark}
+          />
           <p className={`${styles.contentTitle} ${styles.marginBottom2}`}>
             [기간한정] 아이리칸나 모바일, 탭용 배경화면 공유
           </p>
@@ -146,6 +150,10 @@ export default function Page10() {
         }}
       >
         <div className={styles.contentWrapper} data-lenis-prevent="true">
+          <button
+            onClick={() => setSecondModalOpen(false)}
+            className={styles.xMark}
+          />
           <p className={`${styles.contentTitle} ${styles.marginBottom2}`}>
             [기간한정] 아이리칸나 The Finale 월페이퍼 공유
           </p>

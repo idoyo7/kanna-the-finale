@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 import ReactPlayer from "react-player/lazy";
 // import ReactPlayer from "react-player/youtube";
@@ -24,6 +25,7 @@ export default function Page4() {
             width="100%"
             height="100%"
             light="https://i.ytimg.com/vi/eNbB4MWbZAI/maxresdefault.jpg"
+            onClick={() => sendGTMEvent({ event: "playPv" })}
           />
         )}
       </div>

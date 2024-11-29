@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Modal from "react-modal";
 import Image from "next/image";
+
+import Modal from "react-modal";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 import formatUrl from "@/modules/cdn/formatUrl";
 
@@ -136,6 +138,9 @@ export default function Page10() {
               )}
               className={`${styles.downloadBtn} ${styles.marginBottom1}`}
               target="_blank"
+              onClick={() =>
+                sendGTMEvent({ event: "downloadGift", value: "gift1_cdn" })
+              }
             >
               &#x1F4CE; 다운로드 (357.09 MB)
             </a>
@@ -149,6 +154,9 @@ export default function Page10() {
               href="https://drive.google.com/file/d/1xL29q3G0NzwWow--xQ0OWPd9VCErhGLV/view?usp=sharing"
               className={`${styles.downloadBtn} ${styles.marginBottom1}`}
               target="_blank"
+              onClick={() =>
+                sendGTMEvent({ event: "downloadGift", value: "gift1_google1" })
+              }
             >
               &#x1F4CE; 다운로드 (357.09 MB)
             </a>
@@ -162,6 +170,9 @@ export default function Page10() {
               href="https://drive.google.com/file/d/1GlfxncjS1zu09YpGr4Fp9vkCu_F7R1WO/view?usp=sharing"
               className={`${styles.downloadBtn}`}
               target="_blank"
+              onClick={() =>
+                sendGTMEvent({ event: "downloadGift", value: "gift1_google2" })
+              }
             >
               &#x1F4CE; 다운로드 (357.09 MB)
             </a>
@@ -233,6 +244,12 @@ export default function Page10() {
               className={`${styles.downloadBtn} ${styles.marginBottom1}`}
               download="칸나와_여름을_함께_안드.png"
               target="_blank"
+              onClick={() =>
+                sendGTMEvent({
+                  event: "downloadGift",
+                  value: "gift2_android_cdn",
+                })
+              }
             >
               &#x1F4CE; 안드로이드용 다운로드 (7.75MB)
             </a>
@@ -247,6 +264,9 @@ export default function Page10() {
               className={`${styles.downloadBtn} ${styles.marginBottom1}`}
               download="칸나와_여름을_함께_아이폰.png"
               target="_blank"
+              onClick={() =>
+                sendGTMEvent({ event: "downloadGift", value: "gift2_ios_cdn" })
+              }
             >
               &#x1F4CE; 아이폰용 다운로드 (3.82MB)
             </a>
@@ -259,6 +279,9 @@ export default function Page10() {
               className={`${styles.downloadBtn} ${styles.marginBottom1}`}
               download="칸나와_여름을_함께.png"
               target="_blank"
+              onClick={() =>
+                sendGTMEvent({ event: "downloadGift", value: "gift2_pc_cdn" })
+              }
             >
               &#x1F4CE; PC용 다운로드 (4.97MB)
             </a>
@@ -276,6 +299,12 @@ export default function Page10() {
               href="https://drive.google.com/file/d/1jIsyvxu5B9CO5ahH5JpYKVXh37qo8j3e/view?usp=sharing"
               className={`${styles.downloadBtn} ${styles.marginBottom1}`}
               target="_blank"
+              onClick={() =>
+                sendGTMEvent({
+                  event: "downloadGift",
+                  value: "gift2_android_google",
+                })
+              }
             >
               &#x1F4CE; 안드로이드용 다운로드 (7.75MB)
             </a>
@@ -289,6 +318,12 @@ export default function Page10() {
               href="https://drive.google.com/file/d/1UkBPu8-OCWM0qWLSJDxmvzuTclLTJBCS/view?usp=sharing"
               className={`${styles.downloadBtn}`}
               target="_blank"
+              onClick={() =>
+                sendGTMEvent({
+                  event: "downloadGift",
+                  value: "gift2_ios_google",
+                })
+              }
             >
               &#x1F4CE; 아이폰용 다운로드 (3.82MB)
             </a>
@@ -302,6 +337,12 @@ export default function Page10() {
               href="https://drive.google.com/file/d/1SLgZ7hIfvnzva0nZ9AdTAtUw6kSZ2DQw/view?usp=sharing"
               className={`${styles.downloadBtn}`}
               target="_blank"
+              onClick={() =>
+                sendGTMEvent({
+                  event: "downloadGift",
+                  value: "gift2_pc_google",
+                })
+              }
             >
               &#x1F4CE; PC용 다운로드 (4.97MB)
             </a>

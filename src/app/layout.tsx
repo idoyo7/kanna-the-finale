@@ -1,3 +1,5 @@
+import { GoogleTagManager } from "@next/third-parties/google";
+
 import Header from "@/modules/header/header";
 import formatUrl from "@/modules/cdn/formatUrl";
 import { notoSansKr } from "@/modules/styles/fonts";
@@ -50,6 +52,9 @@ export default function RootLayout({
           content="0a40650cea245e2c79c8feacc39ac962b2ab012d"
         />
       </head>
+
+      <GoogleTagManager gtmId="GTM-5QN9C4SW" />
+
       <body className={notoSansKr.className}>
         <Header />
         {children}

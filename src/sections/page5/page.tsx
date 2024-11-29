@@ -7,7 +7,7 @@ export default function Page5() {
     <div className={styles.letter}>
       <section className={`${styles.letter__basic} ${nanumMyeongjo.className}`}>
         <p className={styles.letter__text}>
-          누군가에게 꿈이 되고 싶었던, 항상 높은 곳에서 빝나길 바랐던 소녀는
+          누군가에게 꿈이 되고 싶었던, 항상 높은 곳에서 빛나길 바랐던 소녀는
           말해왔습니다.
         </p>
 

@@ -79,7 +79,7 @@ export default function Page6() {
     <div className={styles.container}>
       <div className={styles.header}>
         <span className={styles.title}>우리의_추억들 #1</span>
-        <span className={styles.subtitle}>아이라 칸나의 사진관</span>
+        <span className={styles.subtitle}>아이리 칸나의 사진관</span>
         <p className={styles.divider}>line</p>
         <span className={styles.description}>
           이때까지 우리의 추억들을 모아둔 사진관이에요!

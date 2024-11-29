@@ -1,3 +1,6 @@
+import { Metadata } from "next";
+import Head from "next/head";
+
 import styles from "@/modules/styles/root.module.css";
 import Section from "@/modules/section/section";
 
@@ -11,6 +14,10 @@ import Page7 from "@/sections/page7/page";
 import Page8 from "@/sections/page8/page";
 import Page9 from "@/sections/page9/page";
 import Page10 from "@/sections/page10/page";
+
+export const metadata: Metadata = {
+  title: "AIRI KANNA LAST CONCERT - 「The finale」",
+};
 
 export default function HomePage() {
   const sections = [
@@ -27,18 +34,23 @@ export default function HomePage() {
   ];
 
   return (
-    <div>
-      {sections.map((section) => (
-        <Section
-          id={section.id}
-          key={section.id}
-          className={`${styles.container} ${
-            !section.fullpage ? styles.noFullpage : ""
-          }`}
-        >
-          {section.component}
-        </Section>
-      ))}
-    </div>
+    <>
+      <Head>
+        <title>AIRI KANNA LAST CONCERT - 「The finale」</title>
+      </Head>
+      <main>
+        {sections.map((section) => (
+          <Section
+            id={section.id}
+            key={section.id}
+            className={`${styles.container} ${
+              !section.fullpage ? styles.noFullpage : ""
+            }`}
+          >
+            {section.component}
+          </Section>
+        ))}
+      </main>
+    </>
   );
 }

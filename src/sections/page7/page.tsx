@@ -48,6 +48,9 @@ const musicList = {
     { "Love wins all (IU)": "Nr3AhMP1lVg" },
     { 공주열차: "6A04OifrfR0" },
   ],
+  section9: [
+    { "Cookie": "PkDX2oGCCxM" },
+  ],
 };
 
 export default function Page7() {

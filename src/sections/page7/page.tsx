@@ -50,6 +50,7 @@ const musicList = {
   ],
   section9: [
     { "Cookie": "PkDX2oGCCxM" },
+    { "최종화 Live Clip": "zNYEbJr1xj4" },
   ],
 };
 

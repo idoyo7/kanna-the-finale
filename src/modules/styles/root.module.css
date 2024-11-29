@@ -1,5 +1,6 @@
 .container {
   min-height: 100dvh;
+  scroll-margin-top: 80px; /* 네비게이션 바 높이만큼 여백을 줌 */
 
   display: flex;
   align-items: center;

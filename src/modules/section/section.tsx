@@ -1,6 +1,7 @@
 "use client";
 
-import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 // Generic throttle function with explicit type annotations
 function throttle<T extends (...args: unknown[]) => unknown>(
@@ -40,12 +41,21 @@ export default function Section(
       if (offsetTop >= 0 && offsetTop <= window.innerHeight / 2) {
         const newHash = `#${props.id}`;
         if (newHash !== window.location.hash) {
-          window.location.hash = newHash;
-          router.replace(newHash);
+          router.replace(newHash, { scroll: false });
         }
       }
     }
   }, 200); // 200ms 간격으로 제한
+
+  useEffect(() => {
+    window.addEventListener("scroll", updateHash);
+
+    updateHash(); // 초기 실행
+
+    return () => {
+      window.removeEventListener("scroll", updateHash);
+    };
+  }, [updateHash]);
 
   return <section {...props}>{props.children}</section>;
 }

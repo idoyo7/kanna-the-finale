@@ -37,7 +37,7 @@ export default function Page5() {
         </p>
 
         <p className={styles.letter__text}>
-          이제 마지막 무대를 앞둔, 가장 아름답게 빝나는 별이 우리에게 말합니다.
+          이제 마지막 무대를 앞둔, 가장 아름답게 빛나는 별이 우리에게 말합니다.
         </p>
 
         <p className={`${styles.letter__text} ${styles.letter__highlight}`}>

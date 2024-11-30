@@ -1,48 +1,33 @@
 "use client";
 
-import Image from "next/image";
+import { useEffect, useState } from "react";
+import { sendGTMEvent } from "@next/third-parties/google";
 
-import { raleway } from "@/modules/styles/fonts";
-import formatUrl from "@/modules/cdn/formatUrl";
+import ReactPlayer from "react-player/lazy";
+// import ReactPlayer from "react-player/youtube";
 
 import styles from "./styles.module.css";
 
 export default function Page3() {
+  const [hasWindow, setHasWindow] = useState(false);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setHasWindow(true);
+    }
+  }, []);
+
   return (
-    <div className={styles.container}>
-      <video
-        className={styles.video}
-        src={formatUrl("/videos/background.mp4")}
-        muted
-        loop
-        playsInline
-        autoPlay
-      />
-
-      <div className={styles.left}>
-        <div className={styles.left__bar}></div>
-        <p className={`${styles.left__content} ${raleway.className}`}>
-          The last song
-        </p>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src={formatUrl("/images/logos/vertical.png")}
-          width={326}
-          height={294}
-          alt="The Finale"
-        />
-
-        <div className={styles.bottom__bar}></div>
-      </div>
-
-      <div className={styles.right}>
-        <p className={`${styles.right__content} ${raleway.className}`}>
-          of Stellar
-        </p>
-        <div className={styles.right__bar}></div>
+    <div>
+      <div className={styles.video}>
+        {hasWindow && (
+          <ReactPlayer
+            url="https://youtu.be/eNbB4MWbZAI"
+            width="100%"
+            height="100%"
+            light="https://i.ytimg.com/vi/eNbB4MWbZAI/maxresdefault.jpg"
+            onClick={() => sendGTMEvent({ event: "playPv" })}
+          />
+        )}
       </div>
     </div>
   );

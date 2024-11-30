@@ -1,34 +1,49 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import { sendGTMEvent } from "@next/third-parties/google";
-
-import ReactPlayer from "react-player/lazy";
-// import ReactPlayer from "react-player/youtube";
+import { nanumMyeongjo } from "@/modules/styles/fonts";
 
 import styles from "./styles.module.css";
 
 export default function Page4() {
-  const [hasWindow, setHasWindow] = useState(false);
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setHasWindow(true);
-    }
-  }, []);
-
   return (
-    <div>
-      <div className={styles.video}>
-        {hasWindow && (
-          <ReactPlayer
-            url="https://youtu.be/eNbB4MWbZAI"
-            width="100%"
-            height="100%"
-            light="https://i.ytimg.com/vi/eNbB4MWbZAI/maxresdefault.jpg"
-            onClick={() => sendGTMEvent({ event: "playPv" })}
-          />
-        )}
-      </div>
+    <div className={styles.letter}>
+      <section className={`${styles.letter__basic} ${nanumMyeongjo.className}`}>
+        <p className={styles.letter__text}>
+          누군가에게 꿈이 되고 싶었던, 항상 높은 곳에서 빛나길 바랐던 소녀는
+          말해왔습니다.
+        </p>
+
+        <p className={`${styles.letter__text} ${styles.letter__highlight}`}>
+          &quot;그야 나는 별이니까&quot;
+        </p>
+
+        <p className={styles.letter__text}>
+          가장 빛나는 별이 되기 위해 매번 죽을 힘을 다해 노래하던 소녀는
+          행복했습니다.
+          <br />
+          소녀는 항상 빛날 수 있는 것만 같았습니다.
+          <br />
+          하지만, 그녀의 빛이 커질수록 그림자도 커져만 갔습니다.
+          <br />
+          언제나 위를 보고 달리던 그녀는 수차례 넘어졌고, 때로는 포기하고 싶기도
+          했습니다.
+        </p>
+
+        <p className={styles.letter__text}>
+          그렇게 그림자 속에서 처음으로 위가 아닌 주변을 둘러보았을 때, 그녀는
+          깨달았습니다.
+          <br />
+          이미 주변에는 수많은 별들이 함께 빛나고 있다는 것을.
+          <br />
+          별은 서로 속에서, 서로를 비추어 줄 때 가장 아름답게 빛난다는 것을요.
+        </p>
+
+        <p className={styles.letter__text}>
+          이제 마지막 무대를 앞둔, 가장 아름답게 빛나는 별이 우리에게 말합니다.
+        </p>
+
+        <p className={`${styles.letter__text} ${styles.letter__highlight}`}>
+          &quot;우린 모두 별이니까&quot;
+        </p>
+      </section>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 import formatUrl from "../cdn/formatUrl";
@@ -8,6 +9,7 @@ import formatUrl from "../cdn/formatUrl";
 import styles from "./styles.module.css";
 
 function Header() {
+  const router = useRouter();
   const headerRef = useRef<HTMLDivElement>(null);
 
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
@@ -42,6 +44,7 @@ function Header() {
     if (isMobile || window.scrollY >= 10) {
       headerRef.current?.classList.add(styles.withBg);
     } else {
+      setActiveSection("hero");
       headerRef.current?.classList.remove(styles.withBg);
     }
   }, [isMobile]);
@@ -80,8 +83,8 @@ function Header() {
 
   // 메뉴 항목 데이터
   const navItems = [
-    { id: "main", alternatives: ["hero", "banner", "main"], label: "메인" },
-    { id: "pv", alternatives: ["pv", "story"], label: "PV" },
+    { id: "hero", alternatives: ["hero"], label: "메인" },
+    { id: "pv", alternatives: ["banner", "pv", "story"], label: "PV" },
     { id: "history", alternatives: ["history", "history2"], label: "보석함" },
     {
       id: "post",
@@ -102,7 +105,19 @@ function Header() {
           ref={headerRef}
           className={`${styles.container} ${isMobile ? styles.withBg : ""}`}
         >
-          <a href="#hero">
+          <a
+            href="#hero"
+            onClick={(e) => {
+              e.preventDefault();
+              setIsMobileNavOpen(false);
+
+              const target = document.getElementById("hero");
+              if (target) {
+                router.replace("#hero", { scroll: false });
+                target.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+          >
             <Image
               width={86}
               height={44}
@@ -127,6 +142,16 @@ function Header() {
                         ? styles.active
                         : ""
                     }
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setIsMobileNavOpen(false);
+
+                      const target = document.getElementById(item.id);
+                      if (target) {
+                        router.replace(`#${item.id}`, { scroll: false });
+                        target.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
                   >
                     {item.label}
                   </a>
@@ -176,6 +201,16 @@ function Header() {
                     ? styles.active
                     : ""
                 }
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsMobileNavOpen(false);
+
+                  const target = document.getElementById(item.id);
+                  if (target) {
+                    router.replace(`#${item.id}`, { scroll: false });
+                    target.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
               >
                 {item.label}
               </a>

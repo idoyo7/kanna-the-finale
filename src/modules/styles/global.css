@@ -2,5 +2,6 @@ body {
   color: white;
   background: black;
 
+  font-family: "Pretendard Variable", "Noto Sans KR", sans-serif;
   scroll-behavior: smooth;
 }

@@ -1,159 +1,103 @@
 "use client";
-import { useState } from "react";
-import { useSwipeable } from "react-swipeable";
 
-import ZoomableImage from "@/modules/zoom/zoomableImage";
-import formatUrl from "@/modules/cdn/formatUrl";
+import { useState, useEffect } from "react";
+
+import ReactPlayer from "react-player/lazy";
+// import ReactPlayer from "react-player/youtube";
 
 import styles from "./styles.module.css";
 
+const musicList = {
+  section1: [
+    { "1st single ADDICTION": "kPdB6iGYBBc" },
+    { "2nd single 최종화": "ajDAmJYPQ-U" },
+    { "3rd single 푸른 보석과 어린 용": "gq3gzxPBOK0" },
+  ],
+  section2: [
+    { "나는 최강": "MhtScZvcsiQ" },
+    { 좋아하니까: "futqIdI0rOY" },
+    { 신시대: "_nYgmgYMdW0" },
+  ],
+  section3: [
+    { 삼문소설: "3PxbqWrDCz4" },
+    { 스즈메: "v8MjiqzLKTs" },
+    { 에러: "eNlXPUp9WBw" },
+  ],
+  section4: [
+    { 아이돌: "4_Aknw7fm_8" },
+    { 색채: "AsoPg-h-644" },
+    { "잠이 드는 거리": "nYgMMdYDGak" },
+  ],
+  section5: [
+    { LADY: "GdH0TsPznUs" },
+    { "KICK BACK": "Ei1WobzwsVI" },
+    { 지구본: "8VdlQZQ46D4" },
+  ],
+  section6: [
+    { "사랑해줘 사랑해줘 사랑해줘": "OgwD6f_tdIY" },
+    { "감 그레이": "eLJENPbBe8A" },
+    { "괴수의 꽃노래": "of5l0st1kA8" },
+  ],
+  section7: [
+    { "최종화 (Acoustic Ver.)": "iCCqSFvz9kM" },
+    { "애타는 한 가슴을 달랠 수 있다면": "IRvrDhVYXHQ" },
+    { 역광: "q-QjjmJjU_8" },
+  ],
+  section8: [
+    { "Frozen Eclipse": "RbQv87f4mvg" },
+    { "Love wins all (IU)": "Nr3AhMP1lVg" },
+    { 공주열차: "6A04OifrfR0" },
+  ],
+  section9: [
+    { "Cookie": "PkDX2oGCCxM" },
+    { "최종화 Live Clip": "zNYEbJr1xj4" },
+  ],
+};
+
 export default function Page6() {
-  const [indices, setIndices] = useState({
-    row01: 0,
-    row02: 0,
-    row03: 0,
-  });
-
-  const ImgDir = {
-    row01: [
-      "/images/fan-arts/row01/1.jpg",
-      "/images/fan-arts/row01/2.jpg",
-      "/images/fan-arts/row01/3.jpg",
-      "/images/fan-arts/row01/4.jpg",
-      "/images/fan-arts/row01/5.jpg",
-      "/images/fan-arts/row01/6.jpg",
-      "/images/fan-arts/row01/7.jpg",
-      "/images/fan-arts/row01/8.jpg",
-    ],
-    row02: [
-      "/images/fan-arts/row02/1.png",
-      "/images/fan-arts/row02/2.png",
-      "/images/fan-arts/row02/3.png",
-      "/images/fan-arts/row02/4.jpg",
-      "/images/fan-arts/row02/5.jpg",
-      "/images/fan-arts/row02/6.jpg",
-      "/images/fan-arts/row02/7.jpg",
-      "/images/fan-arts/row02/8.jpg",
-    ],
-    row03: [
-      "/images/fan-arts/row03/1.jpg",
-      "/images/fan-arts/row03/2.jpg",
-      "/images/fan-arts/row03/3.jpg",
-      "/images/fan-arts/row03/4.jpg",
-      "/images/fan-arts/row03/5.jpg",
-      "/images/fan-arts/row03/6.jpg",
-      "/images/fan-arts/row03/7.jpg",
-      "/images/fan-arts/row03/8.webp",
-    ],
-  };
-
-  const nextImage = (row: "row01" | "row02" | "row03") => {
-    setIndices((prev) => ({
-      ...prev,
-      [row]: prev[row] === ImgDir[row].length - 1 ? 0 : prev[row] + 1,
-    }));
-  };
-
-  const prevImage = (row: "row01" | "row02" | "row03") => {
-    setIndices((prev) => ({
-      ...prev,
-      [row]: prev[row] === 0 ? ImgDir[row].length - 1 : prev[row] - 1,
-    }));
-  };
-
-  const handlers01 = useSwipeable({
-    onSwipedLeft: () => nextImage("row01"),
-    onSwipedRight: () => prevImage("row01"),
-    preventScrollOnSwipe: true,
-    trackMouse: true,
-  });
-
-  const handlers02 = useSwipeable({
-    onSwipedLeft: () => nextImage("row02"),
-    onSwipedRight: () => prevImage("row02"),
-    preventScrollOnSwipe: true,
-    trackMouse: true,
-  });
+  const [hasWindow, setHasWindow] = useState(false);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setHasWindow(true);
+    }
+  }, []);
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <span className={styles.title}>우리의_추억들 #1</span>
-        <span className={styles.subtitle}>아이리 칸나의 사진관</span>
+        <span className={styles.title}>우리의_추억들 #2</span>
+        <span className={styles.subtitle}>아이리 칸나의 음악관</span>
         <p className={styles.divider}>line</p>
         <span className={styles.description}>
-          이때까지 우리의 추억들을 모아둔 사진관이에요!
+          칸나의 발걸음이 담겨있는 음악관이에요!
         </span>
         <span className={styles.subdescription}>
-          다양한 상황들의 그림을 보며 우리의 추억들을 회상해보아요
+          그동안 칸나와 함께 걸어왔던 길을 같이 걸어보아요!
         </span>
       </div>
-      <div className={styles.imagesGrid}>
-        <div className={styles.rowContainer}>
-          <button
-            className={styles.navButton}
-            onClick={() => prevImage("row01")}
-            aria-label="Previous image"
-          >
-            &#10094;
-          </button>
-          <div {...handlers01} className={styles.imageContainer}>
-            <ZoomableImage
-              width={664}
-              height={500}
-              src={formatUrl(ImgDir.row01[indices.row01])}
-              alt={`row01 image ${indices.row01 + 1}`}
-              className={styles.image}
-            />
-          </div>
-          <button
-            className={styles.navButton}
-            onClick={() => nextImage("row01")}
-            aria-label="Next image"
-          >
-            &#10095;
-          </button>
-        </div>
+      <div className={styles.content}>
+        {Object.entries(musicList).map(([sectionKey, items]) => (
+          <div key={sectionKey} className={styles.musicRow}>
+            {items.map((item, index) => (
+              <div key={`${sectionKey}-${index}`} className={styles.musicItem}>
+                <h3>{Object.keys(item)[0]}</h3>
 
-        <div className={styles.rowContainer}>
-          <button
-            className={styles.navButton}
-            onClick={() => prevImage("row02")}
-            aria-label="Previous image"
-          >
-            &#10094;
-          </button>
-          <div {...handlers02} className={styles.imageContainer}>
-            <ZoomableImage
-              width={664}
-              height={500}
-              src={formatUrl(ImgDir.row02[indices.row02])}
-              alt={`row02 image ${indices.row02 + 1}`}
-              className={styles.image}
-            />
+                <div className={styles.video}>
+                  {hasWindow && (
+                    <ReactPlayer
+                      url={`https://youtu.be/${Object.values(item)[0]}`}
+                      width="100%"
+                      height="100%"
+                      light={`https://i.ytimg.com/vi/${
+                        Object.values(item)[0]
+                      }/sddefault.jpg`}
+                    />
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
-          <button
-            className={styles.navButton}
-            onClick={() => nextImage("row02")}
-            aria-label="Next image"
-          >
-            &#10095;
-          </button>
-        </div>
-
-        <div className={styles.galleryContainer}>
-          {ImgDir.row03.map((imgSrc, index) => (
-            <div key={index} className={styles.galleryItem}>
-              <ZoomableImage
-                width={664}
-                height={500}
-                src={formatUrl(imgSrc)}
-                alt={`row03 image ${index + 1}`}
-                className={styles.galleryImage}
-              />
-            </div>
-          ))}
-        </div>
+        ))}
       </div>
     </div>
   );

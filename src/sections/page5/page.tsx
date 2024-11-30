@@ -1,49 +1,160 @@
-import { nanumMyeongjo } from "@/modules/styles/fonts";
+"use client";
+import { useState } from "react";
+import { useSwipeable } from "react-swipeable";
+
+import ZoomableImage from "@/modules/zoom/zoomableImage";
+import formatUrl from "@/modules/cdn/formatUrl";
 
 import styles from "./styles.module.css";
 
 export default function Page5() {
+  const [indices, setIndices] = useState({
+    row01: 0,
+    row02: 0,
+    row03: 0,
+  });
+
+  const ImgDir = {
+    row01: [
+      "/images/fan-arts/row01/1.jpg",
+      "/images/fan-arts/row01/2.jpg",
+      "/images/fan-arts/row01/3.jpg",
+      "/images/fan-arts/row01/4.jpg",
+      "/images/fan-arts/row01/5.jpg",
+      "/images/fan-arts/row01/6.jpg",
+      "/images/fan-arts/row01/7.jpg",
+      "/images/fan-arts/row01/8.jpg",
+    ],
+    row02: [
+      "/images/fan-arts/row02/1.png",
+      "/images/fan-arts/row02/2.png",
+      "/images/fan-arts/row02/3.png",
+      "/images/fan-arts/row02/4.jpg",
+      "/images/fan-arts/row02/5.jpg",
+      "/images/fan-arts/row02/6.jpg",
+      "/images/fan-arts/row02/7.jpg",
+      "/images/fan-arts/row02/8.jpg",
+    ],
+    row03: [
+      "/images/fan-arts/row03/1.jpg",
+      "/images/fan-arts/row03/2.jpg",
+      "/images/fan-arts/row03/3.jpg",
+      "/images/fan-arts/row03/4.jpg",
+      "/images/fan-arts/row03/5.jpg",
+      "/images/fan-arts/row03/6.jpg",
+      "/images/fan-arts/row03/7.jpg",
+      "/images/fan-arts/row03/8.webp",
+    ],
+  };
+
+  const nextImage = (row: "row01" | "row02" | "row03") => {
+    setIndices((prev) => ({
+      ...prev,
+      [row]: prev[row] === ImgDir[row].length - 1 ? 0 : prev[row] + 1,
+    }));
+  };
+
+  const prevImage = (row: "row01" | "row02" | "row03") => {
+    setIndices((prev) => ({
+      ...prev,
+      [row]: prev[row] === 0 ? ImgDir[row].length - 1 : prev[row] - 1,
+    }));
+  };
+
+  const handlers01 = useSwipeable({
+    onSwipedLeft: () => nextImage("row01"),
+    onSwipedRight: () => prevImage("row01"),
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
+
+  const handlers02 = useSwipeable({
+    onSwipedLeft: () => nextImage("row02"),
+    onSwipedRight: () => prevImage("row02"),
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
+
   return (
-    <div className={styles.letter}>
-      <section className={`${styles.letter__basic} ${nanumMyeongjo.className}`}>
-        <p className={styles.letter__text}>
-          누군가에게 꿈이 되고 싶었던, 항상 높은 곳에서 빛나길 바랐던 소녀는
-          말해왔습니다.
-        </p>
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <span className={styles.title}>우리의_추억들 #1</span>
+        <span className={styles.subtitle}>아이리 칸나의 사진관</span>
+        <p className={styles.divider}>line</p>
+        <span className={styles.description}>
+          이때까지 우리의 추억들을 모아둔 사진관이에요!
+        </span>
+        <span className={styles.subdescription}>
+          다양한 상황들의 그림을 보며 우리의 추억들을 회상해보아요
+        </span>
+      </div>
+      <div className={styles.imagesGrid}>
+        <div className={styles.rowContainer}>
+          <button
+            className={styles.navButton}
+            onClick={() => prevImage("row01")}
+            aria-label="Previous image"
+          >
+            &#10094;
+          </button>
+          <div {...handlers01} className={styles.imageContainer}>
+            <ZoomableImage
+              width={664}
+              height={500}
+              src={formatUrl(ImgDir.row01[indices.row01])}
+              alt={`row01 image ${indices.row01 + 1}`}
+              className={styles.image}
+            />
+          </div>
+          <button
+            className={styles.navButton}
+            onClick={() => nextImage("row01")}
+            aria-label="Next image"
+          >
+            &#10095;
+          </button>
+        </div>
 
-        <p className={`${styles.letter__text} ${styles.letter__highlight}`}>
-          &quot;그야 나는 별이니까&quot;
-        </p>
+        <div className={styles.rowContainer}>
+          <button
+            className={styles.navButton}
+            onClick={() => prevImage("row02")}
+            aria-label="Previous image"
+          >
+            &#10094;
+          </button>
+          <div {...handlers02} className={styles.imageContainer}>
+            <ZoomableImage
+              width={664}
+              height={500}
+              src={formatUrl(ImgDir.row02[indices.row02])}
+              alt={`row02 image ${indices.row02 + 1}`}
+              className={styles.image}
+            />
+          </div>
+          <button
+            className={styles.navButton}
+            onClick={() => nextImage("row02")}
+            aria-label="Next image"
+          >
+            &#10095;
+          </button>
+        </div>
 
-        <p className={styles.letter__text}>
-          가장 빛나는 별이 되기 위해 매번 죽을 힘을 다해 노래하던 소녀는
-          행복했습니다.
-          <br />
-          소녀는 항상 빛날 수 있는 것만 같았습니다.
-          <br />
-          하지만, 그녀의 빛이 커질수록 그림자도 커져만 갔습니다.
-          <br />
-          언제나 위를 보고 달리던 그녀는 수차례 넘어졌고, 때로는 포기하고 싶기도
-          했습니다.
-        </p>
-
-        <p className={styles.letter__text}>
-          그렇게 그림자 속에서 처음으로 위가 아닌 주변을 둘러보았을 때, 그녀는
-          깨달았습니다.
-          <br />
-          이미 주변에는 수많은 별들이 함께 빛나고 있다는 것을.
-          <br />
-          별은 서로 속에서, 서로를 비추어 줄 때 가장 아름답게 빛난다는 것을요.
-        </p>
-
-        <p className={styles.letter__text}>
-          이제 마지막 무대를 앞둔, 가장 아름답게 빛나는 별이 우리에게 말합니다.
-        </p>
-
-        <p className={`${styles.letter__text} ${styles.letter__highlight}`}>
-          &quot;우린 모두 별이니까&quot;
-        </p>
-      </section>
+        <div className={styles.galleryContainer}>
+          {ImgDir.row03.map((imgSrc, index) => (
+            <div key={index} className={styles.galleryItem}>
+              <ZoomableImage
+                width={664}
+                height={500}
+                src={formatUrl(imgSrc)}
+                alt={`row03 image ${index + 1}`}
+                className={styles.galleryImage}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

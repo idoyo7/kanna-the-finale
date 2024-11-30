@@ -1,11 +1,21 @@
 .container {
-  width: 100dvw;
-  height: 100dvh;
+  width: 100%;
+  /* height: calc(100dvh - 80px); */
+  height: 100vh;
   position: relative;
+
+  padding: 0 120px;
+  gap: 44px;
 
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
+}
+
+.wrap {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -23,49 +33,62 @@
   filter: brightness(120%) contrast(120%);
 }
 
-.info__wrap {
+.logo {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 443px;
+}
+
+.left,
+.center,
+.right {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 24px;
+}
 
+.left,
+.right {
+  gap: 36px;
+}
+
+.center {
+  gap: 42px;
+  flex-direction: column;
+}
+
+.left__bar,
+.right__bar {
+  width: 53px;
+  height: 1px;
+
+  background: white;
+}
+
+.bottom__bar {
+  height: 106px;
+  width: 1px;
+
+  background: white;
+}
+
+.left__content,
+.right__content {
   color: white;
-}
-
-.countdown__day {
-  align-self: flex-start;
-
-  font-size: 60px;
-  letter-spacing: -3px;
-  line-height: 100%;
-}
-
-.countdown__time {
-  margin-bottom: 25px;
-
-  font-size: 240px;
-  letter-spacing: -12px;
-  line-height: 100%;
-}
-
-.title {
-  font-size: 29px;
-  letter-spacing: 8.5px;
-  font-weight: 600;
-}
-
-.sub {
-  font-size: 18px;
-  letter-spacing: -0.5px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 4.5px;
 }
 
 /* CTA버튼 */
 .ctas_group {
   display: flex;
   gap: 20px;
-  align-self: center;
+  justify-content: center;
+
+  margin-left: 60px;
 }
 
 .cta {
@@ -84,7 +107,6 @@
   text-align: center;
 
   line-height: 1.4;
-  margin-top: 42px;
   padding: 10px 16px 10px 20px;
   letter-spacing: -0.006em;
   color: #f0f0f0;
@@ -110,12 +132,21 @@
 }
 
 @media (max-width: 768px) {
-  .countdown__day {
-    font-size: 40px;
-    letter-spacing: -3px;
+  .container {
+    padding: 0;
+    justify-content: center;
   }
-  .countdown__time {
-    font-size: 80px;
-    letter-spacing: 0;
+
+  .left,
+  .right {
+    display: none;
+  }
+
+  .center {
+    gap: 24px;
+  }
+
+  .logo {
+    width: 300px;
   }
 }

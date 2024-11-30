@@ -1,24 +1,183 @@
 .container {
-  padding-top: 15.8vh;
-
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 18.5vh;
+  justify-content: center;
+  width: 100%;
+  padding: 12.5vh;
 }
 
-.image {
-  width: 65vw;
+.title {
+  font-size: 2.5rem;
+}
+
+.giftboxContainer {
+  width: 45vw;
+  margin-left: 12.5vw;
+}
+
+.giftbox {
+  display: flex;
+  cursor: pointer;
+}
+
+.giftboxImage {
+  width: 22.5vh;
+  height: 22.5vh;
+
+  margin: 2.5%;
+}
+
+.giftboxTitle {
+  margin: 2.5%;
+  font-size: 1.5rem;
+}
+
+.contentWrapper {
+  position: relative;
+  width: 80%;
+  height: 100%;
+  color: black;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  padding: 2vh 0 4vh 0;
+  box-sizing: border-box;
+}
+
+.contentTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.contentSubTitle,
+.contents {
+  font-size: 0.9rem;
+}
+
+.contentImage {
+  width: 40vw;
   height: auto;
+  align-self: center;
+}
+
+.downloadBtn {
+  box-sizing: border-box;
+  width: fit-content;
+  padding: 0.52vw 0.78vw;
+  border: 1px solid gray;
+  border-radius: 1.56vw;
+}
+
+.marginBottom05 {
+  margin-bottom: 1vh;
+}
+
+.marginBottom1 {
+  margin-bottom: 1.5vh;
+}
+
+.marginBottom2 {
+  margin-bottom: 3vh;
+}
+
+.marginBottom3 {
+  margin-bottom: 4.5vh;
+}
+
+.paddingBottom2 {
+  box-sizing: border-box;
+  padding-top: 1vh;
+  padding-bottom: 3vh;
+}
+
+.xMark {
+  position: absolute;
+  top: 0;
+  right: -6.25vw;
+  width: 1.56vw;
+  height: 1.56vw;
+  background: transparent;
+}
+
+.xMark::before,
+.xMark::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 0.1vw;
+  background-color: black;
+  transform-origin: center;
+}
+
+.xMark::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.xMark::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 @media (max-width: 768px) {
   .container {
-    padding: 5vh 0;
-    gap: 5vh;
+    align-items: center;
+    flex-direction: column;
+
+    padding: 6vh 5vw 10vh;
   }
 
-  .image {
+  .title {
+    font-size: 1.5rem;
+    width: 95%;
+
+    margin-bottom: -2vh;
+  }
+
+  .giftboxContainer {
     width: 85vw;
+    margin-left: 0;
+  }
+
+  .giftbox {
+    flex-direction: column;
+    align-items: center;
+
+    margin: 6vh 0;
+  }
+
+  .giftboxImage {
+    width: 100%;
+    height: 100%;
+  }
+
+  .giftboxTitle {
+    margin: 1vh 0;
+    font-size: 1rem;
+  }
+
+  .contentWrapper {
+    width: 100%;
+    padding: 4vh 0;
+  }
+
+  .contentImage {
+    width: 80vw;
+  }
+
+  .downloadBtn {
+    padding: 0.5rem 0.75rem;
+    border-radius: 1.5rem;
+  }
+
+  .xMark {
+    right: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .xMark::before,
+  .xMark::after {
+    width: 100%;
+    height: 0.1rem;
   }
 }

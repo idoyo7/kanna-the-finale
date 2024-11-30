@@ -2,7 +2,6 @@ import { GoogleTagManager } from "@next/third-parties/google";
 
 import Header from "@/modules/header/header";
 import formatUrl from "@/modules/cdn/formatUrl";
-import { notoSansKr } from "@/modules/styles/fonts";
 
 import "@unocss/reset/tailwind.css";
 import "@/modules/styles/global.css";
@@ -51,11 +50,16 @@ export default function RootLayout({
           name="naver-site-verification"
           content="0a40650cea245e2c79c8feacc39ac962b2ab012d"
         />
+
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+        />
       </head>
 
       <GoogleTagManager gtmId="GTM-5QN9C4SW" />
 
-      <body className={notoSansKr.className}>
+      <body>
         <Header />
         {children}
       </body>

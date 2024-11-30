@@ -3,10 +3,8 @@ import Head from "next/head";
 
 import styles from "@/modules/styles/root.module.css";
 import Section from "@/modules/section/section";
-import { concertPlaying } from "@/modules/time/calcTime";
 
 import Page1 from "@/sections/page1/page";
-import Page1_1 from "@/sections/page1_1/page";
 import Page2 from "@/sections/page2/page";
 import Page3 from "@/sections/page3/page";
 import Page4 from "@/sections/page4/page";
@@ -22,11 +20,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   const sections = [
-    {
-      id: "hero",
-      component: !concertPlaying() ? <Page1 /> : <Page1_1 />,
-      full: true,
-    },
+    { id: "hero", component: <Page1 />, full: true },
     { id: "banner", component: <Page2 /> },
     { id: "pv", component: <Page3 />, full: true },
     { id: "story", component: <Page4 /> },

@@ -51,6 +51,7 @@ const musicList = {
   section9: [
     { "Cookie": "PkDX2oGCCxM" },
     { "최종화 Live Clip": "zNYEbJr1xj4" },
+    { "점묘의 노래 (w. 아야츠노 유니)": "QDIdN_eBvl0" },
   ],
 };
 

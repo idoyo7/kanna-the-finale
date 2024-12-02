@@ -72,7 +72,7 @@
 
 .ctas_subgroup {
   display: flex;
-  gap: 22px;
+  gap: 32px;
   align-self: center;
 }
 
@@ -127,6 +127,7 @@
   }
 
   .ctas_group {
+    gap: 22px;
     flex-direction: column;
   }
 }

@@ -87,8 +87,16 @@
 /* CTA버튼 */
 .ctas_group {
   display: flex;
-  gap: 20px;
-  justify-content: center;
+  gap: 32px;
+  align-self: center;
+
+  margin-top: 42px;
+}
+
+.ctas_subgroup {
+  display: flex;
+  gap: 22px;
+  align-self: center;
 }
 
 .cta {
@@ -148,5 +156,9 @@
 
   .logo {
     width: 300px;
+  }
+
+  .ctas_group {
+    flex-direction: column;
   }
 }

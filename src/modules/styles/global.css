@@ -5,3 +5,7 @@ body {
   font-family: "Pretendard Variable", "Noto Sans KR", sans-serif;
   scroll-behavior: smooth;
 }
+
+.ReactModal__Overlay {
+  z-index: 1202 !important;
+}

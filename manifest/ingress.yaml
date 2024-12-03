@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kanna-ingress
+  namespace: kanna
+  annotations:
+    cert-manager.io/cluster-issuer: "mont-prod"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: kanna.airi.life
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: kanna-service
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - kanna.airi.life
+    secretName: kan-tls

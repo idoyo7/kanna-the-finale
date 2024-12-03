@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kanna
+  namespace: kanna
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kanna
+  template:
+    metadata:
+      labels:
+        app: kanna
+    spec:
+      containers:
+      - name: kanna
+        image: art.montkim.com/public/kanna:0.5
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NODE_ENV
+          value: "production"
+      nodeSelector:
+        kubernetes.io/hostname: worker02

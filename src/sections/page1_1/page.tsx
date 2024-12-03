@@ -106,7 +106,7 @@ export default function Page1_1() {
                 }
               }}
             >
-              PV 보러가기{" "}
+              콘서트 보러가기{" "}
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -158,7 +158,7 @@ export default function Page1_1() {
                 );
               }}
             >
-              콘서트 보러가기{" "}
+              칸나 유튜브 보러가기{" "}
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -181,3 +181,5 @@ export default function Page1_1() {
     </div>
   );
 }
+
+

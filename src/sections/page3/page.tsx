@@ -2,29 +2,34 @@
 
 import { useEffect, useState } from "react";
 import { sendGTMEvent } from "@next/third-parties/google";
-
 import ReactPlayer from "react-player/lazy";
-// import ReactPlayer from "react-player/youtube";
 
 import styles from "./styles.module.css";
 
 export default function Page3() {
   const [hasWindow, setHasWindow] = useState(false);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       setHasWindow(true);
     }
   }, []);
 
+  // HLS 파일 경로
+  const m3u8Url =
+    "https://apimin.montkim.com/cdn/kanna-the-finale-files-main/concert/output.m3u8";
+
   return (
     <div>
       <div className={styles.video}>
         {hasWindow && (
           <ReactPlayer
-            url="https://youtu.be/eNbB4MWbZAI"
+            url={m3u8Url} // .m3u8 경로
             width="100%"
             height="100%"
-            light="https://i.ytimg.com/vi/eNbB4MWbZAI/maxresdefault.jpg"
+            playing={false}
+            controls
+            light="https://apimin.montkim.com/cdn/kanna-the-finale-files-main/concert/maxresdefault.jpg"
             onClick={() => sendGTMEvent({ event: "playPv" })}
           />
         )}
@@ -32,3 +37,5 @@ export default function Page3() {
     </div>
   );
 }
+
+

@@ -4,7 +4,7 @@
 export const TARGET_DATE = new Date("2024-12-02T20:00:00+09:00");
 
 // 하드코딩된 다운로드 기한 (2024-12-03 00:00:00 KST)
-export const DOWNLOAD_DEADLINE = new Date("2024-12-03T00:00:00+09:00");
+export const DOWNLOAD_DEADLINE = new Date("2026-12-03T00:00:00+09:00");
 
 export const concertPlaying = () => {
   const now = new Date();
@@ -19,3 +19,4 @@ export const canDownload = () => {
 
   return timeDiff > 1;
 };
+

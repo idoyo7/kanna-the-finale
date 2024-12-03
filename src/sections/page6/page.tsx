@@ -5,52 +5,55 @@ import ReactPlayer from "react-player/lazy";
 
 import styles from "./styles.module.css";
 
-// 각 폴더별 .m3u8 경로를 매핑
+// 공통 CDN 경로
+const baseUrl = "https://apimin.montkim.com/cdn/kanna-the-finale-files-main/videos/";
+
+// 각 폴더별 경로를 매핑 (output.m3u8 제거)
 const musicList = {
   section1: [
-    { "1st single ADDICTION": "cdn/kanna-the-finale-files-main/Addiction/output.m3u8" },
-    { "2nd single 최종화": "cdn/kanna-the-finale-files-main/Finale/output.m3u8" },
-    { "3rd single 푸른 보석과 어린 용": "cdn/kanna-the-finale-files-main/New_World/output.m3u8" },
+    { "1st single ADDICTION": "Addiction" },
+    { "2nd single 최종화": "Finale" },
+    { "3rd single 푸른 보석과 어린 용": "New_World" },
   ],
   section2: [
-    { "나는 최강": "cdn/kanna-the-finale-files-main/Saikyo/output.m3u8" },
-    { "좋아하니까": "cdn/kanna-the-finale-files-main/Love_Me/output.m3u8" },
-    { "신시대": "cdn/kanna-the-finale-files-main/Shikisai/output.m3u8" },
+    { "나는 최강": "Saikyo" },
+    { "좋아하니까": "Love_Me" },
+    { "신시대": "Shikisai" },
   ],
   section3: [
-    { "삼문소설": "cdn/kanna-the-finale-files-main/Sanmon_Shosetsu/output.m3u8" },
-    { "스즈메": "cdn/kanna-the-finale-files-main/Suzume/output.m3u8" },
-    { "에러": "cdn/kanna-the-finale-files-main/ERROR/output.m3u8" },
+    { "삼문소설": "Sanmon_Shosetsu" },
+    { "스즈메": "Suzume" },
+    { "에러": "ERROR" },
   ],
   section4: [
-    { "아이돌": "cdn/kanna-the-finale-files-main/IDOL/output.m3u8" },
-    { "색채": "cdn/kanna-the-finale-files-main/Shikisai/output.m3u8" },
-    { "잠이 드는 거리": "cdn/kanna-the-finale-files-main/LADY/output.m3u8" },
+    { "아이돌": "IDOL" },
+    { "색채": "Shikisai" },
+    { "잠이 드는 거리": "LADY" },
   ],
   section5: [
-    { "LADY": "cdn/kanna-the-finale-files-main/LADY/output.m3u8" },
-    { "KICK BACK": "cdn/kanna-the-finale-files-main/KICKBACK/output.m3u8" },
-    { "지구본": "cdn/kanna-the-finale-files-main/Chikyu/output.m3u8" },
+    { "LADY": "LADY" },
+    { "KICK BACK": "KICKBACK" },
+    { "지구본": "Chikyu" },
   ],
   section6: [
-    { "사랑해줘 사랑해줘 사랑해줘": "cdn/kanna-the-finale-files-main/Love_Wins/output.m3u8" },
-    { "감 그레이": "cdn/kanna-the-finale-files-main/Frozen_Eclipse/output.m3u8" },
-    { "괴수의 꽃노래": "cdn/kanna-the-finale-files-main/Kaiju_Song/output.m3u8" },
+    { "사랑해줘 사랑해줘 사랑해줘": "Love_Wins" },
+    { "감 그레이": "Frozen_Eclipse" },
+    { "괴수의 꽃노래": "Kaiju_Song" },
   ],
   section7: [
-    { "최종화 (Acoustic Ver.)": "cdn/kanna-the-finale-files-main/Finale(Acoustic)/output.m3u8" },
-    { "애타는 한 가슴을 달랠 수 있다면": "cdn/kanna-the-finale-files-main/Dragon/output.m3u8" },
-    { "역광": "cdn/kanna-the-finale-files-main/Cannot_Stop/output.m3u8" },
+    { "최종화 (Acoustic Ver.)": "Finale(Acoustic)" },
+    { "애타는 한 가슴을 달랠 수 있다면": "Dragon" },
+    { "역광": "Cannot_Stop" },
   ],
   section8: [
-    { "Frozen Eclipse": "cdn/kanna-the-finale-files-main/Frozen_Eclipse/output.m3u8" },
-    { "Love wins all (IU)": "cdn/kanna-the-finale-files-main/Love_Wins/output.m3u8" },
-    { "공주열차": "cdn/kanna-the-finale-files-main/Princess_Train/output.m3u8" },
+    { "Frozen Eclipse": "Frozen_Eclipse" },
+    { "Love wins all (IU)": "Love_Wins" },
+    { "공주열차": "Princess_Train" },
   ],
   section9: [
-    { "Cookie": "cdn/kanna-the-finale-files-main/Cookie/output.m3u8" },
-    { "최종화 Live Clip": "cdn/kanna-the-finale-files-main/Finale(Live)/output.m3u8" },
-    { "점묘의 노래 (w. 아야츠노 유니)": "cdn/kanna-the-finale-files-main/SUKI/output.m3u8" },
+    { "Cookie": "Cookie" },
+    { "최종화 Live Clip": "Finale(Live)" },
+    { "점묘의 노래 (w. 아야츠노 유니)": "SUKI" },
   ],
 };
 
@@ -85,14 +88,11 @@ export default function Page6() {
                 <div className={styles.video}>
                   {hasWindow && (
                     <ReactPlayer
-                      url={`https://apimin.montkim.com/${Object.values(item)[0]}`}
+                      url={`${baseUrl}${Object.values(item)[0]}/output.m3u8`}
                       width="100%"
                       height="100%"
                       controls
-                      light={`https://apimin.montkim.com/${Object.values(item)[0].replace(
-                        "output.m3u8",
-                        "thumbnail.jpg"
-                      )}`}
+                      light={`${baseUrl}${Object.values(item)[0]}/thumbnail.jpg`}
                     />
                   )}
                 </div>

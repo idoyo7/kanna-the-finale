@@ -110,7 +110,7 @@ export default function Page1_2() {
               );
             }}
           >
-            칸나 유튜브 보러가기{" "}
+            칸튜브 보러가기{" "}
             <span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -8,52 +8,52 @@ import styles from "./styles.module.css";
 // 공통 CDN 경로
 const baseUrl = "https://apimin.montkim.com/cdn/kanna-the-finale-files-main/videos/";
 
-// 각 폴더별 경로를 매핑 (output.m3u8 제거)
+// 유튜브 고유 식별자를 유지하는 음악 리스트
 const musicList = {
   section1: [
-    { "1st single ADDICTION": "Addiction" },
-    { "2nd single 최종화": "Finale" },
-    { "3rd single 푸른 보석과 어린 용": "New_World" },
+    { "1st single ADDICTION": "kPdB6iGYBBc" },
+    { "2nd single 최종화": "ajDAmJYPQ-U" },
+    { "3rd single 푸른 보석과 어린 용": "gq3gzxPBOK0" },
   ],
   section2: [
-    { "나는 최강": "Saikyo" },
-    { "좋아하니까": "Love_Me" },
-    { "신시대": "Shikisai" },
+    { "나는 최강": "MhtScZvcsiQ" },
+    { "좋아하니까": "futqIdI0rOY" },
+    { "신시대": "_nYgmgYMdW0" },
   ],
   section3: [
-    { "삼문소설": "Sanmon_Shosetsu" },
-    { "스즈메": "Suzume" },
-    { "에러": "ERROR" },
+    { 삼문소설: "3PxbqWrDCz4" },
+    { 스즈메: "v8MjiqzLKTs" },
+    { 에러: "eNlXPUp9WBw" },
   ],
   section4: [
-    { "아이돌": "IDOL" },
-    { "색채": "Shikisai" },
-    { "잠이 드는 거리": "LADY" },
+    { 아이돌: "4_Aknw7fm_8" },
+    { 색채: "AsoPg-h-644" },
+    { "잠이 드는 거리": "nYgMMdYDGak" },
   ],
   section5: [
-    { "LADY": "LADY" },
-    { "KICK BACK": "KICKBACK" },
-    { "지구본": "Chikyu" },
+    { LADY: "GdH0TsPznUs" },
+    { "KICK BACK": "Ei1WobzwsVI" },
+    { 지구본: "8VdlQZQ46D4" },
   ],
   section6: [
-    { "사랑해줘 사랑해줘 사랑해줘": "Love_Wins" },
-    { "감 그레이": "Frozen_Eclipse" },
-    { "괴수의 꽃노래": "Kaiju_Song" },
+    { "사랑해줘 사랑해줘 사랑해줘": "OgwD6f_tdIY" },
+    { "감 그레이": "eLJENPbBe8A" },
+    { "괴수의 꽃노래": "of5l0st1kA8" },
   ],
   section7: [
-    { "최종화 (Acoustic Ver.)": "Finale(Acoustic)" },
-    { "애타는 한 가슴을 달랠 수 있다면": "Dragon" },
-    { "역광": "Cannot_Stop" },
+    { "최종화 (Acoustic Ver.)": "iCCqSFvz9kM" },
+    { "애타는 한 가슴을 달랠 수 있다면": "IRvrDhVYXHQ" },
+    { 역광: "q-QjjmJjU_8" },
   ],
   section8: [
-    { "Frozen Eclipse": "Frozen_Eclipse" },
-    { "Love wins all (IU)": "Love_Wins" },
-    { "공주열차": "Princess_Train" },
+    { "Frozen Eclipse": "RbQv87f4mvg" },
+    { "Love wins all (IU)": "Nr3AhMP1lVg" },
+    { 공주열차: "6A04OifrfR0" },
   ],
   section9: [
-    { "Cookie": "Cookie" },
-    { "최종화 Live Clip": "Finale(Live)" },
-    { "점묘의 노래 (w. 아야츠노 유니)": "SUKI" },
+    { "Cookie": "PkDX2oGCCxM" },
+    { "최종화 Live Clip": "zNYEbJr1xj4" },
+    { "점묘의 노래 (w. 아야츠노 유니)": "QDIdN_eBvl0" },
   ],
 };
 

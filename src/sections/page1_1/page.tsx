@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import formatUrl from "@/modules/cdn/formatUrl";
-import { TARGET_DATE, concertPlaying } from "@/modules/time/calcTime";
+import { TARGET_DATE } from "@/modules/time/calcTime";
 
 import { notoSansKr } from "@/modules/styles/fonts";
 import styles from "./styles.module.css";
@@ -19,21 +19,30 @@ export default function Page1_1() {
     seconds: 0,
   });
 
-  // 공연이 종료되었는지 확인
-  const [isPast, setIsPast] = useState(concertPlaying());
+  // 공연 종료 여부 상태 관리
+  const [isPast, setIsPast] = useState(false);
 
-  // 클라이언트에서 남은 시간 계산
+  // 타이머 업데이트 로직
   useEffect(() => {
     const calculateTimeLeft = () => {
       const now = new Date();
-      const timeDiff = Math.abs(now.getTime() - TARGET_DATE.getTime());
+      const timeDiff = TARGET_DATE.getTime() - now.getTime();
 
-      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      if (timeDiff <= 0) {
+        // 공연이 끝난 경우
+        setIsPast(true);
+      } else {
+        // 공연 전
+        setIsPast(false);
+      }
+
+      const absoluteDiff = Math.abs(timeDiff);
+      const days = Math.floor(absoluteDiff / (1000 * 60 * 60 * 24));
       const hours = Math.floor(
-        (timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        (absoluteDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
       );
-      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+      const minutes = Math.floor((absoluteDiff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((absoluteDiff % (1000 * 60)) / 1000);
 
       setTimer({
         days,
@@ -41,9 +50,6 @@ export default function Page1_1() {
         minutes,
         seconds,
       });
-
-      // 공연이 종료되었는지 업데이트
-      setIsPast(concertPlaying());
     };
 
     calculateTimeLeft(); // 초기 계산

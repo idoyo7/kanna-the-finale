@@ -3,7 +3,7 @@ name: Docker Image Build & Update Manifest
 on:
   push:
     branches:
-      - main
+      - master
 
 permissions:
   contents: write

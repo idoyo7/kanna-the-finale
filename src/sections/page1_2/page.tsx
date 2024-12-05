@@ -105,12 +105,11 @@ export default function Page1_2() {
           <button
             className={styles.cta}
             onClick={() => {
-              window.open(
-                "https://www.youtube.com/@airikannach"
-              );
+              // 로컬 HTML 파일 열기
+              window.open("/kanna-tube.html", "_blank");
             }}
           >
-            칸튜브 보러가기{" "}
+            칸나 홈페이지{" "}
             <span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -132,5 +131,4 @@ export default function Page1_2() {
     </div>
   );
 }
-
 

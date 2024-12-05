@@ -106,7 +106,7 @@ export default function Page1_2() {
             className={styles.cta}
             onClick={() => {
               // 로컬 HTML 파일 열기
-              window.open("/kanna-tube.html", "_blank");
+              window.open("/kanna.html", "_blank");
             }}
           >
             칸나 홈페이지{" "}

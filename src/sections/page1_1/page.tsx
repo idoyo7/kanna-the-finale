@@ -17,6 +17,7 @@ export default function Page1_1() {
     hours: 0,
     minutes: 0,
     seconds: 0,
+    isPast: false, // 공연이 지났는지 여부
   });
 
   // 클라이언트에서 남은 시간 계산
@@ -25,24 +26,22 @@ export default function Page1_1() {
       const now = new Date();
       const timeDiff = TARGET_DATE.getTime() - now.getTime();
 
-      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+      const isPast = timeDiff < 0;
+      const absoluteDiff = Math.abs(timeDiff);
 
-      // 콘서트 시간이 되면 화면을 새로고침 한다.
-      if (timeDiff <= 1) {
-        clearInterval(interval);
-        window.location.reload();
-      }
+      const days = Math.floor(absoluteDiff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (absoluteDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor((absoluteDiff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((absoluteDiff % (1000 * 60)) / 1000);
 
       setTimer({
         days,
         hours,
         minutes,
         seconds,
+        isPast,
       });
     };
 
@@ -85,7 +84,7 @@ export default function Page1_1() {
 
       <div className={styles.info__wrap}>
         <p className={styles.countdown__day}>
-          D-{timer.days > 0 ? timer.days : "DAY"}
+          {timer.isPast ? `D+${timer.days}` : `D-${timer.days > 0 ? timer.days : "DAY"}`}
         </p>
         <p className={`${styles.countdown__time} ${notoSansKr.className}`}>
           {`${timer.hours.toString().padStart(2, "0")}:${timer.minutes
@@ -93,7 +92,11 @@ export default function Page1_1() {
             .padStart(2, "0")}:${timer.seconds.toString().padStart(2, "0")}`}
         </p>
         <p className={`${styles.title} ${notoSansKr.className}`}>COMING SOON</p>
-        <p className={styles.sub}>마지막 별의 노래가 다가오는 날</p>
+        <p className={styles.sub}>
+          {timer.isPast
+            ? "공연이 끝났습니다. 여운을 함께 느껴보세요!"
+            : "마지막 별의 노래가 다가오는 날"}
+        </p>
 
         <div className={styles.ctas_group}>
           <div className={styles.ctas_subgroup}>
@@ -106,7 +109,7 @@ export default function Page1_1() {
                 }
               }}
             >
-              콘서트 보러가기{" "}
+              PV 보러가기{" "}
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -158,7 +161,7 @@ export default function Page1_1() {
                 );
               }}
             >
-              칸나 유튜브 보러가기{" "}
+              콘서트 보러가기{" "}
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -181,5 +184,4 @@ export default function Page1_1() {
     </div>
   );
 }
-
 

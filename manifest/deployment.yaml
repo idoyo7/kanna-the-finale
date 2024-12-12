@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: kanna
-        image: art.montkim.com/public/kanna:c1569e
+        image: art.montkim.com/public/kanna:76bd4c
         ports:
         - containerPort: 3000
         env:

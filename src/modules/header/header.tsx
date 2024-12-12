@@ -86,7 +86,7 @@ function Header() {
     { id: "hero", alternatives: ["hero"], label: "메인" },
     { id: "pv", alternatives: ["banner", "pv", "story"], label: "Concert" },
     { id: "history", alternatives: ["history", "history2"], label: "보석함" },
-    { id: "hipbanner", alternatives: ["hipbanner"], label: "플레이리스트" },
+    { id: "hiphop", alternatives: ["hiphop"], label: "플레이리스트" },
     {
       id: "post",
       alternatives: ["post", "giftbox", "share"],

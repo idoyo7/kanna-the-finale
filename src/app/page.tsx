@@ -27,7 +27,7 @@ export default function HomePage() {
     { id: "story", component: <Page4 /> },
     { id: "history", component: <Page5 />, full: true },
     { id: "history2", component: <Page6 /> },
-    { id: "hiphop", component: <Page10 /> }, // Added Page10 after Page6
+    { id: "hiphop", component: <Page10 />, full: true },
     { id: "post", component: <Page7 /> },
     { id: "giftbox", component: <Page8 />, full: true },
     { id: "share", component: <Page9 />, full: true },

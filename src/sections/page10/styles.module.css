@@ -1,108 +1,14 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem 2rem 4rem;
-  min-width: 100%;
-  background-color: black;
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 3.14rem;
-}
-
-.title {
-  display: block;
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: white;
-  margin-bottom: 0.5rem;
-}
-
-.subtitle {
-  display: block;
-  font-size: 2rem;
-  color: #999;
-  margin-bottom: 1rem;
-}
-
-.divider {
-  width: 50px;
-  height: 2px;
-  background-color: #777;
-  margin: 2rem auto;
-  text-indent: -9999px;
-}
-
-.description {
-  display: block;
-  font-size: 1.2rem;
-  color: #999;
-  margin-bottom: 0.5rem;
-}
-
-.subdescription {
-  display: block;
-  font-size: 1rem;
-  color: #777;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.musicRow {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.musicItem {
-  flex: 0 1 360px;
-  text-align: center;
-}
-
-.musicItem h3 {
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
-  color: #999;
-}
-
 .video {
-  width: 24dvw;
-  height: calc(24dvw * 9 / 16); /* 16:9 비율 유지 (24 * 9/16) */
+  width: 55dvw;
+  height: calc(55dvw * 9 / 16); /* 16:9 비율 유지 (55 * 9/16) */
 }
 
-/* 반응형 디자인 */
 @media (max-width: 768px) {
-  .container {
-    padding: 3.5rem 0;
-  }
+  .video {
+    width: 90dvw;
+    height: calc(90dvw * 9 / 16); /* 16:9 비율 유지 (90 * 9/16) */
 
-  .content {
-    width: 100%;
-    max-width: 340px;
-  }
-
-  .musicRow {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .musicItem {
-    flex: 0;
-
-    width: 100%;
-    max-width: 560px;
-  }
-
-  .video,
-  .video iframe {
-    width: 100%;
-    height: 215px;
+    margin: 45px 0;
   }
 }
+

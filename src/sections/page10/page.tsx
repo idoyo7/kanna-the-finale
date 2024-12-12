@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import ReactPlayer from "react-player/lazy";
 
 import styles from "./styles.module.css";
@@ -13,7 +13,8 @@ const hiphopVideo = {
   videoId: "0f3Wz3yztbY", // Replace with the actual video ID if necessary.
 };
 
-export default function HiphopPage() {
+
+export default function Page3() {
   const [hasWindow, setHasWindow] = useState(false);
 
   useEffect(() => {
@@ -21,24 +22,26 @@ export default function HiphopPage() {
       setHasWindow(true);
     }
   }, []);
+
+  // HLS 파일 경로
+  const m3u8Url =
+    "https://apimin.montkim.com/cdn/kanna-the-finale-files-main/concert/output.m3u8";
+
   return (
-    <div className={styles.container}>
-      <div className={styles.content}>
-        <div className={styles.musicItem}>
-          <h3>{hiphopVideo.title}</h3>
-          <div className={styles.video}>
-            {hasWindow && (
-              <ReactPlayer
-                url={`${baseUrl}${hiphopVideo.videoId}/output.m3u8`}
-                width="250%"
-                height="250%"
-                controls
-                light={`${baseUrl}${hiphopVideo.videoId}/thumbnail.jpg`}
-              />
-            )}
-          </div>
-        </div>
+    <div>
+      <div className={styles.video}>
+        {hasWindow && (
+          <ReactPlayer
+            url={`${baseUrl}${hiphopVideo.videoId}/output.m3u8`}
+            width="100%"
+            height="100%"
+            playing={false}
+            controls
+            light={`${baseUrl}${hiphopVideo.videoId}/thumbnail.jpg`}
+          />
+        )}
       </div>
     </div>
   );
 }
+

@@ -30,8 +30,8 @@ export default function HiphopPage() {
             {hasWindow && (
               <ReactPlayer
                 url={`${baseUrl}${hiphopVideo.videoId}/output.m3u8`}
-                width="100%"
-                height="100%"
+                width="250%"
+                height="250%"
                 controls
                 light={`${baseUrl}${hiphopVideo.videoId}/thumbnail.jpg`}
               />

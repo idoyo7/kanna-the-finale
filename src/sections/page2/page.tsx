@@ -5,12 +5,12 @@ export default function Page2() {
   return (
     <div className={styles.container}>
       <h1 className={`${styles.title} ${playfairDisplay.className}`}>
-        비늘이들 얼음🧊
+        The Finale
       </h1>
 
-      <h2 className={styles.subtitle}>𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭 🎸</h2>
+      <h2 className={styles.subtitle}>The Last Song of Stellar</h2>
       <h3 className={`${styles.description} ${nanumMyeongjo.className}`}>
-        나한테는 아이리 칸나도 힙합이야 
+        아이리 칸나의 마지막 콘서트
       </h3>
     </div>
   );

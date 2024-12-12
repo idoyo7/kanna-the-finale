@@ -9,7 +9,7 @@ import styles from "./styles.module.css";
 const baseUrl = "https://apimin.montkim.com/cdn/kanna-the-finale-files-main/videos/";
 
 const hiphopVideo = {
-  title: "HIPHOP - Our Legacy",
+  title: "나한테는 아이리 칸나도 힙합이야 𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭 🎸",
   videoId: "0f3Wz3yztbY", // Replace with the actual video ID if necessary.
 };
 
@@ -24,17 +24,6 @@ export default function HiphopPage() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <span className={styles.title}>HIPHOP</span>
-        <span className={styles.subtitle}>Our Legacy of Beats</span>
-        <p className={styles.divider}>line</p>
-        <span className={styles.description}>
-          This page is dedicated to the rhythm and energy of hiphop.
-        </span>
-        <span className={styles.subdescription}>
-          Join us as we explore the beats that define our journey.
-        </span>
-      </div>
       <div className={styles.content}>
         <div className={styles.musicItem}>
           <h3>{hiphopVideo.title}</h3>
@@ -43,7 +32,7 @@ export default function HiphopPage() {
               <ReactPlayer
                 url={`${baseUrl}${hiphopVideo.videoId}/output.m3u8`}
                 width="100%"
-                height="100%"
+                height="calc(100vh - 100px)" // Increased video size to occupy most of the viewport height
                 controls
                 light={`${baseUrl}${hiphopVideo.videoId}/thumbnail.jpg`}
               />
@@ -54,3 +43,4 @@ export default function HiphopPage() {
     </div>
   );
 }
+

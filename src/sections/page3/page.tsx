@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { sendGTMEvent } from "@next/third-parties/google";
 import ReactPlayer from "react-player/lazy";
 
 import styles from "./styles.module.css";
@@ -29,8 +28,7 @@ export default function Page3() {
             height="100%"
             playing={false}
             controls
-            light="https://apimin.montkim.com/cdn/kanna-the-finale-files-main/concert/maxresdefault.jpg"
-            onClick={() => sendGTMEvent({ event: "playPv" })}
+            light="https://apimin.montkim.com/cdn/kanna-the-finale-files-main/concert/thumbnail.jpg"
           />
         )}
       </div>

@@ -84,7 +84,7 @@ function Header() {
   // 메뉴 항목 데이터
   const navItems = [
     { id: "hero", alternatives: ["hero"], label: "메인" },
-    { id: "pv", alternatives: ["banner", "pv", "story"], label: "PV" },
+    { id: "pv", alternatives: ["banner", "pv", "story"], label: "Concert" },
     { id: "history", alternatives: ["history", "history2"], label: "보석함" },
     { id: "hipbanner", alternatives: ["hipbanner"], label: "플레이리스트" },
     {

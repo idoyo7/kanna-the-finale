@@ -10,6 +10,7 @@ import Page3 from "@/sections/page3/page";
 import Page4 from "@/sections/page4/page";
 import Page5 from "@/sections/page5/page";
 import Page6 from "@/sections/page6/page";
+import Page10 from "@/sections/page10/page"; // Added Page10 import
 import Page7 from "@/sections/page7/page";
 import Page8 from "@/sections/page8/page";
 import Page9 from "@/sections/page9/page";
@@ -26,6 +27,7 @@ export default function HomePage() {
     { id: "story", component: <Page4 /> },
     { id: "history", component: <Page5 />, full: true },
     { id: "history2", component: <Page6 /> },
+    { id: "hiphop", component: <Page10 /> }, // Added Page10 after Page6
     { id: "post", component: <Page7 /> },
     { id: "giftbox", component: <Page8 />, full: true },
     { id: "share", component: <Page9 />, full: true },
@@ -53,3 +55,4 @@ export default function HomePage() {
     </>
   );
 }
+

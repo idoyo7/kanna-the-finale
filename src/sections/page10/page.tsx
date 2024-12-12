@@ -21,7 +21,6 @@ export default function HiphopPage() {
       setHasWindow(true);
     }
   }, []);
-
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -32,7 +31,7 @@ export default function HiphopPage() {
               <ReactPlayer
                 url={`${baseUrl}${hiphopVideo.videoId}/output.m3u8`}
                 width="100%"
-                height="calc(100vh - 100px)" // Increased video size to occupy most of the viewport height
+                height="100%"
                 controls
                 light={`${baseUrl}${hiphopVideo.videoId}/thumbnail.jpg`}
               />
@@ -43,4 +42,3 @@ export default function HiphopPage() {
     </div>
   );
 }
-

@@ -23,4 +23,4 @@ spec:
         - name: NODE_ENV
           value: "production"
       nodeSelector:
-        kubernetes.io/hostname: worker02
+        montapp: enabled

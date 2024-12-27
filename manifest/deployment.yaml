@@ -5,7 +5,12 @@ metadata:
   namespace: kanna
 spec:
   replicas: 3
-  revisionHistoryLimit: 4
+  revisionHistoryLimit: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0  # 업데이트 중 최소한 하나의 Pod도 항상 사용 가능
+      maxSurge: 2        # 한 번에 생성되는 새로운 Pod의 수
   selector:
     matchLabels:
       app: kanna
@@ -17,10 +22,27 @@ spec:
       containers:
       - name: kanna
         image: art.montkim.com/public/kanna:925558
+        imagePullPolicy: Always  # 항상 최신 이미지를 가져오도록 설정
         ports:
         - containerPort: 3000
         env:
         - name: NODE_ENV
           value: "production"
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 2
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 2
+          failureThreshold: 3
       nodeSelector:
         montapp: enabled

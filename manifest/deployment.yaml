@@ -44,16 +44,16 @@ spec:
           httpGet:
             path: /
             port: 3000
-          initialDelaySeconds: 10  # 컨테이너가 시작된 후 10초 대기
-          periodSeconds: 10         # 요청 주기
-          timeoutSeconds: 2        # 요청 제한 시간
-          failureThreshold: 10     # 실패 허용 임계치 (최대 10회 실패 허용)
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 2
+          failureThreshold: 20
         readinessProbe:
           httpGet:
             path: /
             port: 3000
           initialDelaySeconds: 60
-          periodSeconds: 60
+          periodSeconds: 120
           timeoutSeconds: 2
           failureThreshold: 3
         livenessProbe:
@@ -61,7 +61,7 @@ spec:
             path: /
             port: 3000
           initialDelaySeconds: 60
-          periodSeconds: 60
+          periodSeconds: 120
           timeoutSeconds: 2
           failureThreshold: 3
       nodeSelector:

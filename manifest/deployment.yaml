@@ -49,4 +49,4 @@ spec:
           timeoutSeconds: 2
           failureThreshold: 20
       nodeSelector:
-        montapp: enabled
+        type: app

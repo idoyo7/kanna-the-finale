@@ -23,7 +23,8 @@ export default function Page3() {
       <div className={styles.video}>
         {hasWindow && (
           <ReactPlayer
-            url={m3u8Url} // .m3u8 경로
+            url={m3u8Url}
+            // url={`${baseUrl}${hiphopVideo.videoId}/output.m3u8`}
             width="100%"
             height="100%"
             playing={false}

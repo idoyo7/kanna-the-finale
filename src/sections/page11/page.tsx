@@ -5,8 +5,9 @@ import ReactPlayer from "react-player/lazy";
 
 import styles from "./styles.module.css";
 
-// 공통 CDN 경로
-const baseUrl = "https://apimin.montkim.com/cdn/kanna-the-finale-files-main/videos/";
+// .env 파일에 선언된 NEXT_PUBLIC_CDN 값을 사용
+const baseCDN = process.env.NEXT_PUBLIC_CDN; // 예: "https://apimin.montkim.com/cdn/kanna-the-finale-files-main"
+const baseVideoUrl = `${baseCDN}/videos`;
 
 const hiphopVideo = {
   title: "나한테는 아이리 칸나도 힙합이야 𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭 🎸",
@@ -24,8 +25,11 @@ export default function Page3() {
   }, []);
 
   // HLS 파일 경로
-  const m3u8Url =
-    "https://apimin.montkim.com/cdn/kanna-the-finale-files-main/concert/output.m3u8";
+  // const m3u8Url =
+  //   "https://apimin.montkim.com/cdn/kanna-the-finale-files-main/concert/output.m3u8";
+
+  const m3u8Url = `${baseVideoUrl}/output.m3u8`;
+  const thumbnailUrl = `${baseVideoUrl}/thumbnail.jpg`;
 
   return (
     <div>
@@ -38,7 +42,8 @@ export default function Page3() {
             height="100%"
             playing={false}
             controls
-            light={`${baseUrl}${hiphopVideo.videoId}/thumbnail.jpg`}
+            light={thumbnailUrl}
+            // light={`${baseUrl}${hiphopVideo.videoId}/thumbnail.jpg`}
           />
         )}
       </div>

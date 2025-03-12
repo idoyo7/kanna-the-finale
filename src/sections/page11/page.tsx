@@ -7,12 +7,12 @@ import styles from "./styles.module.css";
 
 // .env 파일에 선언된 NEXT_PUBLIC_CDN 값을 사용
 const baseCDN = process.env.NEXT_PUBLIC_CDN; // 예: "https://apimin.montkim.com/cdn/kanna-the-finale-files-main"
-const baseVideoUrl = `${baseCDN}/videos`;
+const baseVideoUrl = `${baseCDN}/videos/0f3Wz3yztbY`;
 
-const hiphopVideo = {
-  title: "나한테는 아이리 칸나도 힙합이야 𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭 🎸",
-  videoId: "0f3Wz3yztbY", // Replace with the actual video ID if necessary.
-};
+// const hiphopVideo = {
+//   title: "나한테는 아이리 칸나도 힙합이야 𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭 🎸",
+//   videoId: "0f3Wz3yztbY", // Replace with the actual video ID if necessary.
+// };
 
 
 export default function Page3() {

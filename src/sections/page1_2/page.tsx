@@ -105,16 +105,8 @@ export default function Page1_2() {
           <button
             className={styles.cta}
             onClick={() => {
-              // 로컬 HTML 파일 열기
-              const baseUrl = window.location.origin;
-              const url = `${baseUrl}/kanna.html`;
-              const a = document.createElement('a');
-              a.href = url;
-              a.target = '_blank';
-              a.rel = 'noopener noreferrer';
-              document.body.appendChild(a);
-              a.click();
-              document.body.removeChild(a);
+              // GitHub Pages URL 사용
+              window.open("https://idoyo7.github.io/kanna-the-finale/kanna.html", "_blank");
             }}
           >
             칸나 홈페이지{" "}

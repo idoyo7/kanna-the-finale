@@ -33,7 +33,7 @@ spec:
               topologyKey: "kubernetes.io/hostname"  # 동일 노드에서 스케줄링되지 않도록 설정
       containers:
       - name: kanna
-        image: idoyo7/kanna:2acb59
+        image: idoyo7/kanna:5ff7d1
         imagePullPolicy: Always
         ports:
         - containerPort: 3000

@@ -12,7 +12,7 @@ export function middleware(request) {
   // kanna.html 접근 시 처리
   if (url.pathname === "/kanna") {
     url.pathname = "/kanna.html";
-    return NextResponse.rewrite(url);
+    return NextResponse.redirect(url);  // rewrite 대신 redirect 사용
   }
 
   return NextResponse.next(); // 다른 요청은 그대로 통과

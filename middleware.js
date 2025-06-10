@@ -9,6 +9,14 @@ export function middleware(request) {
     return NextResponse.redirect(url);
   }
 
+  // /kanna로 시작하는 모든 경로를 kanna.html로 리다이렉트
+  if (url.pathname.startsWith("/kanna")) {
+    url.pathname = "/kanna.html";
+    // 해시 제거
+    url.hash = "";
+    return NextResponse.redirect(url);
+  }
+
   return NextResponse.next(); // 다른 요청은 그대로 통과
 }
 

@@ -105,7 +105,8 @@ export default function Page1_2() {
           <button
             className={styles.cta}
             onClick={() => {
-              window.open("/kanna.html", "_blank");
+              const baseUrl = window.location.origin;
+              window.open(`${baseUrl}/kanna.html`, "_blank");
             }}
           >
             칸나 홈페이지{" "}

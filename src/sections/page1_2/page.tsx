@@ -105,12 +105,7 @@ export default function Page1_2() {
           <button
             className={styles.cta}
             onClick={() => {
-              // 새 창에서 kanna.html 열기
-              const a = document.createElement('a');
-              a.href = '/kanna.html';
-              a.target = '_blank';
-              a.rel = 'noopener noreferrer';
-              a.click();
+              window.open(formatUrl("/kanna.html"), "_blank");
             }}
           >
             칸나 홈페이지{" "}

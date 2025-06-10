@@ -105,8 +105,7 @@ export default function Page1_2() {
           <button
             className={styles.cta}
             onClick={() => {
-              // kanna 폴더의 index.html을 참조
-              window.open("/kanna/", "_blank");
+              window.open(formatUrl("/kanna/index.html"), "_blank");
             }}
           >
             칸나 홈페이지{" "}

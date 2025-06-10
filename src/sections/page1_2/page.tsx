@@ -106,7 +106,15 @@ export default function Page1_2() {
             className={styles.cta}
             onClick={() => {
               // 로컬 HTML 파일 열기
-              window.open("/kanna/", "_blank");
+              const baseUrl = window.location.origin;
+              const url = `${baseUrl}/kanna.html`;
+              const a = document.createElement('a');
+              a.href = url;
+              a.target = '_blank';
+              a.rel = 'noopener noreferrer';
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
             }}
           >
             칸나 홈페이지{" "}

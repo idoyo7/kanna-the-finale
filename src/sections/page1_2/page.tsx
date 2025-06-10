@@ -102,12 +102,12 @@ export default function Page1_2() {
             </span>
           </button>
 
-          <a
-            href="/kanna.html"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
             className={styles.cta}
-            style={{ textDecoration: "none" }}
+            onClick={() => {
+              // 로컬 HTML 파일 열기
+              window.open("/kanna/", "_blank");
+            }}
           >
             칸나 홈페이지{" "}
             <span>
@@ -125,7 +125,7 @@ export default function Page1_2() {
                 ></path>
               </svg>
             </span>
-          </a>
+          </button>
         </div>
       </div>
     </div>

@@ -105,10 +105,8 @@ export default function Page1_2() {
           <button
             className={styles.cta}
             onClick={() => {
-              // 직접 kanna.html로 이동
-              const url = formatUrl("/kanna.html");
-              // 현재 창에서 직접 이동
-              window.location.href = url;
+              // public 폴더의 kanna.html을 직접 열기
+              window.location.href = "/kanna.html";
             }}
           >
             칸나 홈페이지{" "}

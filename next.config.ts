@@ -10,6 +10,15 @@ const nextConfig: NextConfig = {
   trailingSlash: false,
   // 빌드 시 public 폴더의 모든 파일을 복사
   distDir: 'out',
+  // rewrites 설정
+  async rewrites() {
+    return [
+      {
+        source: '/kanna',
+        destination: '/kanna.html',
+      },
+    ];
+  },
 };
 
 export default nextConfig;

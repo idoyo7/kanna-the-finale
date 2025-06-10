@@ -105,8 +105,8 @@ export default function Page1_2() {
           <button
             className={styles.cta}
             onClick={() => {
-              // GitHub Pages URL 사용
-              window.open("https://idoyo7.github.io/kanna-the-finale/kanna.html", "_blank");
+              // kanna 폴더의 index.html을 참조
+              window.open("/kanna/", "_blank");
             }}
           >
             칸나 홈페이지{" "}

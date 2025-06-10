@@ -105,9 +105,8 @@ export default function Page1_2() {
           <button
             className={styles.cta}
             onClick={() => {
-              // 현재 URL의 해시를 제거하고 kanna.html로 이동
-              const baseUrl = window.location.origin;
-              window.location.href = `${baseUrl}/kanna.html`;
+              // public 폴더의 kanna.html을 새 창에서 열기
+              window.open("/kanna.html", "_blank");
             }}
           >
             칸나 홈페이지{" "}

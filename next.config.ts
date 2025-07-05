@@ -7,14 +7,7 @@ const nextConfig: NextConfig = {
   },
   basePath: "",
   trailingSlash: true,
-  async rewrites() {
-    return [
-      {
-        source: "/kanna/:path*",
-        destination: "/kanna/:path*",
-      },
-    ];
-  },
+  // rewrites 제거 - export 모드에서는 작동하지 않음
 };
 
 export default nextConfig;

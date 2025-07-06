@@ -109,9 +109,10 @@ export default function Page1_2() {
             className={styles.cta}
             style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}
             onClick={(e) => {
-              // Next.js 라우팅 방해 방지
+              // Next.js 라우팅 방해 방지 및 브라우저 캐시 우회
               e.preventDefault();
-              window.open('/kanna.html', '_blank');
+              const baseUrl = window.location.origin;
+              window.open(`${baseUrl}/kanna.html`, '_blank');
             }}
           >
             칸나 홈페이지{" "}

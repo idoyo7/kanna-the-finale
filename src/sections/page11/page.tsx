@@ -6,7 +6,7 @@ import ReactPlayer from "react-player/lazy";
 import styles from "./styles.module.css";
 
 // .env 파일에 선언된 NEXT_PUBLIC_CDN 값을 사용
-const baseCDN = process.env.NEXT_PUBLIC_CDN; // 예: "https://apimin.montkim.com/cdn/kanna-the-finale-files-main"
+const baseCDN = process.env.NEXT_PUBLIC_CDN; // 예: "https://cdn.montkim.com/cdn/kanna-the-finale-files-main"
 const baseVideoUrl = `${baseCDN}/videos/0f3Wz3yztbY`;
 
 // const hiphopVideo = {
@@ -26,7 +26,7 @@ export default function Page3() {
 
   // HLS 파일 경로
   // const m3u8Url =
-  //   "https://apimin.montkim.com/cdn/kanna-the-finale-files-main/concert/output.m3u8";
+  //   "https://cdn.montkim.com/cdn/kanna-the-finale-files-main/concert/output.m3u8";
 
   const m3u8Url = `${baseVideoUrl}/output.m3u8`;
   const thumbnailUrl = `${baseVideoUrl}/thumbnail.jpg`;

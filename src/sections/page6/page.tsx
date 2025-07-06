@@ -6,7 +6,7 @@ import ReactPlayer from "react-player/lazy";
 import styles from "./styles.module.css";
 
 // 공통 CDN 경로
-// const baseUrl = "https://apimin.montkim.com/cdn/kanna-the-finale-files-main/videos/";
+// const baseUrl = "https://cdn.montkim.com/cdn/kanna-the-finale-files-main/videos/";
 const baseCDN = process.env.NEXT_PUBLIC_CDN;
 const baseUrl = `${baseCDN}/videos/`;
 

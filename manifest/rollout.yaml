@@ -5,10 +5,10 @@ metadata:
   namespace: kanna
   annotations:
     # Argo Rollouts Slack 알림 구독 설정
-    notifications.argoproj.io/subscribe.on-rollout-step-completed.slack: "C096A34QB6V"
-    notifications.argoproj.io/subscribe.on-rollout-completed.slack: "C096A34QB6V"
-    notifications.argoproj.io/subscribe.on-rollout-aborted.slack: "C096A34QB6V"
-    notifications.argoproj.io/subscribe.on-rollout-updated.slack: "C096A34QB6V"
+    notifications.argoproj.io/subscribe.on-rollout-step-completed.slack: "#update"
+    notifications.argoproj.io/subscribe.on-rollout-completed.slack: "#update"
+    notifications.argoproj.io/subscribe.on-rollout-aborted.slack: "#update"
+    notifications.argoproj.io/subscribe.on-rollout-updated.slack: "#update"
 spec:
   replicas: 3
   revisionHistoryLimit: 3

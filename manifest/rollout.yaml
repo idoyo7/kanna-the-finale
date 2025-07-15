@@ -11,7 +11,7 @@ metadata:
     notifications.argoproj.io/subscribe.on-rollout-updated.slack: "C096A34QB6V"
 spec:
   replicas: 3
-  revisionHistoryLimit: 5
+  revisionHistoryLimit: 3
   strategy:
     canary:
       # Canary 배포 전략: 30초간 10%, 이후 바로 100%

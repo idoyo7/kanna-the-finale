@@ -36,25 +36,21 @@ jobs:
           docker build -t "${{ secrets.DOCKERHUB_USERNAME }}/kanna:${{ env.IMAGE_TAG }}" .
           docker push "${{ secrets.DOCKERHUB_USERNAME }}/kanna:${{ env.IMAGE_TAG }}"
 
-      # 5. deployment.yaml 이미지 태그 업데이트
-      - name: Update image tag in deployment.yaml
+      # 5. rollout.yaml 이미지 태그 업데이트 (GitOps 방식)
+      - name: Update image tag in rollout.yaml
         run: |
           # manifest 디렉토리가 없으면 생성
           mkdir -p manifest
-          # deployment.yaml이 없으면 기본 템플릿 생성
-          if [ ! -f manifest/deployment.yaml ]; then
-            echo "Creating new deployment.yaml"
-            cp .kubernetes/deployment.template.yaml manifest/deployment.yaml || true
-          fi
-          sed -i 's|image:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/kanna:${{ env.IMAGE_TAG }}|' manifest/deployment.yaml
+          # rollout.yaml의 이미지 태그 업데이트
+          sed -i 's|image: idoyo7/kanna:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/kanna:${{ env.IMAGE_TAG }}|' manifest/rollout.yaml
 
-      # 6. 변경 사항 커밋 및 푸시
-      - name: Commit and push changes
+      # 6. 변경 사항 커밋 및 푸시 (ArgoCD가 감지하여 자동 배포)
+      - name: Commit and push changes for GitOps
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
-          # -f 옵션을 사용하여 .gitignore를 무시하고 강제로 추가
-          git add -f manifest/deployment.yaml
-          git commit -m "Update image tag to ${{ env.IMAGE_TAG }}"
+          # ArgoCD가 감지할 수 있도록 rollout.yaml 커밋
+          git add -f manifest/rollout.yaml
+          git commit -m "🚀 Update image tag to ${{ env.IMAGE_TAG }} for ArgoRollout deployment"
           git push
 

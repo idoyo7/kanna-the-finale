@@ -14,10 +14,23 @@ spec:
   revisionHistoryLimit: 3
   strategy:
     canary:
-      # Canary 배포 전략: 30초간 10%, 이후 바로 100%
+      # Canary 배포 전략: 15% 트래픽으로 analysis 수행 후 100%
+      analysis:
+        templates:
+        - templateName: success-rate
+        startingStep: 1  # 첫 번째 단계부터 analysis 시작
+        args:
+        - name: service-name
+          value: kanna-service
       steps:
       - setWeight: 15
       - pause: {duration: 30s}
+      - analysis:
+          templates:
+          - templateName: success-rate
+          args:
+          - name: service-name
+            value: kanna-service
       - setWeight: 100
   selector:
     matchLabels:

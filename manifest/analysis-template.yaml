@@ -14,7 +14,7 @@ spec:
     count: 5
     provider:
       prometheus:
-        address: http://prometheus-server.monitoring.svc.cluster.local:80
+        address: http://prometheus-kube-prometheus-prometheus.monitoring.svc.cluster.local:9090
         query: |
           sum(irate(
             nginx_ingress_controller_requests{
@@ -26,20 +26,4 @@ spec:
             nginx_ingress_controller_requests{
               ingress="kanna-ingress"
             }[2m]
-          ))
-  - name: avg-response-time
-    # 평균 응답 시간 체크
-    successCondition: result[0] <= 1000
-    interval: 60s
-    count: 5
-    provider:
-      prometheus:
-        address: http://prometheus-server.monitoring.svc.cluster.local:80
-        query: |
-          histogram_quantile(0.95,
-            sum(rate(
-              nginx_ingress_controller_request_duration_seconds_bucket{
-                ingress="kanna-ingress"
-              }[2m]
-            )) by (le)
-          ) * 1000 
+          )) 

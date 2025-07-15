@@ -16,7 +16,7 @@ spec:
     canary:
       # Canary 배포 전략: 30초간 10%, 이후 바로 100%
       steps:
-      - setWeight: 10
+      - setWeight: 15
       - pause: {duration: 30s}
       - setWeight: 100
   selector:

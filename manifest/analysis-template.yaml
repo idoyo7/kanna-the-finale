@@ -10,7 +10,7 @@ spec:
   - name: pod-availability
     # 기본적인 Pod 가용성 체크 (Pod가 Ready 상태인지)
     successCondition: result[0] >= 1
-    interval: 30s
+    interval: 10s
     count: 1
     provider:
       prometheus:

@@ -3,6 +3,12 @@ kind: Rollout
 metadata:
   name: kanna
   namespace: kanna
+  annotations:
+    # Argo Rollouts Slack 알림 구독 설정
+    notifications.argoproj.io/subscribe.on-rollout-step-completed.slack: "#update"
+    notifications.argoproj.io/subscribe.on-rollout-completed.slack: "#update"
+    notifications.argoproj.io/subscribe.on-rollout-aborted.slack: "#update"
+    notifications.argoproj.io/subscribe.on-rollout-updated.slack: "#update"
 spec:
   replicas: 3
   revisionHistoryLimit: 5

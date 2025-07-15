@@ -41,7 +41,7 @@ spec:
               topologyKey: "kubernetes.io/hostname"
       containers:
       - name: kanna
-        image: idoyo7/kanna:bf0010
+        image: idoyo7/kanna:371ef4
         imagePullPolicy: Always
         ports:
         - containerPort: 3000

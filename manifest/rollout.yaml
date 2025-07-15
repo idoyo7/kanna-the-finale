@@ -10,7 +10,7 @@ metadata:
     notifications.argoproj.io/subscribe.on-rollout-aborted.slack: "#update"
     notifications.argoproj.io/subscribe.on-rollout-updated.slack: "#update"
 spec:
-  replicas: 3
+  replicas: 4
   revisionHistoryLimit: 3
   strategy:
     canary:

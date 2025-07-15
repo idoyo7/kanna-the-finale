@@ -1,0 +1,45 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: success-rate
+  namespace: kanna
+spec:
+  args:
+  - name: service-name
+  metrics:
+  - name: success-rate
+    # 기본적인 성공률 체크 (HTTP 200 응답률)
+    successCondition: result[0] >= 0.95
+    interval: 60s
+    count: 5
+    provider:
+      prometheus:
+        address: http://prometheus-server.monitoring.svc.cluster.local:80
+        query: |
+          sum(irate(
+            nginx_ingress_controller_requests{
+              ingress="kanna-ingress",
+              status!~"[4-5].*"
+            }[2m]
+          )) / 
+          sum(irate(
+            nginx_ingress_controller_requests{
+              ingress="kanna-ingress"
+            }[2m]
+          ))
+  - name: avg-response-time
+    # 평균 응답 시간 체크
+    successCondition: result[0] <= 1000
+    interval: 60s
+    count: 5
+    provider:
+      prometheus:
+        address: http://prometheus-server.monitoring.svc.cluster.local:80
+        query: |
+          histogram_quantile(0.95,
+            sum(rate(
+              nginx_ingress_controller_request_duration_seconds_bucket{
+                ingress="kanna-ingress"
+              }[2m]
+            )) by (le)
+          ) * 1000 

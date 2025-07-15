@@ -15,7 +15,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: kanna-service-active
+            name: kanna-service
             port:
               number: 80
   tls:

@@ -1,0 +1,44 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: kanna
+  namespace: kanna
+spec:
+  replicas: 1  # 일단 1개로 시작
+  revisionHistoryLimit: 5
+  strategy:
+    # 가장 간단한 Rolling Update 전략
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: kanna
+  template:
+    metadata:
+      labels:
+        app: kanna
+    spec:
+      containers:
+      - name: kanna
+        image: idoyo7/kanna:8ff103
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NODE_ENV
+          value: "production"
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "50m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+        # probe 없이 일단 테스트
+        # readinessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 3000
+        #   initialDelaySeconds: 30
+        #   periodSeconds: 10 

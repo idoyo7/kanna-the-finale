@@ -8,11 +8,16 @@ spec:
   revisionHistoryLimit: 5
   strategy:
     canary:
-      # Canary 배포 전략: 30초간 10%, 이후 바로 100%
+      # Canary 배포 전략 (더 간단함)
       steps:
-      - setWeight: 10
+      - setWeight: 20
+      - pause: {}
+      - setWeight: 40
       - pause: {duration: 30s}
-      - setWeight: 100
+      - setWeight: 60
+      - pause: {duration: 30s}
+      - setWeight: 80
+      - pause: {duration: 30s}
   selector:
     matchLabels:
       app: kanna
@@ -49,27 +54,20 @@ spec:
           limits:
             memory: "512Mi"
             cpu: "500m"
-        startupProbe:
-          httpGet:
-            path: /
-            port: 3000
-          initialDelaySeconds: 10
-          periodSeconds: 10
-          timeoutSeconds: 5
-          failureThreshold: 30
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 3000
-          initialDelaySeconds: 60
-          periodSeconds: 10
-          timeoutSeconds: 5
-          failureThreshold: 3
+        # 더 관대한 probe 설정
         readinessProbe:
           httpGet:
             path: /
             port: 3000
-          initialDelaySeconds: 10
-          periodSeconds: 5
+          initialDelaySeconds: 15
+          periodSeconds: 10
           timeoutSeconds: 5
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 30
+          timeoutSeconds: 10
           failureThreshold: 3 

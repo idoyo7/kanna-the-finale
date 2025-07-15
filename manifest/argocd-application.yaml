@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/YOUR_USERNAME/kanna-the-finale  # 실제 레포지토리 URL로 변경 필요
+    repoURL: https://github.com/idoyo7/kanna-the-finale  # 실제 레포지토리 URL로 변경 필요
     targetRevision: HEAD
     path: manifest
   destination:

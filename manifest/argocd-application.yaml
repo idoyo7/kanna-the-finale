@@ -5,9 +5,9 @@ metadata:
   namespace: argocd
   annotations:
     # ArgoCD Slack 알림 구독 설정
-    notifications.argoproj.io/subscribe.on-deployed.slack: "#update"
-    notifications.argoproj.io/subscribe.on-health-degraded.slack: "#update"
-    notifications.argoproj.io/subscribe.on-sync-failed.slack: "#update"
+    notifications.argoproj.io/subscribe.on-deployed.slack: "C096A34QB6V"
+    notifications.argoproj.io/subscribe.on-health-degraded.slack: "C096A34QB6V"
+    notifications.argoproj.io/subscribe.on-sync-failed.slack: "C096A34QB6V"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:

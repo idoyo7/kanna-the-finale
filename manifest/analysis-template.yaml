@@ -7,23 +7,19 @@ spec:
   args:
   - name: service-name
   metrics:
-  - name: success-rate
-    # 기본적인 성공률 체크 (HTTP 200 응답률)
-    successCondition: result[0] >= 0.95
-    interval: 60s
-    count: 5
+  - name: pod-availability
+    # 기본적인 Pod 가용성 체크 (Pod가 Ready 상태인지)
+    successCondition: result[0] >= 1
+    interval: 30s
+    count: 1
     provider:
       prometheus:
-        address: http://prometheus-kube-prometheus-prometheus.monitoring.svc.cluster.local:9090
+        address: https://mon.montkim.com/prometheus
         query: |
-          sum(irate(
-            nginx_ingress_controller_requests{
-              ingress="kanna-ingress",
-              status!~"[4-5].*"
-            }[2m]
-          )) / 
-          sum(irate(
-            nginx_ingress_controller_requests{
-              ingress="kanna-ingress"
-            }[2m]
-          )) 
+          sum(
+            kube_pod_status_ready{
+              namespace="kanna",
+              pod=~"kanna-.*",
+              condition="true"
+            }
+          ) 

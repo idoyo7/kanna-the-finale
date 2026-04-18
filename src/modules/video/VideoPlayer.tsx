@@ -2,7 +2,14 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Modal from "react-modal";
-import ReactPlayer from "react-player/lazy";
+import { MediaPlayer, MediaProvider } from "@vidstack/react";
+import {
+  DefaultVideoLayout,
+  defaultLayoutIcons,
+} from "@vidstack/react/player/layouts/default";
+
+import "@vidstack/react/player/styles/default/theme.css";
+import "@vidstack/react/player/styles/default/layouts/video.css";
 
 import styles from "./VideoPlayer.module.css";
 
@@ -25,24 +32,18 @@ export default function VideoPlayer({
   aspectRatio = "16 / 9",
   className,
 }: VideoPlayerProps) {
-  const [hasWindow, setHasWindow] = useState(false);
   const [open, setOpen] = useState(false);
   const [inlinePlaying, setInlinePlaying] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    setHasWindow(true);
-
-    if (!modalAppElementSet) {
-      const root =
-        document.getElementById("__next") ??
-        document.body;
-      try {
-        Modal.setAppElement(root);
-        modalAppElementSet = true;
-      } catch {
-        // ignore — already set elsewhere
-      }
+    if (modalAppElementSet) return;
+    const root = document.getElementById("__next") ?? document.body;
+    try {
+      Modal.setAppElement(root);
+      modalAppElementSet = true;
+    } catch {
+      // already set by another instance
     }
   }, []);
 
@@ -53,7 +54,20 @@ export default function VideoPlayer({
 
   const closeModal = useCallback(() => setOpen(false), []);
 
-  const renderInlinePlayer = hasWindow && (!popup && inlinePlaying);
+  const renderPlayer = (autoPlay: boolean) => (
+    <MediaPlayer
+      className={styles.player}
+      src={url}
+      title={title}
+      poster={thumbnail}
+      autoPlay={autoPlay}
+      crossOrigin
+      playsInline
+    >
+      <MediaProvider />
+      <DefaultVideoLayout icons={defaultLayoutIcons} />
+    </MediaPlayer>
+  );
 
   return (
     <>
@@ -61,14 +75,8 @@ export default function VideoPlayer({
         className={`${styles.container} ${className ?? ""}`}
         style={{ aspectRatio }}
       >
-        {renderInlinePlayer ? (
-          <ReactPlayer
-            url={url}
-            width="100%"
-            height="100%"
-            controls
-            playing
-          />
+        {!popup && inlinePlaying ? (
+          renderPlayer(true)
         ) : (
           <button
             type="button"
@@ -130,15 +138,7 @@ export default function VideoPlayer({
           {title && <p className={styles.modalTitle}>{title}</p>}
 
           <div className={styles.modalPlayerWrap}>
-            {open && hasWindow && (
-              <ReactPlayer
-                url={url}
-                width="100%"
-                height="100%"
-                controls
-                playing
-              />
-            )}
+            {open && renderPlayer(true)}
           </div>
         </Modal>
       )}

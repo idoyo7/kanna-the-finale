@@ -5,6 +5,9 @@ FROM --platform=$BUILDPLATFORM node:22 AS builder
 
 WORKDIR /app
 
+# pnpm 설치 (packageManager 필드와 버전 일치)
+RUN npm install -g pnpm@10.33.0
+
 # 전체 소스코드 복사
 COPY . .
 
@@ -17,11 +20,11 @@ ENV NEXT_PUBLIC_CDN=https://cdn.montkim.com/cdn/kanna-the-finale-files-main
 # 멀티코어 사용을 위한 환경변수 설정
 ENV NODE_OPTIONS="--max-old-space-size=6144"
 
-# 의존성 설치
-RUN npm ci --legacy-peer-deps
+# 의존성 설치 (pnpm-lock.yaml 기반 재현 가능 빌드)
+RUN pnpm install --frozen-lockfile
 
 # Production 빌드 (standalone)
-RUN npm run build
+RUN pnpm build
 
 # ===== Production Stage =====
 FROM node:22-alpine AS runner

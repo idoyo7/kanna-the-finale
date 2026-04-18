@@ -1,4 +1,5 @@
 import { GoogleTagManager } from "@next/third-parties/google";
+import Script from "next/script";
 
 import Header from "@/modules/header/header";
 import formatUrl from "@/modules/cdn/formatUrl";
@@ -58,6 +59,11 @@ export default function RootLayout({
       </head>
 
       <GoogleTagManager gtmId="GTM-5QN9C4SW" />
+
+      <Script
+        src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"
+        strategy="afterInteractive"
+      />
 
       <body>
         <Header />

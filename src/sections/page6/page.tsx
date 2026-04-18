@@ -1,16 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import ReactPlayer from "react-player/lazy";
+import VideoPlayer from "@/modules/video/VideoPlayer";
 
 import styles from "./styles.module.css";
 
-// 공통 CDN 경로
-// const baseUrl = "https://cdn.montkim.com/cdn/kanna-the-finale-files-main/videos/";
 const baseCDN = process.env.NEXT_PUBLIC_CDN;
 const baseUrl = `${baseCDN}/videos/`;
 
-// 유튜브 고유 식별자를 유지하는 음악 리스트
 const musicList = {
   section1: [
     { "1st single ADDICTION": "kPdB6iGYBBc" },
@@ -60,14 +56,6 @@ const musicList = {
 };
 
 export default function Page6() {
-  const [hasWindow, setHasWindow] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setHasWindow(true);
-    }
-  }, []);
-
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -84,26 +72,25 @@ export default function Page6() {
       <div className={styles.content}>
         {Object.entries(musicList).map(([sectionKey, items]) => (
           <div key={sectionKey} className={styles.musicRow}>
-            {items.map((item, index) => (
-              <div key={`${sectionKey}-${index}`} className={styles.musicItem}>
-                <h3>{Object.keys(item)[0]}</h3>
-                <div className={styles.video}>
-                  {hasWindow && (
-                    <ReactPlayer
-                      url={`${baseUrl}${Object.values(item)[0]}/output.m3u8`}
-                      width="100%"
-                      height="100%"
-                      controls
-                      light={`${baseUrl}${Object.values(item)[0]}/thumbnail.jpg`}
+            {items.map((item, index) => {
+              const title = Object.keys(item)[0];
+              const videoId = Object.values(item)[0];
+              return (
+                <div key={`${sectionKey}-${index}`} className={styles.musicItem}>
+                  <h3>{title}</h3>
+                  <div className={styles.video}>
+                    <VideoPlayer
+                      url={`${baseUrl}${videoId}/output.m3u8`}
+                      thumbnail={`${baseUrl}${videoId}/thumbnail.jpg`}
+                      title={title}
                     />
-                  )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         ))}
       </div>
     </div>
   );
 }
-

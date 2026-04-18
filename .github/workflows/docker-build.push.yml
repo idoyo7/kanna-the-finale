@@ -6,28 +6,27 @@ on:
       - master
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    environment: production # 여기서 환경을 선언
+    environment: production
 
     steps:
       # 1. 레포지토리 체크아웃
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # 2. Docker Hub 로그인
       - name: Login to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       # 3. 무작위 태그 생성
       - name: Generate random tag for Docker image
-        id: vars
         run: echo "IMAGE_TAG=$(date +%s | sha256sum | cut -c1-6)" >> $GITHUB_ENV
 
       # 4. Docker 이미지 빌드 및 푸시
@@ -36,30 +35,36 @@ jobs:
           docker build -t "${{ secrets.DOCKERHUB_USERNAME }}/kanna:${{ env.IMAGE_TAG }}" .
           docker push "${{ secrets.DOCKERHUB_USERNAME }}/kanna:${{ env.IMAGE_TAG }}"
 
-      # 5. rollout.yaml 이미지 태그 업데이트 (GitOps 방식)
-      - name: Update image tag in rollout.yaml
+      # 5. montstrap 레포 체크아웃 (GitOps 소스)
+      - name: Checkout montstrap repository
+        uses: actions/checkout@v4
+        with:
+          repository: idoyo7/montstrap
+          token: ${{ secrets.MONTSTRAP_TOKEN }}
+          path: montstrap
+          ref: main
+
+      # 6. montstrap stage kustomization.yaml 이미지 태그 갱신
+      - name: Update stage image tag in montstrap
+        working-directory: montstrap
         run: |
-          # manifest 디렉토리가 없으면 생성
-          mkdir -p manifest
-          # rollout.yaml 파일이 없으면 에러 출력 후 종료
-          if [ ! -f manifest/rollout.yaml ]; then
-            echo "Error: manifest/rollout.yaml not found"
-            ls -la manifest/
-            exit 1
+          KUSTOMIZATION=stage/kanna/manifests/kustomization.yaml
+          yq eval -i \
+            '(.images[] | select(.name == "idoyo7/kanna")).newTag = strenv(IMAGE_TAG)' \
+            "$KUSTOMIZATION"
+          echo "=== updated ${KUSTOMIZATION} ==="
+          cat "$KUSTOMIZATION"
+
+      # 7. montstrap 레포에 커밋 & 푸시 (ArgoCD auto-sync 트리거)
+      - name: Commit and push to montstrap
+        working-directory: montstrap
+        run: |
+          git config user.name "kanna-the-finale CI"
+          git config user.email "ci-bot@users.noreply.github.com"
+          git add stage/kanna/manifests/kustomization.yaml
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
           fi
-          # rollout.yaml의 이미지 태그 업데이트 (더 구체적인 패턴)
-          sed -i 's|image: idoyo7/kanna:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/kanna:${{ env.IMAGE_TAG }}|g' manifest/rollout.yaml
-          # 변경 사항 확인
-          echo "Updated image in rollout.yaml:"
-          grep "image:" manifest/rollout.yaml
-
-      # 6. 변경 사항 커밋 및 푸시 (ArgoCD가 감지하여 자동 배포)
-      - name: Commit and push changes for GitOps
-        run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor }}@users.noreply.github.com"
-          # ArgoCD가 감지할 수 있도록 rollout.yaml 커밋
-          git add -f manifest/rollout.yaml
-          git commit -m "🚀 Update image tag to ${{ env.IMAGE_TAG }} for ArgoRollout deployment"
-          git push
-
+          git commit -m "🚀 kanna stage: bump image tag to ${{ env.IMAGE_TAG }}"
+          git push origin main

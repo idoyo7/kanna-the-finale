@@ -63,6 +63,7 @@ export default function VideoPlayer({
       autoPlay={autoPlay}
       crossOrigin
       playsInline
+      storage="kanna-video-prefs"
     >
       <MediaProvider />
       <DefaultVideoLayout icons={defaultLayoutIcons} />

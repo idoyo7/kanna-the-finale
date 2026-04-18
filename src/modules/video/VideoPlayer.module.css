@@ -17,6 +17,14 @@
   width: 100%;
   height: 100%;
   border-radius: inherit;
+  overflow: hidden;
+  --video-border-radius: inherit;
+  --media-border-radius: inherit;
+}
+
+.player video,
+.player [data-media-provider] {
+  border-radius: inherit;
 }
 
 .player[data-layout="video"] {

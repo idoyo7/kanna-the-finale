@@ -48,7 +48,7 @@ jobs:
       - name: Update stage image tag in montstrap
         working-directory: montstrap
         run: |
-          KUSTOMIZATION=stage/kanna/manifests/kustomization.yaml
+          KUSTOMIZATION=hub/kanna/manifests/kustomization.yaml
           yq eval -i \
             '(.images[] | select(.name == "idoyo7/kanna")).newTag = strenv(IMAGE_TAG)' \
             "$KUSTOMIZATION"
@@ -61,7 +61,7 @@ jobs:
         run: |
           git config user.name "kanna-the-finale CI"
           git config user.email "ci-bot@users.noreply.github.com"
-          git add stage/kanna/manifests/kustomization.yaml
+          git add hub/kanna/manifests/kustomization.yaml
           if git diff --cached --quiet; then
             echo "No changes to commit"
             exit 0

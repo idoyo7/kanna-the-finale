@@ -56,6 +56,12 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
         />
+
+        <script
+          defer
+          src="https://cdn.makgol.com/rum/hyperdx-rum.js"
+          data-service="kanna"
+        ></script>
       </head>
 
       <GoogleTagManager gtmId="GTM-5QN9C4SW" />

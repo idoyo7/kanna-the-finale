@@ -1,12 +1,12 @@
 # syntax=docker/dockerfile:1
 
 # ===== Build Stage =====
-FROM --platform=$BUILDPLATFORM node:22 AS builder
+FROM --platform=$BUILDPLATFORM node:24 AS builder
 
 WORKDIR /app
 
 # pnpm 설치 (packageManager 필드와 버전 일치)
-RUN npm install -g pnpm@10.33.0
+RUN npm install -g pnpm@12.6.0
 
 # 전체 소스코드 복사
 COPY . .
@@ -27,7 +27,7 @@ RUN pnpm install --frozen-lockfile
 RUN pnpm build
 
 # ===== Production Stage =====
-FROM node:22-alpine AS runner
+FROM node:24-alpine AS runner
 
 WORKDIR /app
 

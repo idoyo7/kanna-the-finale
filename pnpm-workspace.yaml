@@ -1,0 +1,4 @@
+allowBuilds:
+  # next의 Image Optimization은 next.config.*의 images.unoptimized=true로 꺼져 있어
+  # sharp의 네이티브 postinstall 빌드가 실행되지 않아도 무방하다. 명시적으로 거부해 둔다.
+  sharp: false

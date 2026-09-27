@@ -2,6 +2,9 @@
   "name": "kanna-the-final",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=24 <25"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
@@ -9,27 +12,28 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@next/third-parties": "^16.2.6",
-    "@unocss/reset": "^0.64.1",
-    "@vidstack/react": "^1.12.13",
-    "hls.js": "^1.6.16",
-    "next": "16.2.6",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6",
-    "react-modal": "^3.16.1",
+    "@next/third-parties": "^16.3.6",
+    "@unocss/reset": "^66.10.5",
+    "@vidstack/react": "^1.15.6",
+    "hls.js": "^1.7.3",
+    "next": "16.3.6",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-modal": "^3.16.3",
     "react-swipeable": "^7.0.2",
     "smooth-zoom": "^1.5.0"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "@types/react-modal": "^3.16.3",
-    "eslint": "^8",
-    "eslint-config-next": "16.2.6",
+    "eslint": "^10",
+    "eslint-config-next": "16.3.6",
     "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5.9.3"
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2"
   },
-  "packageManager": "pnpm@10.33.0"
+  "packageManager": "pnpm@12.6.0+sha512.3ef68f951cb111ac204b4a5a16f0b2ddf0da56a96e0413e81d855d9f0b55ef926714709028e1cd00c405c2c5fb7b9e8ec4dc46777c805d0373c2f2ff00fd20ec"
 }

@@ -2,3 +2,17 @@ allowBuilds:
   # next의 Image Optimization은 next.config.*의 images.unoptimized=true로 꺼져 있어
   # sharp의 네이티브 postinstall 빌드가 실행되지 않아도 무방하다. 명시적으로 거부해 둔다.
   sharp: false
+minimumReleaseAgeExclude:
+  - '@next/env@16.3.8'
+  - '@next/eslint-plugin-next@16.3.8'
+  - '@next/swc-darwin-arm64@16.3.8'
+  - '@next/swc-darwin-x64@16.3.8'
+  - '@next/swc-linux-arm64-gnu@16.3.8'
+  - '@next/swc-linux-arm64-musl@16.3.8'
+  - '@next/swc-linux-x64-gnu@16.3.8'
+  - '@next/swc-linux-x64-musl@16.3.8'
+  - '@next/swc-win32-arm64-msvc@16.3.8'
+  - '@next/swc-win32-x64-msvc@16.3.8'
+  - '@next/third-parties@16.3.8'
+  - eslint-config-next@16.3.8
+  - next@16.3.8

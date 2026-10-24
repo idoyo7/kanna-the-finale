@@ -1,7 +1,8 @@
 # syntax=docker/dockerfile:1
 
 # ===== Build Stage =====
-FROM --platform=$BUILDPLATFORM node:24 AS builder
+# runner 와 같은 musl(alpine)로 맞춘다: sharp 등 네이티브 바이너리가 빌드 단계에서 musl 용으로 설치되도록
+FROM --platform=$BUILDPLATFORM node:24-alpine AS builder
 
 WORKDIR /app
 

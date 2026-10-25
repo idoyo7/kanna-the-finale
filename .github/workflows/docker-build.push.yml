@@ -44,27 +44,37 @@ jobs:
           path: montstrap
           ref: main
 
-      # 6. montstrap stage kustomization.yaml 이미지 태그 갱신
-      - name: Update stage image tag in montstrap
+      # 6. montstrap 이미지 태그 갱신 (hub: kustomization newTag, edge: plain 매니페스트 image 줄)
+      - name: Update image tag in montstrap
         working-directory: montstrap
         run: |
+          # hub: kustomization newTag(태그 전용)만 yq bump
           KUSTOMIZATION=hub/kanna/manifests/kustomization.yaml
           yq eval -i \
             '(.images[] | select(.name == "idoyo7/kanna")).newTag = strenv(IMAGE_TAG)' \
             "$KUSTOMIZATION"
-          echo "=== updated ${KUSTOMIZATION} ==="
-          cat "$KUSTOMIZATION"
+          grep -q "newTag: \"\?${IMAGE_TAG}\"\?" "$KUSTOMIZATION" \
+            || { echo "::error::${KUSTOMIZATION} 에 새 태그가 반영되지 않음"; exit 1; }
+          # edge: kustomize 미이관(plain apply) -> sed 로 image 줄 교체
+          for f in edge/kanna/manifests/deployment.yaml edge/kanna/manifests/rollout.yaml; do
+            sed -i 's|image: idoyo7/kanna:.*|image: idoyo7/kanna:'"${IMAGE_TAG}"'|' "$f"
+            grep -q "image: idoyo7/kanna:${IMAGE_TAG}\$" "$f" \
+              || { echo "::error::${f} 에 새 태그가 반영되지 않음"; exit 1; }
+          done
+          git diff
 
-      # 7. montstrap 레포에 커밋 & 푸시 (ArgoCD auto-sync 트리거)
+      # 7. montstrap 레포에 한 커밋으로 push (ArgoCD auto-sync 트리거)
       - name: Commit and push to montstrap
         working-directory: montstrap
         run: |
           git config user.name "kanna-the-finale CI"
           git config user.email "ci-bot@users.noreply.github.com"
-          git add hub/kanna/manifests/kustomization.yaml
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-            exit 0
-          fi
-          git commit -m "🚀 kanna stage: bump image tag to ${{ env.IMAGE_TAG }}"
+          git add hub/kanna/manifests/kustomization.yaml \
+                  edge/kanna/manifests/deployment.yaml \
+                  edge/kanna/manifests/rollout.yaml
+          git diff --cached --quiet || git commit -m "🚀 kanna: bump image tag to ${IMAGE_TAG}"
+          for i in 1 2 3; do
+            git push origin main && exit 0
+            git pull --rebase origin main
+          done
           git push origin main
